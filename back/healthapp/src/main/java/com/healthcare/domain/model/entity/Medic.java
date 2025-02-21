@@ -1,11 +1,17 @@
 package com.healthcare.domain.model.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,8 +30,10 @@ public class Medic {
     @Column(name = "dni")
     private Integer documentId;
     private String email;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Speciality speciality;
+    @OneToMany(mappedBy = "medic", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Appointment> appointment;
 }
 
 enum Speciality {
@@ -38,4 +46,3 @@ enum Speciality {
     DERMATOLOGIA,
     GINECOLOGIA
 }
-
