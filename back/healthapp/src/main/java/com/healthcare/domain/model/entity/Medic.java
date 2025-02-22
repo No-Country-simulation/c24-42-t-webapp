@@ -42,6 +42,8 @@ public class Medic {
     private List<Appointment> appointment;
     @OneToOne @JoinColumn(name = "user_id")
     private User user;
+    @OneToOne @JoinColumn(name = "image_id")
+    private Image image;
 }
 
 enum Speciality {
