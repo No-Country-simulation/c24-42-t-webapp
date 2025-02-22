@@ -27,6 +27,8 @@ public class Patient {
     private String phone;
     private String address;
     private String emergencyContactInfo;
+    @OneToOne @JoinColumn(name = "user_id")
+    private User user;
 }
 
 enum Gender {

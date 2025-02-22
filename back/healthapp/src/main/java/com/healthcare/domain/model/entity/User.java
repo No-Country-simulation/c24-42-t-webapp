@@ -18,6 +18,12 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToOne(mappedBy = "user")
+    private Admin admin;
+    @OneToOne(mappedBy = "user")
+    private Medic medic;
+    @OneToOne(mappedBy = "user")
+    private Patient patient;
 }
 
 enum Role {
