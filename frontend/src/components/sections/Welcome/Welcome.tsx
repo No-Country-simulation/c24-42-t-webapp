@@ -1,8 +1,11 @@
+import { MainBox } from "./MainBox";
+import { ContentBox } from "./ContentBox/ContentBox";
 
 export const Welcome = () => {
     return (
         <>
-            <p>Welcome View Page</p>
+            <MainBox />
+            <ContentBox />
         </>
     );
 }
