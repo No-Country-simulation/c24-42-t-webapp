@@ -2,9 +2,6 @@ import { SxProps } from "@mui/material";
 
 export const FooterStyle: Record<string, SxProps> = {
   footerContainer: {
-    position: "fixed",
-    bottom: 0,
-    left: 0,
     width: "100%",
     backgroundColor: "#f1f1f1",
     padding: "20px 0",

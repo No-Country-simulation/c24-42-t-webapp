@@ -1,8 +1,7 @@
-import { Box, Container, Typography, IconButton } from "@mui/material";
-import { Facebook, LinkedIn, Twitter, Instagram } from "@mui/icons-material";
-import "./Footer.css";
+import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
+import { Box, Container, IconButton, Typography } from "@mui/material";
+import { Anchor } from "@ui/Anchor/Anchor";
 import { FooterStyle } from "./FooterStyle";
-import { Link } from "react-router";
 
 export const Footer = () => {
   return (
@@ -13,16 +12,12 @@ export const Footer = () => {
     >
       {/*1er Box - Logo y Title*/}
       <Box sx={FooterStyle.footerTitle}>
-        <Link
+        <Anchor
           to="#"
-          style={{
-            textDecoration: "none",
-            fontWeight: "bold",
-            color: "black",
-          }}
+          ariaLabel="logo de la pagina web"
         >
           MedicalAppointment {/* Appointment iría verde oscuro, falta logo */}
-        </Link>
+        </Anchor>
         <Typography variant="body2" color="textSecondary">
           © No Country 2025
         </Typography>
@@ -38,8 +33,7 @@ export const Footer = () => {
           >
             NOSOTROS
           </Typography>
-          <Link to="#">¿Quiénes somos?</Link>
-          <Link to="#">Únete a nuestros médicos</Link>
+          <Anchor to="#" ariaLabel="navegar a seccion quienes somos">¿Quiénes somos?</Anchor>
         </Box>
 
         <Box sx={FooterStyle.footerLinksSection}>
@@ -50,9 +44,9 @@ export const Footer = () => {
           >
             SERVICIOS
           </Typography>
-          <Link to="#">Agendá una cita</Link>
-          <Link to="#">Consulta sobre nuestros médicos</Link>
-          <Link to="#">Ver tus citas</Link>
+          <Anchor to="#" ariaLabel="navegar a la seccion de agendar cita">Agendá una cita</Anchor>
+          <Anchor to="#" ariaLabel="navegar a la seccion consultar sobre nuestros medicos">Consulta sobre nuestros médicos</Anchor>
+          <Anchor to="#" ariaLabel="navegar a la seccion ver tus citas">Ver tus citas</Anchor>
         </Box>
 
         <Box sx={FooterStyle.footerLinksSection}>
@@ -63,8 +57,7 @@ export const Footer = () => {
           >
             RECURSOS
           </Typography>
-          <Link to="#">Preguntas frecuentes</Link>
-          <Link to="#">Reclamos</Link>
+          <Anchor to="#" ariaLabel="navegar a la seccion de preguntas frecuentes">Preguntas frecuentes</Anchor>
         </Box>
       </Box>
 
@@ -73,7 +66,7 @@ export const Footer = () => {
         <Typography variant="subtitle1" fontWeight="bold">
           ¡SEGUINOS!
         </Typography>
-        <Box className="footer-social-icons">
+        <Box sx={FooterStyle.footerIcons}>
           {/* Crear clase footer-icon que envuelva cada ícono en un círculo verde o editar el componente de cada ícono con MUI */}
           <IconButton>
             <Facebook />
