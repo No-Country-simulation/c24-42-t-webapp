@@ -2,10 +2,7 @@ package com.healthcare.domain.model.entity;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +16,7 @@ public class Image {
     private Long id;
     private LocalDate date;
     private String url;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "diagnostic_images_id")
+    private DiagnosticImages diagnosticImages;
 }

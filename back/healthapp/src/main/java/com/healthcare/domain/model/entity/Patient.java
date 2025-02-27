@@ -6,8 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
-@Entity(name = "Patient")
+@Entity
 @Table(name = "patients")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,6 +30,14 @@ public class Patient {
     private String emergencyContactInfo;
     @OneToOne @JoinColumn(name = "user_id")
     private User user;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<MedicalRecords> medicalRecords;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<LabResults> labResults;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Medications> medications;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DiagnosticImages> diagnosticImages;
 }
 
 enum Gender {
