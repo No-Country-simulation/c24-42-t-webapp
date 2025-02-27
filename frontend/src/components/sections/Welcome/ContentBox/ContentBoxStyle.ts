@@ -6,6 +6,6 @@ export const ContentBoxStyle: ObjectStyles = {
         justifyContent: "space-around",
         backgroundColor: "#198751",
         width: "100%",
-        minHeight: "10vh"
+        minHeight: "10vh",
     }
 };
