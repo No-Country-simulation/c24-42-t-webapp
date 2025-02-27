@@ -4,8 +4,9 @@ export const ContentBoxStyle: ObjectStyles = {
     box: {
         display: "flex",
         justifyContent: "space-around",
+        alignItems: "start",
         backgroundColor: "#198751",
         width: "100%",
-        minHeight: "10vh",
+        margin: "5rem 0px 20rem"
     }
 };
