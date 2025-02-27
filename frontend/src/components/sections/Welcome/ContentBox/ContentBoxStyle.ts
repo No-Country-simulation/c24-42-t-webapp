@@ -7,6 +7,7 @@ export const ContentBoxStyle: ObjectStyles = {
         alignItems: "start",
         backgroundColor: "#198751",
         width: "100%",
+        height: "500px",
         margin: "5rem 0px 20rem"
     }
 };
