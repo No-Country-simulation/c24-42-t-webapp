@@ -12,7 +12,8 @@ export const DetailsStyle: Record<string, SxProps> = {
   sectionTitle: {
     fontWeight: "bold",
     color: "white",
-    mb: 2,
+    textAlign: "center",
+    height: "100px"
   },
   sectionContainer: {
     display: "flex",
