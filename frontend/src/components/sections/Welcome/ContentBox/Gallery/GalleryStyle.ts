@@ -40,12 +40,15 @@ export const GalleryStyle: Record<string, SxProps> = {
     },
     galleryIcon: {
         color: "#fff"
+    },
+    textBox: {
+        textAlign: "center"
     }
 }
 
 export const imgStyle: CSSProperties = {
     borderRadius: "50%",
     width: "100%",
-    height: "100%,",
+    height: "100%",
     objectFit: "cover"
 }

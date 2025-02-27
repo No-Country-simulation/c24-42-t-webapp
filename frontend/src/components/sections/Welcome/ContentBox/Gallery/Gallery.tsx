@@ -48,7 +48,7 @@ export const Gallery = () => {
                                     <img key={index} src={image.src} alt={image.name} style={imgStyle}
                                     />
                                 </Box>
-                                <Box>
+                                <Box sx={GalleryStyle.textBox}>
                                     <Typography key={image.name} fontFamily="Inria Sans Bold" variant="body1" >{image.name}</Typography>
                                     <Typography key={image.specialty} fontFamily="Inria Sans" variant="body2" >{image.specialty}</Typography>
                                 </Box>
