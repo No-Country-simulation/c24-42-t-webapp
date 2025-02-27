@@ -1,4 +1,5 @@
 import { SxProps } from "@mui/material";
+import { CSSProperties } from "react";
 
 export const GalleryStyle: Record<string, SxProps> = {
     galleryContainer: {
@@ -8,15 +9,17 @@ export const GalleryStyle: Record<string, SxProps> = {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-evenly",
+        padding: "1rem"
     },
     galleryTitle: {
         color: "#fff",
         textAlign: "center",
+        height: "100px"
     },
     galleryContImage: {
         position: "relative",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "space-evenly",
         alignItems: "center",
         minWidth: "392px",
     },
@@ -26,14 +29,23 @@ export const GalleryStyle: Record<string, SxProps> = {
     galleryImgText: {
         display: "flex",
         flexDirection: "column",
+        gap: "0.5rem",
         alignItems: "center",
         color: "#fff",
         transition: "opacity .2s ease-in-out",
     },
     galleryImg: {
-        width: "170px",
-        height: "170px",
-        borderRadius: "50%",
-        overflow: "hidden",
+        width: "300px",
+        height: "300px"
     },
+    galleryIcon: {
+        color: "#fff"
+    }
+}
+
+export const imgStyle: CSSProperties = {
+    borderRadius: "50%",
+    width: "100%",
+    height: "100%,",
+    objectFit: "cover"
 }

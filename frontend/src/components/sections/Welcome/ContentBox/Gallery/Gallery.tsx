@@ -1,16 +1,11 @@
+import { ArrowCircleLeft, ArrowCircleRight } from "@mui/icons-material";
+import { Box, IconButton, Typography } from "@mui/material";
+import { Image } from "@tipos/types";
 import { useState } from "react";
-import { Box, Typography, IconButton } from "@mui/material";
-import { ArrowCircleRight, ArrowCircleLeft } from "@mui/icons-material";
-import { GalleryStyle } from "./GalleryStyle";
+import { GalleryStyle, imgStyle } from "./GalleryStyle";
 import SliderOne from "./img/ImagenSlider-1.webp";
 import SliderTwo from "./img/ImagenSlider-2.webp";
 import SliderThree from "./img/ImagenSlider-3.webp";
-
-type Image = {
-    src: string;
-    name: string;
-    specialty: string;
-}
 
 export const Gallery = () => {
     const [indexCurrent, setIndex] = useState<number>(0)
@@ -32,35 +27,37 @@ export const Gallery = () => {
     return(
         <>
         <Box key="container" sx={GalleryStyle.galleryContainer}>
-            <Typography fontFamily="Inria Sans Bold" variant="h5" sx={GalleryStyle.galleryTitle}>Nuestros profesionales</Typography>
+            <Box>
+                <Typography fontFamily="Inria Sans Bold" variant="h4" sx={GalleryStyle.galleryTitle}>Nuestros profesionales</Typography>
+            </Box>
             <Box sx={GalleryStyle.galleryContImage}>
                 <IconButton onClick={() => changeImage("previous")}>
-                    <ArrowCircleLeft fontSize="large" />
+                    <ArrowCircleLeft sx={GalleryStyle.galleryIcon} fontSize="large" />
                 </IconButton>
                 <Box key="images" sx={GalleryStyle.galleryContDoctors}>
                     {Images.map((image, index: number) => {
-                                return (
-                                    <>
-                                    <Box key={index} sx={{
-                                            ...(GalleryStyle.galleryImgText),
-                                            opacity: index === indexCurrent ? 1 : 0,
-                                            height: index === indexCurrent ? "auto" : 0,
-                                            overflow: index === indexCurrent ? "visible" : "hidden",
-                                            }}>
+                        return (
+                            <Box key={index} sx={{
+                                ...GalleryStyle.galleryImgText,
+                                opacity: index === indexCurrent ? 1 : 0,
+                                height: index === indexCurrent ? "auto" : 0,
+                                overflow: index === indexCurrent ? "visible" : "hidden",
+                            }}>
                                         
-                                        <Box sx={GalleryStyle.galleryImg}>
-                                            <img key={index} src={image.src} alt={image.name} />
-                                        </Box>
-                                        <Typography key={image.name} fontFamily="Inria Sans Bold" variant="body1" >{image.name}</Typography>
-                                        <Typography key={image.specialty} fontFamily="Inria Sans" variant="body2" >{image.specialty}</Typography>
-                                        
-                                    </Box>
-                                    </>
-                                )
+                                <Box sx={GalleryStyle.galleryImg}>
+                                    <img key={index} src={image.src} alt={image.name} style={imgStyle}
+                                    />
+                                </Box>
+                                <Box>
+                                    <Typography key={image.name} fontFamily="Inria Sans Bold" variant="body1" >{image.name}</Typography>
+                                    <Typography key={image.specialty} fontFamily="Inria Sans" variant="body2" >{image.specialty}</Typography>
+                                </Box>
+                            </Box>
+                        )
                     })}
                 </Box>
                 <IconButton onClick={() => changeImage("next")} >
-                    <ArrowCircleRight fontSize="large" />
+                    <ArrowCircleRight sx={GalleryStyle.galleryIcon} fontSize="large" />
                 </IconButton>
             </Box>
         </Box>
