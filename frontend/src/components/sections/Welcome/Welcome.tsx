@@ -1,8 +1,7 @@
 import CustomModal from "@ui/CustomModal/CustomModal";
-import { lazy, Suspense } from "react";
 import { ContentBox } from "./ContentBox/ContentBox";
 import { MainBox } from "./MainBox/MainBox";
-const ModalMenu = lazy(() => import("./ModalMenu/ModalMenu"));
+import ModalMenu from "./ModalMenu/ModalMenu";
 
 export const Welcome = () => {
     return (
@@ -10,9 +9,7 @@ export const Welcome = () => {
             <MainBox />
             <ContentBox />
             <CustomModal>
-                <Suspense>
-                    <ModalMenu />
-                </Suspense>
+                <ModalMenu />
             </CustomModal>
         </>
     );
