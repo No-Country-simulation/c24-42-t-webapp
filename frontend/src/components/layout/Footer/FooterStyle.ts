@@ -8,6 +8,8 @@ export const FooterStyle: Record<string, SxProps> = {
     display: "flex",
     justifyContent: "space-around",
     flexWrap: "wrap",
+    alignItems: "center",
+    height: "230px"
   },
   footerTitle: {
     display: "flex",
