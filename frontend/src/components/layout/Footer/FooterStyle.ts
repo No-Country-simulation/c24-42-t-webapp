@@ -23,13 +23,34 @@ export const FooterStyle: Record<string, SxProps> = {
   footerLinksSection: {
     display: "flex",
     flexDirection: "column",
-    gap: "0.5rem",
   },
   footerLinksSectionTitle: {
     color: "#198751",
+    fontSize: "18px",
   },
   footerSocial: {
     textAlign: "center",
-    color: "#198751",
   },
+  footerSocialTitle: {
+    color: "#198751",
+    fontSize: "18px"
+  },
+  footerLink: {
+    fontSize: "16px",
+    lineHeight: "1.2"
+  },
+  footerIconsContainer: {
+    display: "flex",
+    gap: "0.5rem"
+  },
+  footerButton: {
+    backgroundColor: "#198751",
+    "&:hover": {
+      backgroundColor: "#19875180",
+    }
+  },
+  footerIcons: {
+    color: "#f1f1f1",
+    borderRadius: "50%",
+  }
 };
