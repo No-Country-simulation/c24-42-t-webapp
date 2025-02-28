@@ -1,27 +1,18 @@
 import { Box } from "@mui/material";
+import { ContentBoxStyle, WaveOneStyle, WaveTwoStyle } from "./ContentBoxStyle";
 import { Details } from "./Details/Details";
 import { Gallery } from "./Gallery/Gallery";
-import { ContentBoxStyle } from "./ContentBoxStyle";
 import svg from "./img/wavesOpacity.svg";
 
 export const ContentBox = () => {
     return (
         <>
-        <img src={svg} alt="Ondas verdes" style={{
-                                    width: "100%",
-                                    transform: "rotate(180deg)",
-                                    display: "block",
-                                    backgroundColor: "#dadada",
-                                    }}/>
-        <Box sx={ContentBoxStyle.box}>
-            <Gallery />
-            <Details />
-        </Box>
-        <img src={svg} alt="Ondas verdes" style={{
-                                    width: "100%",
-                                    backgroundColor: "#f1f1f1",
-                                    display: "block",
-                                    }}/>
+            <img src={svg} alt="Ondas verdes" style={WaveOneStyle} />
+            <Box sx={ContentBoxStyle.box}>
+                <Gallery />
+                <Details />
+            </Box>
+            <img src={svg} alt="Ondas verdes" style={WaveTwoStyle} />
         </>
     );
 }
