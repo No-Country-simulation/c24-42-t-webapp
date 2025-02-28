@@ -25,6 +25,7 @@ html {
 body {
     color: #000;
     font-family: "Inria Sans", "Roboto", 'Segoe UI', sans-serif;
+    background-color: #f1f1f1;
 }
 
 .link:hover>* {
