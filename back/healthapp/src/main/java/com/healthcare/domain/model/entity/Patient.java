@@ -20,7 +20,6 @@ public class Patient {
     private String lastName;
     @Column(unique = true)
     private Integer document;
-    @Column(nullable = false)
     private LocalDate birthDate;
     @Enumerated(EnumType.STRING)
     private Gender gender;
