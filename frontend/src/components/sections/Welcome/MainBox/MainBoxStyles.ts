@@ -12,12 +12,11 @@ export const MainBoxStyles: ObjectStyles = {
     },
     welcomeBox: {
         backgroundColor: "#CCEFDD",
-        boxShadow: "20px 20px 0px #25C274",
         textAlign: "end",
-        width: "872px",
-        height: "343px",
-        padding: "20px 30px 10px",
-        borderRadius: "20px",
+        width: "800px",
+        height: "400px",
+        padding: "20px 80px 10px 20px",
+        borderRadius: "39% 62% 50% 50% / 26% 56% 42% 72%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -31,10 +30,9 @@ export const MainBoxStyles: ObjectStyles = {
         backgroundColor: "#25C274",
         width: "300px",
         height: "300px",
-        borderRadius: "9999px",
-        filter: "drop-shadow(10px 10px 0px #19A05D)",
         left: "-150px",
-        top: "-100px"
+        top: "-100px",
+        borderRadius: "78% 47% 59% 58% / 65% 55% 45% 48%",
     },
     circle2: {
         content: '""',
@@ -42,19 +40,19 @@ export const MainBoxStyles: ObjectStyles = {
         backgroundColor: "#4DDB94",
         width: "130px",
         height: "130px",
-        borderRadius: "9999px",
-        filter: "drop-shadow(10px 10px 0px #25C274)",
         left: "80px",
         top: "-30px",
+        borderRadius: "72% 75% 89% 71% / 90% 56% 89% 76%",
     },
     title: {
         color: "#185D3B",
         fontWeight: "bold",
-        fontSize: "64px",
-        margin: "0"
+        fontSize: "56px",
+        margin: "0",
+        lineHeight: "1"
     },
     subtitle: {
         color: "#198751",
-        fontSize: "36px",
+        fontSize: "30px",
     }
 };
