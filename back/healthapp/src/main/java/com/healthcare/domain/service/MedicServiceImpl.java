@@ -1,5 +1,6 @@
 package com.healthcare.domain.service;
 
+import com.healthcare.domain.dto.MedicDTO;
 import com.healthcare.domain.model.entity.Medic;
 import com.healthcare.domain.repository.MedicRepository;
 import jakarta.transaction.Transactional;
@@ -18,9 +19,30 @@ public class MedicServiceImpl implements IMedicService {
     private MedicRepository medicRepository;
 
     @Override
-    public ResponseEntity<?> getAllMedics() {
+    public ResponseEntity<?> getAllMedics(String speciality, String gender, String state) {
         List<Medic> medics = medicRepository.findAll();
-        return ResponseEntity.ok(Map.of("medics", medics));
+
+        if (speciality != null) {
+            medics = medics.stream()
+                    .filter(medic -> medic.getSpeciality().name().equalsIgnoreCase(speciality))
+                    .toList();
+        }
+        if (gender != null) {
+            medics = medics.stream()
+                    .filter(medic -> medic.getGender().name().equalsIgnoreCase(gender))
+                    .toList();
+        }
+        if (state != null) {
+            medics = medics.stream()
+                    .filter(medic -> medic.getState().equalsIgnoreCase(state))
+                    .toList();
+        }
+
+        List<MedicDTO> medicDTOS = medics.stream()
+                .map(MedicDTO::fromEntity)
+                .toList();
+
+        return ResponseEntity.ok(Map.of("medics", medicDTOS));
     }
 
     @Override

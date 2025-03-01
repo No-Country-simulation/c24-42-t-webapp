@@ -2,6 +2,8 @@ package com.healthcare.domain.model.entity;
 
 import java.util.List;
 
+import com.healthcare.domain.model.enums.Gender;
+import com.healthcare.domain.model.enums.Speciality;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,15 +46,4 @@ public class Medic {
     private User user;
     @OneToOne @JoinColumn(name = "image_id")
     private Image image;
-}
-
-enum Speciality {
-    CLINICA,
-    CARDIOLOGIA,
-    NEUROLOGIA,
-    PSIQUIATRIA,
-    PSICOLOGIA,
-    NUTRICION,
-    DERMATOLOGIA,
-    GINECOLOGIA
 }

@@ -7,15 +7,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/medic")
+@RequestMapping("/api/v1/medics")
 public class MedicController {
 
     @Autowired
     private IMedicService medicService;
 
     @GetMapping
-    public ResponseEntity<?> getAllMedics() {
-        return medicService.getAllMedics();
+    public ResponseEntity<?> getAllMedics(
+            @RequestParam(required = false) String speciality,
+            @RequestParam(required = false) String gender,
+            @RequestParam(required = false) String state) {
+        return medicService.getAllMedics(speciality, gender, state);
     }
 
     @GetMapping("/{id}")
