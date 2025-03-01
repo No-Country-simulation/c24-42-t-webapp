@@ -20,17 +20,17 @@ export const ModalContentStyle: ObjectStyles = {
         flexDirection: "column"
     },
     header: {
-        display: "flex"
+        display: "flex",
+        justifyContent: "center"
     },
     title: {
         color: "#185D3B",
-        fontSize: "40px",
-        alignSelf: "center"
+        fontSize: "35px",
     },
     closeButton: {
         position: "absolute",
         right: "10px",
-        top: "0"
+        top: "10px"
     },
     body: {
         padding: "20px",
