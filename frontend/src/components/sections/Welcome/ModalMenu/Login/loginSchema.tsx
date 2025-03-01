@@ -8,12 +8,20 @@ export const loginSchema = {
         "email": {
             "type": "string",
             "format": "email",
+            "errorMessage": {
+                "format": "El correo electrónico no es válido."
+            }
         },
         "password": {
             "type": "string",
-            "description": "La contraseña debe contener letras mayúsculas y minúsculas.",
             "pattern": "^(?=.*[a-z])(?=.*[A-Z]).+$",
+            "errorMessage": {
+                "pattern": "La contraseña debe contener letras mayúsculas y minúsculas"
+            }
         }
+    },
+    "errorMessage": {
+        "required": "El campo es obligatorio."
     }
 };
 
