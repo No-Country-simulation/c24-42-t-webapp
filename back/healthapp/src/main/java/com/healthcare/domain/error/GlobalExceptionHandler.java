@@ -2,6 +2,8 @@ package com.healthcare.domain.error;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.healthcare.domain.exceptions.NotFoundInDatabaseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -32,4 +34,10 @@ public class GlobalExceptionHandler {
         errors.put("error", errorMsg);
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(NotFoundInDatabaseException.class)
+    public ResponseEntity<?> notFoundInDataBase(NotFoundInDatabaseException ex) {
+        return new ResponseEntity<>(Map.of("error", ex.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
 }

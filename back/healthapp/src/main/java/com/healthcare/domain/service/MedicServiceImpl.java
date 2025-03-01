@@ -1,6 +1,7 @@
 package com.healthcare.domain.service;
 
 import com.healthcare.domain.dto.MedicDTO;
+import com.healthcare.domain.exceptions.NotFoundInDatabaseException;
 import com.healthcare.domain.model.entity.Medic;
 import com.healthcare.domain.repository.MedicRepository;
 import jakarta.transaction.Transactional;
@@ -41,6 +42,10 @@ public class MedicServiceImpl implements IMedicService {
         List<MedicDTO> medicDTOS = medics.stream()
                 .map(MedicDTO::fromEntity)
                 .toList();
+
+        if (medicDTOS.isEmpty()) {
+            throw new NotFoundInDatabaseException("Médicos no encontrados");
+        }
 
         return ResponseEntity.ok(Map.of("medics", medicDTOS));
     }
