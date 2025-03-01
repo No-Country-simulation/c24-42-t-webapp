@@ -11,15 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Service
-public class PatientService implements IPatientService{
+public class PatientServiceImpl implements IPatientService{
 
     @Autowired
     private PatientRepository patientRepository;
 
-    public PatientService(PatientRepository patientRepository) {
+    public PatientServiceImpl(PatientRepository patientRepository) {
         this.patientRepository = patientRepository;
     }
 
