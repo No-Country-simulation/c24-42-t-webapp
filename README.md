@@ -34,7 +34,7 @@ Este proyecto es un sistema web diseñado para la gestión de turnos en una clí
 
 ### Backend
 - **Java Spring Boot**
-- **PostgreSQL**
+- **MySQL**
 - **JWT**
 - **Spring Security**
 
@@ -56,5 +56,5 @@ Este proyecto es un sistema web diseñado para la gestión de turnos en una clí
 ### Desarrolladores Backend
 | ![Avatar](https://avatars.githubusercontent.com/u/103074521?s=96&v=4) | ![Avatar](https://avatars.githubusercontent.com/u/165930520?s=96&v=4) | ![Avatar](https://avatars.githubusercontent.com/u/119141482?s=96&v=4) |
 |:-:|:-:|:-:|
-| **Daiana Amado** | **Alberto Gutierrez** | **Ronny Brenes** |
+| **Francisco Saurit** | **Pamela Gonzalez** | **Angel Armando** |
 | [![Github Link](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white 'Github Link')](https://github.com/fr4ncisx) [![LinkedIn Link](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white 'LinkedIn Link')](https://www.linkedin.com/in/franciscosaurit/) | [![Github Link](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white 'Github Link')](https://github.com/PamelaMorgana) [![LinkedIn Link](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white 'LinkedIn Link')]() | [![Github Link](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white 'Github Link')](https://github.com/MandoDsg) [![LinkedIn Link](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white 'LinkedIn Link')](https://www.linkedin.com/in/as-angel-armando/) |
