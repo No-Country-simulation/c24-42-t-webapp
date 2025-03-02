@@ -54,7 +54,8 @@ public class MedicServiceImpl implements IMedicService {
     public ResponseEntity<?> getMedicById(Long id) {
         Medic medic = medicRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Médico no encontrado con ID: " + id));
-        return ResponseEntity.ok(Map.of("medic", medic));
+        MedicDTO medicDTO = MedicDTO.fromEntity(medic);
+        return ResponseEntity.ok(Map.of("medic", medicDTO));
     }
 
     @Override
