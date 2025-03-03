@@ -12,7 +12,8 @@ export default defineConfig({
       '@ui/*': "/src/ui/*",
       '@utils/*': "/src/utils/*",
       '@tipos/*': "src/types/*",
-      "@store/*": "src/store/*"
+      "@store/*": "src/store/*",
+      "@routes": "src/routes",
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
   }
