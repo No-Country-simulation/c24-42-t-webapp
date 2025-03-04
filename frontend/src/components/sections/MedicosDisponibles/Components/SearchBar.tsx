@@ -1,6 +1,6 @@
-import { CustomButton } from "@ui/CustomButton/CustomButton";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { SearchBarStyles } from "./SearchBarStyles";
 
 const SearchBar = () => {
   return (
@@ -9,40 +9,18 @@ const SearchBar = () => {
         gap: "0.5rem",
       }}
     >
-      <Typography sx={{ fontWeight: "bold" }}> Buscar </Typography>
+      <Typography sx={SearchBarStyles.label}> Buscar </Typography>
       <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          width: "100%",
-          gap: "1rem",
-        }}
+        sx={SearchBarStyles.container}
       >
-        <input
+        <TextField
           type="text"
           placeholder="Buscar doctor"
-          style={{
-            width: "100%",
-            padding: "1rem",
-            fontSize: "1rem",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            backgroundColor: "#e8f5e9",
-          }}
+          sx={SearchBarStyles.input}
         />
-        <CustomButton
-          sx={{
-            padding: "1rem",
-            backgroundColor: "#2e7d32",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            "&:hover": {
-              backgroundColor: "#1b5e20",
-            },
-          }}
-        >
+        <Button variant="contained" sx={SearchBarStyles.button}>
           <SearchIcon />
-        </CustomButton>
+        </Button>
       </Box>
     </Box>
   );
