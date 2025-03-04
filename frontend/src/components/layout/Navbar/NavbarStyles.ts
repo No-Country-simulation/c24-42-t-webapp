@@ -1,4 +1,5 @@
 import { SxProps } from "@mui/material";
+import { ObjectStyles } from "@tipos/component";
 
 const DisplayFlexStyles: SxProps = {
     display: "flex",
@@ -6,7 +7,7 @@ const DisplayFlexStyles: SxProps = {
     alignItems: "center",
 }
 
-export const NavbarStyles: Record<string, SxProps> = {
+export const NavbarStyles: ObjectStyles = {
     nav: {
         backgroundColor: "#F1F1F1",
         padding: "1.5rem",

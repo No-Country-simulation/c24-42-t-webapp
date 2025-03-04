@@ -1,6 +1,6 @@
-import { SxProps } from "@mui/material";
+import { ObjectStyles } from "@tipos/component";
 
-export const FooterStyle: Record<string, SxProps> = {
+export const FooterStyle: ObjectStyles = {
   footerContainer: {
     width: "100%",
     backgroundColor: "#f1f1f1",

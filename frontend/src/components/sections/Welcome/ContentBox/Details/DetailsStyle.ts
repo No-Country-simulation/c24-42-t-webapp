@@ -1,6 +1,6 @@
-import { SxProps } from "@mui/material";
+import { ObjectStyles } from "@tipos/component";
 
-export const DetailsStyle: Record<string, SxProps> = {
+export const DetailsStyle: ObjectStyles = {
   rightContainer: {
     width: "50%",
     display: "flex",

@@ -1,7 +1,7 @@
-import { SxProps } from "@mui/material";
+import { ObjectStyles } from "@tipos/component";
 import { CSSProperties } from "react";
 
-export const GalleryStyle: Record<string, SxProps> = {
+export const GalleryStyle: ObjectStyles = {
     galleryContainer: {
         position: "relative",
         height: "300px",
