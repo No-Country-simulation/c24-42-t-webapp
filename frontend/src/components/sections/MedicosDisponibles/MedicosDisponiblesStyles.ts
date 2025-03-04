@@ -1,6 +1,11 @@
-import { SxProps } from "@mui/material";
+import { ObjectStyles } from "@tipos/component";
 
-export const MedicosDisponiblesStyles: Record<string, SxProps> = {
+export const MedicosDisponiblesStyles: ObjectStyles = {
+  container: {
+    marginTop: "2rem",
+    minHeight: "calc(100vh - 90px)",
+    display: "flex"
+  },
   asideContainer: {
     width: "30%",
     padding: "1.5rem 2rem",

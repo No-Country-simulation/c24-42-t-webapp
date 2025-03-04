@@ -19,7 +19,7 @@ export const MedicosDisponiblesSection = () => {
 
   return (
     <>
-      <Box sx={{ minHeight: "calc(100vh - 90px)", display: "flex" }}>
+      <Box sx={MedicosDisponiblesStyles.container}>
         {/* Box Izquierdo - Container */}
         <Box sx={MedicosDisponiblesStyles.asideContainer}>
           <SearchBar />
