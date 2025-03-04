@@ -41,8 +41,8 @@ export const Navbar = () => {
                 <Anchor to="#" onClick={handleClickSignUp} role="button" ariaLabel="navegar a la ventana de registro de usuarios">
                     <Typography fontWeight="bold">Registrarse</Typography>
                 </Anchor>
-                <CustomButton>
-                    <Typography onClick={handleClickLogin} fontWeight="bold" textTransform="none">Iniciar Sesión</Typography>
+                <CustomButton onClick={handleClickLogin}>
+                    <Typography fontWeight="bold" textTransform="none">Iniciar Sesión</Typography>
                 </CustomButton>
             </Box>
         </Box>
