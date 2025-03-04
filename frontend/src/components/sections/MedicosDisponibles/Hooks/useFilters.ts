@@ -40,8 +40,6 @@ export const useFilters = (initialFilters: FilterChip[] = []) => {
    * @param value - El valor (código) de la provincia seleccionada
    */
   const handleProvinceChange = (value: string) => {
-    console.log("Provincia seleccionada:", value);
-
     // Paso 1: Verificar que se haya seleccionado una provincia válida
     if (!value) {
       console.log("No se seleccionó ninguna provincia");
@@ -63,7 +61,6 @@ export const useFilters = (initialFilters: FilterChip[] = []) => {
 
     // Si la provincia ya está seleccionada, no hacemos nada
     if (provinciaYaSeleccionada) {
-      console.log("Esta provincia ya está seleccionada");
       return;
     }
 
@@ -98,8 +95,6 @@ export const useFilters = (initialFilters: FilterChip[] = []) => {
 
     // Paso 6: Actualizar el estado con el nuevo array
     setSelectedFilters(nuevosFiltros);
-
-    console.log(`Filtro de provincia añadido: ${nombreProvincia}`);
   };
 
   /**
@@ -146,14 +141,10 @@ export const useFilters = (initialFilters: FilterChip[] = []) => {
    * @param event - El evento del cambio del select
    */
   const handleSpecialtyChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
+    value: string
   ) => {
-    const value = event.target.value;
-    console.log("Especialidad seleccionada:", value);
-
     // Solo procesamos si se seleccionó una especialidad válida
     if (!value || value === "default") {
-      console.log("No se seleccionó ninguna especialidad válida");
       return;
     }
 
@@ -173,13 +164,13 @@ export const useFilters = (initialFilters: FilterChip[] = []) => {
 
     // Si ya está seleccionada, no hacemos nada
     if (especialidadYaSeleccionada) {
-      console.log("Esta especialidad ya está seleccionada");
       return;
     }
 
     // Obtenemos el texto visible de la opción seleccionada
-    const opcionSeleccionada = event.target.options[event.target.selectedIndex];
-    const nombreEspecialidad = opcionSeleccionada.textContent || value;
+    // const opcionSeleccionada = event.target.options[event.target.selectedIndex];
+    // const nombreEspecialidad = opcionSeleccionada.textContent || value;
+    const nombreEspecialidad = "None";
 
     // Creamos el nuevo filtro
     const nuevoFiltro: FilterChip = {
@@ -193,9 +184,7 @@ export const useFilters = (initialFilters: FilterChip[] = []) => {
     setSelectedFilters([...selectedFilters, nuevoFiltro]);
 
     // Reseteamos el select al valor por defecto
-    event.target.value = "default";
-
-    console.log(`Filtro de especialidad añadido: ${nombreEspecialidad}`);
+    // event.target.value = "default";
   };
 
   return {

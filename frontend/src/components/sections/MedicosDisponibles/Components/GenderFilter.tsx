@@ -5,6 +5,7 @@ import {
   RadioGroup,
   Typography,
 } from "@mui/material";
+import { Label } from "./Label/Label";
 
 interface GenderFilterProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -18,9 +19,7 @@ interface GenderFilterProps {
 const GenderFilter = ({ onChange }: GenderFilterProps) => {
   return (
     <Box>
-      <Typography sx={{ fontWeight: "bold", marginBottom: "0.5rem" }}>
-        Género del doctor
-      </Typography>
+      <Label label="Género del doctor" />
 
       {/* Grupo de radio buttons */}
       <RadioGroup aria-label="género del doctor" onChange={onChange} row>

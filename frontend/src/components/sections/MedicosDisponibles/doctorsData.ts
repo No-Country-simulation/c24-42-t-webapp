@@ -1,4 +1,6 @@
-[
+import { DoctorData } from "@tipos/backendTypes";
+
+export const DOCTORS: DoctorData[] = [
   {
     "id": 1,
     "first_name": "Laura",

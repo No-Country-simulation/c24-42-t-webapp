@@ -1,22 +1,14 @@
 import { CustomButton } from "@ui/CustomButton/CustomButton";
 import { Box, Typography } from "@mui/material";
-import doctorsData from "./doctorsData.json";
-import { useState, useEffect } from "react";
 import { MedicosDisponiblesStyles } from "./MedicosDisponiblesStyles";
-import SearchBar from "./Components/SearchBar";
 import DoctorCard from "./Components/DoctorCard";
 import Filters from "./Components/Filters";
 import ModalMenu from "../Welcome/ModalMenu/ModalMenu";
 import CustomModal from "@ui/CustomModal/CustomModal";
-import { Doctor } from "@tipos/types";
+import SearchBar from "./Components/SearchBar/SearchBar";
+import { DOCTORS } from "./doctorsData";
 
 export const MedicosDisponiblesSection = () => {
-  const [doctors, setDoctors] = useState<Doctor[]>([]);
-
-  useEffect(() => {
-    setDoctors(doctorsData);
-  }, []);
-
   return (
     <>
       <Box sx={MedicosDisponiblesStyles.container}>
@@ -44,9 +36,11 @@ export const MedicosDisponiblesSection = () => {
 
         {/* Box Derecho - Grid Doctores */}
         <Box sx={MedicosDisponiblesStyles.gridContainer}>
-          {doctors.map((doctor) => (
-            <DoctorCard key={doctor.id} doctor={doctor} />
-          ))}
+          {
+            DOCTORS.map((doctor) => (
+              <DoctorCard key={doctor.id} doctor={doctor} />
+            ))
+          }
         </Box>
       </Box>
       <CustomModal>

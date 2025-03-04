@@ -1,16 +1,10 @@
 import { Box } from "@mui/material";
 import FilterChips from "./FilterChips";
-import ProvinceSelect from "./ProvinceSelect";
+import ProvinceSelect from "./ProvinceSelect/ProvinceSelect";
 import GenderFilter from "./GenderFilter";
 import SpecialtyFilter from "./SpecialtyFilter";
 import { useFilters } from "../Hooks/useFilters";
 
-/**
- * Componente Filters
- *
- * Este componente coordina los diferentes filtros para la búsqueda de médicos.
- * Cada tipo de filtro está implementado como un componente separado.
- */
 const Filters = () => {
   // Hook personalizado para manejar toda la lógica de filtros
   const {
@@ -42,7 +36,7 @@ const Filters = () => {
 
   // Renderización del componente
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: "1.5rem", marginTop: "2rem" }}>
       {/* Chips de filtros seleccionados */}
       <FilterChips filters={selectedFilters} onRemove={handleRemoveFilter} />
 
@@ -50,7 +44,7 @@ const Filters = () => {
       <Box sx={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
         <ProvinceSelect onChange={handleProvinceChange} />
         <GenderFilter onChange={handleGenderChange} />
-        <SpecialtyFilter onChange={handleSpecialtyChange} />
+        <SpecialtyFilter />
       </Box>
     </Box>
   );

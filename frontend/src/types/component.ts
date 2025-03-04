@@ -14,3 +14,5 @@ export interface LinkData {
     title: string,
     links: LinkMetaData[]
 }
+
+export interface Option { value: string, label: string };

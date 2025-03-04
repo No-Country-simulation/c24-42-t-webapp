@@ -1,17 +1,16 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { SearchBarStyles } from "./SearchBarStyles";
+import { Label } from "../Label/Label";
 
 const SearchBar = () => {
   return (
     <Box
-      sx={{
-        gap: "0.5rem",
-      }}
+      sx={SearchBarStyles.container}
     >
-      <Typography sx={SearchBarStyles.label}> Buscar </Typography>
+      <Label label="Buscar" />
       <Box
-        sx={SearchBarStyles.container}
+        sx={SearchBarStyles.inputContainer}
       >
         <TextField
           type="text"

@@ -2,14 +2,13 @@ import { ObjectStyles } from "@tipos/component";
 
 export const SearchBarStyles: ObjectStyles = {
     container: {
+        gap: "0.5rem",
+    },
+    inputContainer: {
         display: "flex",
         alignItems: "center",
         gap: "0.5rem",
         width: "100%",
-    },
-    label: {
-        fontWeight: "bold",
-        color: "#726969"
     },
     input: {
         width: "100%",
