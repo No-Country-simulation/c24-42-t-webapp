@@ -8,14 +8,7 @@ import DoctorCard from "./Components/DoctorCard";
 import Filters from "./Components/Filters";
 import ModalMenu from "../Welcome/ModalMenu/ModalMenu";
 import CustomModal from "@ui/CustomModal/CustomModal";
-
-interface Doctor {
-  id: number;
-  first_name: string;
-  last_name: string;
-  specialty: string;
-  profile_img: string;
-}
+import { Doctor } from "@tipos/types";
 
 export const MedicosDisponiblesSection = () => {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
