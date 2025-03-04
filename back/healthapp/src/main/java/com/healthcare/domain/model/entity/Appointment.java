@@ -2,16 +2,10 @@ package com.healthcare.domain.model.entity;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import com.healthcare.domain.model.enums.Status;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,12 +13,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "appointment_date")
-    private LocalDateTime appointmentDate;
+    @Column(name = "appointment_date", nullable = false)
+    private LocalDateTime dateTime;
     @Column(name = "visit_reason")
     private String visitReason;
     @Enumerated(EnumType.STRING)
@@ -32,11 +27,7 @@ public class Appointment {
     @ManyToOne
     @JoinColumn(name = "medic_id", nullable = false)
     private Medic medic;
-
-}
-
-enum Status {
-    CONFIRMADA,
-    CANCELADA,
-    COMPLETADA
+    @ManyToOne
+    @JoinColumn(name = "patient_id", nullable = false)
+    private Patient patient;
 }

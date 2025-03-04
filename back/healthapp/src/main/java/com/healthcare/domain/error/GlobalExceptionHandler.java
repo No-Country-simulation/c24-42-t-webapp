@@ -3,7 +3,7 @@ package com.healthcare.domain.error;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.healthcare.domain.exceptions.NotFoundInDatabaseException;
+import com.healthcare.domain.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -40,4 +40,33 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(Map.of("error", ex.getMessage()), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(MedicNotFoundException.class)
+    public ResponseEntity<?> medicNotFound(MedicNotFoundException ex) {
+        return new ResponseEntity<>(Map.of("error", ex.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(PatientNotFoundException.class)
+    public ResponseEntity<?> patientNotFound(PatientNotFoundException ex) {
+        return new ResponseEntity<>(Map.of("error", ex.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(MedicScheduleConflictException.class)
+    public ResponseEntity<?> medicScheduleConflict(MedicScheduleConflictException ex) {
+        return new ResponseEntity<>(Map.of("error", ex.getMessage()), HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(AppointmentNotFoundException.class)
+    public ResponseEntity<?> appointmentNotFound(AppointmentNotFoundException ex) {
+        return new ResponseEntity<>(Map.of("error", ex.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AppointmentDateConflictException.class)
+    public ResponseEntity<?> appointmentDateConflict(AppointmentDateConflictException ex) {
+        return new ResponseEntity<>(Map.of("error", ex.getMessage()), HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(CancelledAppointmentException.class)
+    public ResponseEntity<?> cancelledAppointment(CancelledAppointmentException ex) {
+        return new ResponseEntity<>(Map.of("error", ex.getMessage()), HttpStatus.BAD_REQUEST);
+    }
 }

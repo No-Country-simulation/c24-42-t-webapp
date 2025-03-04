@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class NotFoundInDatabaseException extends RuntimeException {
+public class AppointmentDateConflictException extends RuntimeException {
     private String message;
 }
