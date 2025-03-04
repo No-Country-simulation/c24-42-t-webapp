@@ -3,9 +3,11 @@ import { useModalStore } from "@store/modal.store";
 import { Anchor } from "@ui/Anchor/Anchor";
 import { CustomButton } from "@ui/CustomButton/CustomButton";
 import { NavbarStyles } from "./NavbarStyles";
+import { useLocation } from "react-router";
 
 export const Navbar = () => {
     const setModalData = useModalStore((state) => state.setModalData);
+    const path = useLocation().pathname;
 
     const handleClickLogin = () => {
         setModalData({
@@ -26,6 +28,13 @@ export const Navbar = () => {
         <Box sx={NavbarStyles.nav}>
             <Box sx={NavbarStyles.logo} />
             <Box sx={NavbarStyles.items}>
+                {
+                    path === "/medicos-disponibles" && (
+                        <Anchor to="/" ariaLabel="navegar a la pagina de inicio">
+                            <Typography fontWeight="bold">Inició</Typography>
+                        </Anchor>
+                    )
+                }
                 <Anchor to="/medicos-disponibles" ariaLabel="navegar a la pagina de medicos disponibles">
                     <Typography fontWeight="bold">Médicos Disponibles</Typography>
                 </Anchor>
