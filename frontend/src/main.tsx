@@ -1,4 +1,4 @@
-import { AppRouter } from '@components/AppRouter';
+import { AppRouter } from '@routes/AppRouter';
 import { createRoot } from 'react-dom/client';
 import "./index.css";
 import { ThemeProvider } from '@mui/material';
