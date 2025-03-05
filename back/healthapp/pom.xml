@@ -30,7 +30,7 @@
 		<java.version>21</java.version>
 		<sonar.projectKey>NoCountry-project</sonar.projectKey>
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
-		<sonar.login>sqa_f2acf5aba1ffac2f67cb67a882a3f5d224628242</sonar.login>  <!-- acá va el token generado desde sonarqube community edition -->
+		<sonar.token>sqa_f2acf5aba1ffac2f67cb67a882a3f5d224628242</sonar.token>  <!-- acá va el token generado desde sonarqube community edition -->
 	</properties>
 	<dependencies>
 		<dependency>

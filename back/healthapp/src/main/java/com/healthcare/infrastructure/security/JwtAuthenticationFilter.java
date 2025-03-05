@@ -1,7 +1,6 @@
 package com.healthcare.infrastructure.security;
 
 import java.io.IOException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -10,17 +9,19 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    @Autowired
-    private AuthService authService;
+    private final AuthService authService;
+    private static final String AUTHORIZATION = "Authorization";
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        if (!hasTokenAuthorization(request)) {
+        if (!hasAuthorization(request)) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -29,13 +30,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    private boolean hasTokenAuthorization(HttpServletRequest request) {
-        if (request.getHeader("Authorization") == null || request.getHeader("Authorization").isBlank()) {
-            return false;
-        }
-        return true;
+    private boolean hasAuthorization(HttpServletRequest request) {
+        return (request.getHeader(AUTHORIZATION) == null || request.getHeader(AUTHORIZATION).isBlank());
     }
     private String getTokenFromHeader(HttpServletRequest request){
-        return request.getHeader("Authorization").replace("Bearer ", "");
+        return request.getHeader(AUTHORIZATION).replace("Bearer ", "");
     }
 }

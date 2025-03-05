@@ -1,6 +1,5 @@
 package com.healthcare.infrastructure.security.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,14 +19,16 @@ import com.healthcare.infrastructure.dto.request.UserAuthenticated;
 import com.healthcare.infrastructure.dto.response.ResponseTokenDTO;
 import com.healthcare.infrastructure.security.utils.JwtUtils;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class AuthService implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
 
-    @Autowired
-    private JwtUtils jwtUtils;
+    private final UserRepository userRepository;
+
+    private final JwtUtils jwtUtils;
 
     /**
      * Checks whether the user exists or not, if exists it converts User to
@@ -79,7 +80,7 @@ public class AuthService implements UserDetailsService {
      * @throws UsernameNotFoundException If user was not found
      * @throws BadCredentialsException   Password doesnt match user or is invalid
      */
-    public ResponseEntity<?> loginUser(RequestLoginDTO login) {
+    public ResponseEntity<ResponseTokenDTO> loginUser(RequestLoginDTO login) {
         UserAuthenticated userDetails = (UserAuthenticated) loadUserByUsername(login.email());
         jwtUtils.passwordMatches(login, userDetails);
         jwtUtils.loadSecurityContext(userDetails);

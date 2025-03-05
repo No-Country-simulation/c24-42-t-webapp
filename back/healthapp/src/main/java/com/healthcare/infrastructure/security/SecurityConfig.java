@@ -1,6 +1,5 @@
 package com.healthcare.infrastructure.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,18 +18,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfig {
 
-    @Autowired
-    private JwtAuthenticationFilter jwtAuthFilter;
+    private static final String ADMIN = "ADMIN";
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, JwtAuthenticationFilter jwtAuthFilter) throws Exception {
         return httpSecurity
                 .cors(Customizer.withDefaults())
                 .csrf(CsrfConfigurer::disable)
                 .authorizeHttpRequests(httpRequest -> {
-                    httpRequest.requestMatchers(adminEndpoints()).hasRole("ADMIN");
-                    httpRequest.requestMatchers(medicEndpoints()).hasAnyRole("ADMIN", "MEDICO");
-                    httpRequest.requestMatchers(patientEndpoints()).hasAnyRole("ADMIN", "PACIENTE");
+                    httpRequest.requestMatchers(adminEndpoints()).hasRole(ADMIN);
+                    httpRequest.requestMatchers(medicEndpoints()).hasAnyRole(ADMIN, "MEDICO");
+                    httpRequest.requestMatchers(patientEndpoints()).hasAnyRole(ADMIN, "PACIENTE");
                     httpRequest.requestMatchers(
                             publicEndpoints()).permitAll();
                     httpRequest.anyRequest().authenticated();

@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,6 +20,9 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.healthcare.infrastructure.dto.request.RequestLoginDTO;
 import com.healthcare.infrastructure.dto.request.UserAuthenticated;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Component
 public class JwtUtils {
 
@@ -31,7 +33,6 @@ public class JwtUtils {
     @Value("${jwt.issuer}")
     private String appIssuer;
 
-    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     public <U extends UserAuthenticated> String createToken(U user) {

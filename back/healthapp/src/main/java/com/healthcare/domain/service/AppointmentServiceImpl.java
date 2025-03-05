@@ -9,7 +9,8 @@ import com.healthcare.domain.model.enums.Status;
 import com.healthcare.domain.repository.AppointmentRepository;
 import com.healthcare.domain.repository.MedicRepository;
 import com.healthcare.domain.repository.PatientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -22,17 +23,13 @@ import java.util.Optional;
 
 import static com.healthcare.domain.model.enums.Status.CONFIRMADA;
 
+@RequiredArgsConstructor
 @Service
 public class AppointmentServiceImpl implements IAppointmentService {
 
-    @Autowired
-    private AppointmentRepository appointmentRepository;
-
-    @Autowired
-    private MedicRepository medicRepository;
-
-    @Autowired
-    private PatientRepository patientRepository;
+    private final AppointmentRepository appointmentRepository;
+    private final MedicRepository medicRepository;
+    private final PatientRepository patientRepository;
 
     @Override
     @Transactional
@@ -40,11 +37,11 @@ public class AppointmentServiceImpl implements IAppointmentService {
         Optional<Medic> medicOpt = medicRepository.findById(medicId);
         Optional<Patient> patientOpt = patientRepository.findById(patientId);
 
-        if(medicOpt.isEmpty()){
+        if (medicOpt.isEmpty()) {
             throw new MedicNotFoundException("Médico no encontrado");
         }
 
-        if(patientOpt.isEmpty()){
+        if (patientOpt.isEmpty()) {
             throw new PatientNotFoundException("Paciente no encontrado");
         }
 
@@ -65,8 +62,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
         appointmentRepository.save(appointment);
         return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
                 "message", "Cita agendada correctamente",
-                "appointment", AppointmentDTO.fromEntity(appointment)
-        ));
+                "appointment", AppointmentDTO.fromEntity(appointment)));
     }
 
     @Override
@@ -74,13 +70,13 @@ public class AppointmentServiceImpl implements IAppointmentService {
     public ResponseEntity<?> updateAppointment(Long appointmentId, LocalDateTime newDateTime) {
         Optional<Appointment> appointmentOpt = appointmentRepository.findById(appointmentId);
 
-        if(appointmentOpt.isEmpty()) {
+        if (appointmentOpt.isEmpty()) {
             throw new AppointmentNotFoundException("Cita no encontrada");
         }
 
         Appointment appointment = appointmentOpt.get();
 
-        if(appointment.getDateTime().equals(newDateTime)) {
+        if (appointment.getDateTime().equals(newDateTime)) {
             throw new AppointmentDateConflictException("La nueva fecha debe ser diferente a la actual");
         }
 
@@ -91,7 +87,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
         boolean isAvailable = appointmentRepository
                 .findByMedicIdAndDateTime(appointment.getMedic().getId(), newDateTime).isEmpty();
 
-        if(!isAvailable) {
+        if (!isAvailable) {
             throw new MedicScheduleConflictException("El médico ya tiene una cita en este horario");
         }
 
@@ -100,8 +96,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
         return ResponseEntity.status(HttpStatus.OK).body(Map.of(
                 "message", "Cita reagendada correctamente",
-                "appointment", AppointmentDTO.fromEntity(appointment)
-        ));
+                "appointment", AppointmentDTO.fromEntity(appointment)));
     }
 
     @Override
@@ -109,13 +104,13 @@ public class AppointmentServiceImpl implements IAppointmentService {
     public ResponseEntity<?> cancelAppointment(Long appointmentId) {
         Optional<Appointment> appointmentOpt = appointmentRepository.findById(appointmentId);
 
-        if(appointmentOpt.isEmpty()) {
+        if (appointmentOpt.isEmpty()) {
             throw new AppointmentNotFoundException("Cita no encontrada");
         }
 
         Appointment appointment = appointmentOpt.get();
 
-        if(appointment.getStatus().equals(Status.CANCELADA)) {
+        if (appointment.getStatus().equals(Status.CANCELADA)) {
             throw new CancelledAppointmentException("La cita ya esta cancelada");
         }
 
@@ -124,21 +119,20 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
         return ResponseEntity.status(HttpStatus.OK).body(Map.of(
                 "message", "Cita cancelada correctamente",
-                "appointment", AppointmentDTO.fromEntity(appointment)
-        ));
+                "appointment", AppointmentDTO.fromEntity(appointment)));
     }
 
     @Override
     public ResponseEntity<?> getAppointmentsByPatient(Long patientId) {
         Optional<Patient> patientOpt = patientRepository.findById(patientId);
 
-        if(patientOpt.isEmpty()) {
+        if (patientOpt.isEmpty()) {
             throw new PatientNotFoundException("Paciente no encontrado");
         }
 
         List<Appointment> appointments = appointmentRepository.findByPatientId(patientId);
 
-        if(appointments.isEmpty()) {
+        if (appointments.isEmpty()) {
             throw new AppointmentNotFoundException("El paciente no tiene citas médicas registradas");
         }
 
@@ -147,7 +141,6 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
         return ResponseEntity.ok(Map.of(
                 "message", "Lista de citas médicas",
-                "appointments", appointmentDTOS
-        ));
+                "appointments", appointmentDTOS));
     }
 }
