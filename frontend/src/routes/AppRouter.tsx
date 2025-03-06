@@ -28,6 +28,7 @@ export const AppRouter = () => {
                 <Route element={<Layout />}>
                     <Route path="*" element={<NotFound />} />
                     <Route path="/medicos-disponibles" element={<MedicosDisponiblesSection />} />
+                    <Route path="/agendar-cita" element={<AgendaTuCitaSection />} />
                     <Route path="/" element={<Welcome />} />
                     <Route element={<PacienteGuard />}>
                         <Route path="/paciente/dashboard" element={<>Dashboard</>} />
