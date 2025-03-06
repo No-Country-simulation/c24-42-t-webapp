@@ -1,8 +1,8 @@
 export interface FormData {
-    name: string | undefined;
+    first_name: string | undefined;
     gender: string | undefined;
     dni: string | undefined;
-    tel: string | undefined;
+    phone: string | undefined;
     email: string | undefined;
     password: string | undefined;
     confirmPassword: string | undefined;
@@ -11,48 +11,19 @@ export interface FormData {
 export const signUpSchema = {
     type: 'object',
     "required": [
-        "name",
+        "first_name",
+        "last_name",
         "gender",
         "dni",
-        "tel",
+        "birthDate",
+        "phone",
+        "address",
         "email",
         "password",
         "confirmPassword",
+        "emergency_contact_info"
     ],
     "properties": {
-        "name" : {
-            "type": "string",
-        },
-        "gender": {
-            oneOf: [
-                {
-                    const: "male",
-                    title: "Hombre"
-                },
-                {
-                    const: "female",
-                    title: "Mujer"
-                },
-                {
-                    const: "other",
-                    title: "Otro"
-                }
-            ],
-        },
-        "dni": {
-            "type": "string",
-            "pattern": "^[0-9]{8}$",
-            "errorMessage": {
-                "pattern": "El DNI debe tener 8 dígitos y debe ser escrito sin puntos"
-            }
-        },
-        "tel": {
-            "type": "string",
-            "pattern": "^(11)?[0-9]{8}$",
-            "errorMessage": {
-                "pattern": 'El formato debe ser "11xxxxxxxx"'
-            }
-        },
         "email": {
             "type": "string",
             "format": "email",
@@ -62,61 +33,161 @@ export const signUpSchema = {
         },
         "password": {
             "type": "string",
-            "pattern": "^(?=.*[a-z])(?=.*[A-Z]).+$",
-            "errorMessage": {
-                "pattern": "La contraseña debe contener letras mayúsculas y minúsculas"
-            }
         },
         "confirmPassword": {
             "type": "string",
-            "pattern": "^(?=.*[a-z])(?=.*[A-Z]).+$",
+        },
+        "first_name": {
+            "type": "string",
+        },
+        "last_name": {
+            "type": "string",
+        },
+        "gender": {
+            "type": "string",
+            "enum": ["Hombre", "Claudio"],
+        },
+        "dni": {
+            "type": "string",
+            "pattern": "^[0-9]{8}$",
             "errorMessage": {
-                "pattern": "La contraseña debe contener letras mayúsculas y minúsculas"
+                "pattern": "El DNI debe tener 8 dígitos y debe ser escrito sin puntos"
             }
         },
+        "birthDate": {
+            "type": "string",
+            "format": "date"
+        },
+        "phone": {
+            "type": "string",
+            "pattern": "^\\+?[0-9]{11,20}$",
+            "errorMessage": {
+                "pattern": 'El formato acepta solamente números y el signo +'
+            }
+        },
+        "address": {
+            "type": "string",
+        },
+        "emergency_contact_info": {
+            "type": "string",
+        }
     },
     "errorMessage": {
         "required": "El campo es obligatorio",
-    },
+    }
 }
 
 export const signUpUiSchema = {
-    "type": "VerticalLayout",
+    "type": "Categorization",
     "elements": [
         {
-            "type": "Control",
-            "scope": "#/properties/name",
-            "label": "Nombre completo",
+            "type": "Category",
+            "label": "Credenciales",
+            "elements": [
+                {
+                    "type": "VerticalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/email",
+                            "label": "Correo electrónico",
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/password",
+                            "label": "Contraseña",
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/confirmPassword",
+                            "label": "Confirmar contraseña",
+                            "options": {
+                                "inputType": "password"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
         {
-            "type": "Control",
-            "scope": "#/properties/gender",
-            "label": "Género",
+            "type": "Category",
+            "label": "Datos Personales",
+            "elements": [
+                {
+                    "type": "VerticalLayout",
+                    "elements": [
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/first_name",
+                                    "label": "Nombre",
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/last_name",
+                                    "label": "Apellido",
+                                },
+                            ]
+                        },
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/gender",
+                                    "label": "Género",
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/dni",
+                                    "label": "DNI (sin puntos, ni espacios)",
+                                },
+                            ]
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/birthDate",
+                            "label": "Fecha de nacimiento",
+                        },
+                    ]
+                }
+            ]
         },
         {
-            "type": "Control",
-            "scope": "#/properties/dni",
-            "label": "DNI (sin puntos, ni espacios)",
-        },
-        {
-            "type": "Control",
-            "scope": "#/properties/tel",
-            "label": "Número de celular",
-        },
-        {
-            "type": "Control",
-            "scope": "#/properties/email",
-            "label": "Correo electrónico",
-        },
-        {
-            "type": "Control",
-            "scope": "#/properties/password",
-            "label": "Contraseña",
-        },
-        {
-            "type": "Control",
-            "scope": "#/properties/confirmPassword",
-            "label": "Confirmar contraseña",
-        },
-    ]
+            "type": "Category",
+            "label": "Datos de contacto",
+            "elements": [
+                {
+                    "type": "VerticalLayout",
+                    "elements": [
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/phone",
+                                    "label": "Número de celular",
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/address",
+                                    "label": "Direccion",
+                                },
+                            ]
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/emergency_contact_info",
+                            "label": "Número contacto de emergencia"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "options": {
+        "variant": "stepper"
+    }
 }

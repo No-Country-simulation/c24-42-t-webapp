@@ -1,8 +1,16 @@
-import { CSSProperties } from "react";
+import { SxProps } from "@mui/material";
+import { ObjectStyles } from "@tipos/component";
 
-export const FormStyle: CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-    gap: "2rem",
-    width: "300px",
+export const FormStyle: ObjectStyles = {
+    container: {
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        width: "500px",
+    },
+    form: {
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+    }
 }
