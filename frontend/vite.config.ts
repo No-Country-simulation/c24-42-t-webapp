@@ -14,6 +14,7 @@ export default defineConfig({
       '@tipos/*': "src/types/*",
       "@store/*": "src/store/*",
       "@routes/*": "src/routes/*",
+      "@services/*": "src/services/*",
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
   }

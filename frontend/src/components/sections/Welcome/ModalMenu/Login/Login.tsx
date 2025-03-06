@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { CustomButton } from "@ui/CustomButton/CustomButton";
 import { Form } from "@ui/Form";
 import { FormEvent, useState } from "react";
@@ -7,35 +7,39 @@ import { FormData, loginSchema, loginUiSchema } from "./loginSchema";
 import { FormStyle } from "./LoginStyles";
 import { useUserStore } from "@store/user.store";
 import { useModalStore } from "@store/modal.store";
+import { loginUser } from "@services/loginUser";
 
 export default function Login() {
     const [data, setData] = useState<FormData>();
-    const navigate = useNavigate();
-    const getDashboardUrl = useUserStore(state => state.getUserDashboardURL);
-    const redirectTo = useModalStore(state => state.modalData.redirect);
+    const [error, setError] = useState<Error | null>(null);
+    const [finishLog, setFinishLog] = useState(false);
+    // const navigate = useNavigate();
+    // const getDashboardUrl = useUserStore(state => state.getUserDashboardURL);
+    // const redirectTo = useModalStore(state => state.modalData.redirect);
 
     const handleChange = ({ data, errors }: { data: any, errors: any }) => {
-        if (!errors) setData(data);
+        setData(data);
     }
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const isUserSubmited = true;
-        if (isUserSubmited) {
-            const dashboard = getDashboardUrl();
-            const to = (redirectTo !== null && redirectTo !== undefined) ? redirectTo : dashboard;
-            navigate(to);
-        }
+    const handleLogin = () => {
+        loginUser({ data, error, setError, setFinishLog });
     }
 
     return (
-        <form method="POST" onSubmit={handleSubmit} style={FormStyle}>
+        <Box sx={FormStyle}>
             <Form schema={loginSchema} uiSchema={loginUiSchema} data={data} onChange={handleChange} />
-            <CustomButton type="submit">
+            {
+                finishLog && (
+                    <Typography variant="body2" sx={{ color: !error ? "#198751" : "#f00" }}>
+                        {!error ? "El usuario se logeo correctamente" : "Ocurrio un error desconocido"}
+                    </Typography>
+                )
+            }
+            <CustomButton type="submit" onClick={handleLogin}>
                 <Typography textTransform="none" fontSize="18px">
                     Iniciar Sesión
                 </Typography>
             </CustomButton>
-        </form>
+        </Box>
     );
 }

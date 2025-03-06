@@ -1,8 +1,8 @@
-import { CSSProperties } from "react";
+import { SxProps } from "@mui/material";
 
-export const FormStyle: CSSProperties = {
+export const FormStyle: SxProps = {
     display: "flex",
     flexDirection: "column",
-    gap: "2rem",
+    gap: "1rem",
     width: "300px",
 }
