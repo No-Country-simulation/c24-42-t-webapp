@@ -3,6 +3,7 @@ import { Box, IconButton, Typography } from "@mui/material";
 import { useModalStore } from "@store/modal.store";
 import { ReactNode } from "react";
 import { ModalContentStyle } from "./CustomModalStyle";
+import ErrorBoundary from '@components/layout/ErrorBoundary';
 
 export const ModalContent = ({ children }: { children: ReactNode }) => {
     const modalDataTitle = useModalStore((state) => state.modalData.title);
@@ -19,7 +20,9 @@ export const ModalContent = ({ children }: { children: ReactNode }) => {
                 <Typography fontFamily="Inria Sans Bold" sx={ModalContentStyle.title}>{modalDataTitle}</Typography>
             </Box>
             <Box sx={ModalContentStyle.body}>
-                {children}
+                <ErrorBoundary fallback={<Typography variant='body2'>Ocurrio un error al mostrar el modal</Typography>}>
+                    {children}
+                </ErrorBoundary>
             </Box>
         </Box>
     );
