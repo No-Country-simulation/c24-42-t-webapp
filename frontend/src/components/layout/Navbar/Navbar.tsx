@@ -4,6 +4,7 @@ import { NavbarStyles } from "./NavbarStyles";
 import { useLocation } from "react-router";
 import { UserMenu } from "./UserMenu/UserMenu";
 import { NavLinks } from "./NavLinks";
+import { Logo } from "../Footer/Logo";
 
 export const Navbar = () => {
     const { pathname } = useLocation();
@@ -13,7 +14,7 @@ export const Navbar = () => {
 
     return (
         <Box sx={NavbarStyles.nav}>
-            <Box sx={NavbarStyles.logo} />
+            <Logo />
             <Box sx={NavbarStyles.items}>
                 {isMedicosDisponibles && (
                     <Anchor to="/" ariaLabel="navegar a la pagina de inicio">
