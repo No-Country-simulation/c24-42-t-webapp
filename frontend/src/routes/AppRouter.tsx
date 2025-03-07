@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useUserStore } from "@store/user.store";
 import { Roles } from "@tipos/store";
 import { NotFound } from "@components/layout/NotFound/NotFound";
+import { DoctorDetails } from "@components/sections/MedicosDisponibles/DoctorDetails/doctorDetails";
 
 export const AppRouter = () => {
     const setUserData = useUserStore(state => state.setUserData);
@@ -28,6 +29,7 @@ export const AppRouter = () => {
                 <Route element={<Layout />}>
                     <Route path="*" element={<NotFound />} />
                     <Route path="/medicos-disponibles" element={<MedicosDisponiblesSection />} />
+                    <Route path="/medico/:id" element={<DoctorDetails />} />
                     <Route path="/agendar-cita" element={<AgendaTuCitaSection />} />
                     <Route path="/" element={<Welcome />} />
                     <Route element={<PacienteGuard />}>
