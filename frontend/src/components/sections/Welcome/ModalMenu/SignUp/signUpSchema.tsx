@@ -45,7 +45,7 @@ export const signUpSchema = {
         },
         "gender": {
             "type": "string",
-            "enum": ["Hombre", "Claudio"],
+            "enum": ["Hombre", "Mujer"],
         },
         "dni": {
             "type": "string",
@@ -96,13 +96,16 @@ export const signUpUiSchema = {
                             "type": "Control",
                             "scope": "#/properties/password",
                             "label": "Contraseña",
+                            "options": {
+                                "format": "password"
+                            }
                         },
                         {
                             "type": "Control",
                             "scope": "#/properties/confirmPassword",
                             "label": "Confirmar contraseña",
                             "options": {
-                                "inputType": "password"
+                                "format": "password"
                             }
                         }
                     ]

@@ -19,10 +19,6 @@ export const loginSchema = {
         },
         "password": {
             "type": "string",
-            "pattern": "^(?=.*[a-z])(?=.*[A-Z]).+$",
-            "errorMessage": {
-                "pattern": "La contraseña debe contener letras mayúsculas y minúsculas"
-            }
         }
     },
     "errorMessage": {
@@ -41,7 +37,10 @@ export const loginUiSchema = {
         {
             "type": "Control",
             "scope": "#/properties/password",
-            "label": "Contraseña"
+            "label": "Contraseña",
+            "options": {
+                "format": "password"
+            }
         },
     ]
 }
