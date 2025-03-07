@@ -45,7 +45,10 @@ export const signUpSchema = {
         },
         "gender": {
             "type": "string",
-            "enum": ["Hombre", "Mujer"],
+            "oneOf": [
+                { "const": 'male', "title": 'Hombre' },
+                { "const": 'female', "title": 'Mujer' },
+            ]
         },
         "dni": {
             "type": "string",
@@ -140,7 +143,7 @@ export const signUpUiSchema = {
                                 {
                                     "type": "Control",
                                     "scope": "#/properties/gender",
-                                    "label": "Género",
+                                    "label": "Género"
                                 },
                                 {
                                     "type": "Control",
