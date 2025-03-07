@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { CustomButton } from "@ui/CustomButton/CustomButton";
-import { Form } from "@ui/Form";
+import { Form } from "@ui/Form/Form";
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router";
 import { FormData, loginSchema, loginUiSchema } from "./loginSchema";

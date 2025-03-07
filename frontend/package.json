@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@jsonforms/core": "^3.5.1",
     "@jsonforms/material-renderers": "^3.5.1",
     "@jsonforms/react": "^3.5.1",
     "@mui/icons-material": "^6.4.4",

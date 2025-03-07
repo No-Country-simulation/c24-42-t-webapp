@@ -14,6 +14,9 @@ importers:
       '@emotion/styled':
         specifier: ^11.14.0
         version: 11.14.0(@emotion/react@11.14.0(@types/react@19.0.10)(react@19.0.0))(@types/react@19.0.10)(react@19.0.0)
+      '@jsonforms/core':
+        specifier: ^3.5.1
+        version: 3.5.1
       '@jsonforms/material-renderers':
         specifier: ^3.5.1
         version: 3.5.1(5c8bff3ccc375eb63fa757aea9a60928)

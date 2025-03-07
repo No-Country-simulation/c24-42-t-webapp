@@ -19,8 +19,7 @@ export const signUpSchema = {
         "phone",
         "address",
         "email",
-        "password",
-        "confirmPassword",
+        "repeatPassword",
         "emergency_contact_info"
     ],
     "properties": {
@@ -31,11 +30,16 @@ export const signUpSchema = {
                 "format": "El correo electrónico no es válido."
             }
         },
-        "password": {
-            "type": "string",
-        },
-        "confirmPassword": {
-            "type": "string",
+        "repeatPassword": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string",
+                },
+                "repeatPassword": {
+                    "type": "string",
+                }
+            }
         },
         "first_name": {
             "type": "string",
@@ -63,7 +67,7 @@ export const signUpSchema = {
         },
         "phone": {
             "type": "string",
-            "pattern": "^\\+?[0-9]{11,20}$",
+            "pattern": "^(\\+)?[0-9]{11,20}$",
             "errorMessage": {
                 "pattern": 'El formato acepta solamente números y el signo +'
             }
@@ -73,6 +77,10 @@ export const signUpSchema = {
         },
         "emergency_contact_info": {
             "type": "string",
+            "pattern": "^(\\+)?[0-9]{11,20}$",
+            "errorMessage": {
+                "pattern": 'El formato acepta solamente números y el signo +'
+            }
         }
     },
     "errorMessage": {
@@ -97,18 +105,9 @@ export const signUpUiSchema = {
                         },
                         {
                             "type": "Control",
-                            "scope": "#/properties/password",
-                            "label": "Contraseña",
+                            "scope": "#/properties/repeatPassword",
                             "options": {
-                                "format": "password"
-                            }
-                        },
-                        {
-                            "type": "Control",
-                            "scope": "#/properties/confirmPassword",
-                            "label": "Confirmar contraseña",
-                            "options": {
-                                "format": "password"
+                                "customControl": "passwordConfirm"
                             }
                         }
                     ]

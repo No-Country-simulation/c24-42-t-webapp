@@ -3,7 +3,7 @@ import "cally";
 import { Box, Typography } from '@mui/material';
 import { AgendaCSStyles, AgendaTuCitaStyles } from "./AgendaTuCitaStyles";
 import { CustomButton } from '@ui/CustomButton/CustomButton';
-import { Form } from "@ui/Form";
+import { Form } from "@ui/Form/Form";
 import { agendaSchema, agendaUiSchema } from "./agendaSchema";
 
 interface FormData {
