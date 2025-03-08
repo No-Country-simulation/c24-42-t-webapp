@@ -17,6 +17,7 @@ const PasswordConfirmControl = ({ data, path, errors, handleChange }: ControlPro
         value={password}
         fullWidth
         onChange={(event) => handleChange(`${path}.password`, (event.target.value as string))}
+        autoComplete="new-password"
       />
       <TextField
         type="password"
@@ -26,6 +27,7 @@ const PasswordConfirmControl = ({ data, path, errors, handleChange }: ControlPro
         onChange={(event) => handleChange(`${path}.repeatPassword`, (event.target.value as string))}
         error={hasError}
         helperText={hasError ? "Las contraseñas no coinciden" : ""}
+        autoComplete="repeat new-password"
       />
     </Box>
   );
