@@ -1,13 +1,12 @@
 package com.healthcare.domain.service;
 
-import org.springframework.http.ResponseEntity;
+import java.io.IOException;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public interface ICloudinaryService {
-    ResponseEntity<?> getImage(Long id);
-    ResponseEntity<?> getImageDx(Long id);
-    ResponseEntity<?> createImage(MultipartFile file);
-    ResponseEntity<?> createImageDx(MultipartFile file, Long diagnosticId);
-    ResponseEntity<?> deleteImage(Long id);
-    ResponseEntity<?> deleteImageDx(Long id);
+    public String uploadImage(MultipartFile file, String publicIdPrefix) throws IOException;
+
+    public void deleteImage(String publicId) throws IOException;
+
 }

@@ -13,7 +13,7 @@ public class CloudinaryConfig {
     private String cloudinaryUrl;
 
     @Bean
-    public Cloudinary cloudinary(){
+    Cloudinary cloudinary(){
         return new Cloudinary(cloudinaryUrl);
     }
 }
