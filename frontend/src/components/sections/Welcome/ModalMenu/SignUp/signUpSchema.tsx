@@ -47,12 +47,13 @@ export const signUpSchema = {
         "last_name": {
             "type": "string",
         },
-        "gender": {
-            "type": "string",
-            "oneOf": [
-                { "const": 'male', "title": 'Hombre' },
-                { "const": 'female', "title": 'Mujer' },
-            ]
+        "customSelect": {
+            "type": "object",
+            "properties": {
+                "gender": {
+                    "type": "string",
+                }
+            }
         },
         "dni": {
             "type": "string",
@@ -65,9 +66,7 @@ export const signUpSchema = {
             "type": "object",
             "properties": {
                 "date": {
-                    "type": "string",
-                    // "format": "date",
-                    // "title": "Fecha de Nacimiento"
+                    "type": "string"
                 }
             }
         },
@@ -147,8 +146,15 @@ export const signUpUiSchema = {
                             "elements": [
                                 {
                                     "type": "Control",
-                                    "scope": "#/properties/gender",
-                                    "label": "Género"
+                                    "scope": "#/properties/customSelect",
+                                    "label": "Género",
+                                    "options": {
+                                        "customControl": "customSelect",
+                                        "items": [
+                                            { "value": 'male', "label": 'Hombre' },
+                                            { "value": 'female', "label": 'Mujer' },
+                                        ]
+                                    }
                                 },
                                 {
                                     "type": "Control",
