@@ -8,13 +8,15 @@ import { withJsonFormsControlProps } from "@jsonforms/react";
 import { Option } from "@tipos/component";
 
 const CustomSelect = ({ id, data, label, path, uischema, required, handleChange }: ControlProps) => {
-    const value = data ? Object.values(data)[0] as string : null;
-    const key = data ? Object.keys(data)[0] : null;
+    const key = uischema?.options?.key as string;
+    const value = key && data ? data[key] : '';
+    const options = uischema?.options?.items || [];
+
     const onChange = (event: SelectChangeEvent) => {
         const value = event.target.value as string;
         handleChange(`${path}.${key}`, value);
     };
-    const options = uischema?.options?.items || [];
+
     return (
         <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
@@ -22,14 +24,14 @@ const CustomSelect = ({ id, data, label, path, uischema, required, handleChange 
                 <Select
                     labelId={`select_${id}`}
                     id={id}
-                    value={value || ''}
+                    value={value}
                     label={label}
                     onChange={onChange}
                     required={required}
                 >
                     {
-                        options.map((option: Option) => (
-                            <MenuItem value={option.value}>{option.label}</MenuItem>
+                        options.map((option: Option, index: number) => (
+                            <MenuItem key={index} value={option.value}>{option.label}</MenuItem>
                         ))
                     }
                 </Select>

@@ -150,6 +150,7 @@ export const signUpUiSchema = {
                                     "label": "Género",
                                     "options": {
                                         "customControl": "customSelect",
+                                        "key": "gender",
                                         "items": [
                                             { "value": 'male', "label": 'Hombre' },
                                             { "value": 'female', "label": 'Mujer' },
@@ -168,6 +169,7 @@ export const signUpUiSchema = {
                             "scope": "#/properties/customDatePickerTester",
                             "label": "Fecha de nacimiento",
                             "options": {
+                                "key": "date",
                                 "customControl": "customDatePickerTester"
                             }
                         },
