@@ -9,7 +9,11 @@ export const theme = createTheme(
         // light: will be calculated from palette.primary.main,
         // dark: will be calculated from palette.primary.main,
         // contrastText: will be calculated to contrast with palette.primary.main
-      }
+      },
+      secondary: {
+        main: "#c1c1c1",
+        contrastText: "#fff",
+      },
     },
     components: {
       MuiTypography: {

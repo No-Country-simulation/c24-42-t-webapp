@@ -13,9 +13,9 @@ export const signUpSchema = {
     "required": [
         "first_name",
         "last_name",
-        "gender",
+        "customSelect",
         "dni",
-        "birthDate",
+        "customDatePicker",
         "phone",
         "address",
         "email",
@@ -62,11 +62,11 @@ export const signUpSchema = {
                 "pattern": "El DNI debe tener 8 dígitos y debe ser escrito sin puntos"
             }
         },
-        "customDatePickerTester": {
+        "customDatePicker": {
             "type": "object",
             "properties": {
                 "date": {
-                    "type": "string"
+                    "type": "string",
                 }
             }
         },
@@ -166,11 +166,11 @@ export const signUpUiSchema = {
                         },
                         {
                             "type": "Control",
-                            "scope": "#/properties/customDatePickerTester",
+                            "scope": "#/properties/customDatePicker",
                             "label": "Fecha de nacimiento",
                             "options": {
                                 "key": "date",
-                                "customControl": "customDatePickerTester"
+                                "customControl": "customDatePicker",
                             }
                         },
                     ]
@@ -210,6 +210,7 @@ export const signUpUiSchema = {
         }
     ],
     "options": {
-        "variant": "stepper"
+        "variant": "stepper",
+        "showNavButtons": false
     }
 }

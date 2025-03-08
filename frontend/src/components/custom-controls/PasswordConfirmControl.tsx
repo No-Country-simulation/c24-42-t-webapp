@@ -8,7 +8,6 @@ const PasswordConfirmControl = ({ data, path, errors, handleChange }: ControlPro
 
   const passwordsMatch = password === repeatPassword;
   const hasError = repeatPassword !== "" && !passwordsMatch;
-  console.log(errors);
   return (
     <Box>
       <TextField

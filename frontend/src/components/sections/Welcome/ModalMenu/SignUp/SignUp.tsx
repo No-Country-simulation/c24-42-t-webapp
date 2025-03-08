@@ -1,6 +1,6 @@
-import { Form } from "@ui/Form";
+import { Form } from "@ui/Form/Form";
 import { FormData, signUpSchema, signUpUiSchema } from "./signUpSchema";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { CustomButton } from "@ui/CustomButton/CustomButton";
 import { FormStyle } from "./SignUpStyles";
@@ -24,27 +24,28 @@ export default function SignUp() {
         }
     }
 
-    const handleSubmit = () => {
-        const signup = true;
+    // TODO crear logica de registro de usuario paciente y mover funcion a archivo externo
+    const handleSignUp = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const signup = false;
         if (signup) {
             const dashboard = getDashboardUrl();
             const to = (redirectTo !== null && redirectTo !== undefined) ? redirectTo : dashboard;
             navigate(to);
         }
     }
-
     return (
-        <>
+        <form onSubmit={handleSignUp}>
             <Box sx={FormStyle.container}>
                 <Box sx={FormStyle.form}>
                     <Form schema={signUpSchema} uiSchema={signUpUiSchema} data={data} onChange={handleChange} />
                 </Box>
-                <CustomButton type="submit" onClick={handleSubmit} disabled={error}>
+                <CustomButton type="submit" disabled={error}>
                     <Typography textTransform="none" >
                         Registrarse
                     </Typography>
                 </CustomButton>
             </Box>
-        </>
+        </form>
     );
 }
