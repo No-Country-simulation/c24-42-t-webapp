@@ -7,7 +7,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { withJsonFormsControlProps } from "@jsonforms/react";
 import { Option } from "@tipos/component";
 
-const CustomSelect = ({ id, data, label, path, uischema, required, handleChange }: ControlProps) => {
+const CustomSelectControl = ({ id, data, label, path, uischema, required, handleChange }: ControlProps) => {
     const key = uischema?.options?.key as string;
     const value = key && data ? data[key] : '';
     const options = uischema?.options?.items || [];
@@ -40,4 +40,4 @@ const CustomSelect = ({ id, data, label, path, uischema, required, handleChange 
     );
 }
 
-export default withJsonFormsControlProps(CustomSelect);
+export default withJsonFormsControlProps(CustomSelectControl);

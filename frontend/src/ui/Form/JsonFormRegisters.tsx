@@ -1,14 +1,14 @@
 import { materialRenderers } from "@jsonforms/material-renderers";
-import { customDatePickerTester, customSelectTester, passwordConfirmControlTester } from "./JsonFormTesters";
+import { customDatePickerControlTester, customSelectControlTester, passwordConfirmControlTester } from "./JsonFormTesters";
 import PasswordConfirmControl from "@components/custom-controls/PasswordConfirmControl";
-import CustomDatePicker from "@components/custom-controls/CustomDatePicker";
-import CustomSelect from "@components/custom-controls/CustomSelect";
+import CustomDatePickerControl from "@components/custom-controls/CustomDatePickerControl";
+import CustomSelectControl from "@components/custom-controls/CustomSelectControl";
 
 const renderers = [
   ...materialRenderers,
   { tester: passwordConfirmControlTester, renderer: PasswordConfirmControl },
-  { tester: customDatePickerTester, renderer: CustomDatePicker },
-  { tester: customSelectTester, renderer: CustomSelect}
+  { tester: customDatePickerControlTester, renderer: CustomDatePickerControl },
+  { tester: customSelectControlTester, renderer: CustomSelectControl}
 ];
 
 export default renderers;

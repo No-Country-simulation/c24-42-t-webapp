@@ -4,7 +4,7 @@ import { DateValidationError, PickerChangeHandlerContext } from "@mui/x-date-pic
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { format, parse } from "date-fns";
 
-const CustomDatePicker = ({ data, path, uischema, label, handleChange }: ControlProps) => {
+const CustomDatePickerControl = ({ data, path, uischema, label, handleChange }: ControlProps) => {
     const key = uischema?.options?.key as string;
     const rawValue = data ? data[key] : null;
     const value = rawValue ? parse(rawValue, "dd/MM/yyyy", new Date()) : null;
@@ -25,4 +25,4 @@ const CustomDatePicker = ({ data, path, uischema, label, handleChange }: Control
     );
 };
 
-export default withJsonFormsControlProps(CustomDatePicker);
+export default withJsonFormsControlProps(CustomDatePickerControl);
