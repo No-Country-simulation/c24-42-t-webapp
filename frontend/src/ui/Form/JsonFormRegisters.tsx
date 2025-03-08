@@ -1,6 +1,6 @@
 import { materialRenderers } from "@jsonforms/material-renderers";
 import { customDatePickerTester, passwordConfirmControlTester } from "./JsonFormTesters";
-import PasswordConfirmControl from "@components/custom-controls/PasswordConfirmControl/PasswordConfirmControl";
+import PasswordConfirmControl from "@components/custom-controls/PasswordConfirmControl";
 import CustomDatePicker from "@components/custom-controls/CustomDatePicker";
 
 const renderers = [
