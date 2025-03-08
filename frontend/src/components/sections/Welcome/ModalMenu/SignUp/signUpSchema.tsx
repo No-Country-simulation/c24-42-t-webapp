@@ -61,9 +61,15 @@ export const signUpSchema = {
                 "pattern": "El DNI debe tener 8 dígitos y debe ser escrito sin puntos"
             }
         },
-        "birthDate": {
-            "type": "string",
-            "format": "date"
+        "customDatePickerTester": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    // "format": "date",
+                    // "title": "Fecha de Nacimiento"
+                }
+            }
         },
         "phone": {
             "type": "string",
@@ -153,8 +159,11 @@ export const signUpUiSchema = {
                         },
                         {
                             "type": "Control",
-                            "scope": "#/properties/birthDate",
+                            "scope": "#/properties/customDatePickerTester",
                             "label": "Fecha de nacimiento",
+                            "options": {
+                                "customControl": "customDatePickerTester"
+                            }
                         },
                     ]
                 }
