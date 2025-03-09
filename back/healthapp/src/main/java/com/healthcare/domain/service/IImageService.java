@@ -5,6 +5,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface IImageService {
     ResponseEntity<?> getImage(Long id);
-    ResponseEntity<?> createImage(MultipartFile file);
+    ResponseEntity<?> createImage(MultipartFile multipartFile);
     ResponseEntity<?> deleteImage(Long id);
 }

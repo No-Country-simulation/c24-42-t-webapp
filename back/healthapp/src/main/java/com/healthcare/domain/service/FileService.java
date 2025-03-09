@@ -12,7 +12,7 @@ class FileService {
 private FileService() { }
 
     public static File convertToFile(MultipartFile multipartFile) throws IOException{
-        File file = new File(multipartFile.getOriginalFilename());
+        File file = new File(System.getProperty("java.io.tmpdir") + "/" + multipartFile.getOriginalFilename());
         FileUtils.writeByteArrayToFile(file, multipartFile.getBytes());
         return file;
     }
@@ -24,10 +24,16 @@ private FileService() { }
 
     public static boolean isValidExtension(File file) {
         String fileExtension = getExtension(file);
-        return switch (fileExtension) {
+        return switch (fileExtension.toLowerCase()) {
             case "jpg", "webp", "png", "jpeg" -> true;
             default -> false;
         };
+    }
+
+    public static void deleteFile(File file){
+        if(file != null && file.exists()){
+            file.delete();
+        }
     }
 
 }

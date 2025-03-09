@@ -25,8 +25,6 @@ public class ImageServiceImpl implements IImageService {
     @Autowired
     private CloudinaryServiceImpl cloudinaryService;
 
-    private static List<String> ALLOWED_MIME_TYPES = List.of("image/jpeg", "image/png", "image/gif");
-
     @Override
     public ResponseEntity<?> getImage(Long id) {
         Optional<Image> image = imageRepository.findById(id);
@@ -35,17 +33,17 @@ public class ImageServiceImpl implements IImageService {
     }
 
     @Transactional
-    public ResponseEntity<?> createImage(MultipartFile file) {
-        if (!ALLOWED_MIME_TYPES.contains(file.getContentType())) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Formato de imagen no permitido"));
-        }
+    public ResponseEntity<?> createImage(MultipartFile multipartFile) {
         try{
-            String imageUrl = cloudinaryService.uploadImage(file, "images/");
+            Map<?, ?> cloudinaryResponse = cloudinaryService.uploadImage(multipartFile, "images/");
+            String imageUrl = (String) cloudinaryResponse.get("url");
             Image image = new Image(null, LocalDate.now(), imageUrl);
             imageRepository.save(image);
             return ResponseEntity.ok(Map.of("message", "Imagen subida con éxito", "image", image));
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", "Error al subir la imagen"));
+        } catch(IllegalArgumentException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", e.getMessage()));
         }
     }
 

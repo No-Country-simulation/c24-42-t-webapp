@@ -17,19 +17,25 @@ public class CloudinaryServiceImpl implements ICloudinaryService {
     private Cloudinary cloudinary;
 
     @Override
-    public String uploadImage(MultipartFile multipartFile, String publicIdPrefix) throws IOException {
+    public Map<?, ?> uploadImage(MultipartFile multipartFile, String publicIdPrefix) throws IOException {
         File file = FileService.convertToFile(multipartFile);
-        boolean isValid = FileService.isValidExtension(file);
-        if(!isValid){
-            throw new RuntimeException("Extensión inválida");
+        if(!FileService.isValidExtension(file)){
+            FileService.deleteFile(file);
+            throw new IllegalArgumentException("Extensión de imagen inválida");
         }
-        Map uploadResult = cloudinary.uploader().upload(file, ObjectUtils.asMap("public_id", publicIdPrefix + file.getName()));
-        file.delete();
-        return uploadResult.get("url").toString();
+        Map<?, ?> uploadResult = cloudinary.uploader().upload(file, ObjectUtils.asMap("public_id", publicIdPrefix + file.getName()));
+        return uploadResult;
     }
 
     @Override
-    public void deleteImage(String publicId) throws IOException {
-        cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
+    public Map<?, ?> deleteImage(String publicId) throws IOException {
+        try {
+            Map<?, ?> result = cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
+            return result;
+        } catch (IOException e) {
+            System.err.println("Error al eliminar la imagen en Cloudinary: " + e.getMessage());
+            e.printStackTrace();
+            return Map.of("error", "Error al eliminar la imagen: " + e.getMessage());
+        }
     }
 }
