@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+import com.healthcare.domain.dto.request.MedicalRecordsRequest;
+
 @Entity
 @Table(name = "medical_records")
 @NoArgsConstructor
@@ -38,4 +40,20 @@ public class MedicalRecords {
     @ManyToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
+
+    public MedicalRecords(MedicalRecordsRequest request, Patient patient) {
+        this.recordDate = request.getRecordDate();
+        this.visitReason = request.getVisitReason();
+        this.symptoms = request.getSymptoms();
+        this.symptomsFrequency = request.getSymptomsFrequency();
+        this.medicalHistory = request.getMedicalHistory();
+        this.smokingHabits = request.getSmokingHabits();
+        this.activityHabits = request.getActivityHabits();
+        this.additionalInfo = request.getAdditionalInfo();
+        this.diagnosis = request.getDiagnosis();
+        this.treatment = request.getTreatment();
+        this.doctorNotes = request.getDoctorNotes();
+        this.patient = patient;
+    }
+
 }

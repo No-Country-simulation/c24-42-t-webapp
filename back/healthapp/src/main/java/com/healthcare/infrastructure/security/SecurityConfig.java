@@ -14,6 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.healthcare.infrastructure.security.utils.SecurityEndpoints;
+
 @EnableWebSecurity
 @EnableMethodSecurity
 @Configuration
@@ -27,28 +29,14 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(CsrfConfigurer::disable)
                 .authorizeHttpRequests(httpRequest -> {
-                    httpRequest.requestMatchers(adminEndpoints()).hasRole(ROLE_ADMIN);
-                    httpRequest.requestMatchers(publicEndpoints()).permitAll();
+                    httpRequest.requestMatchers(SecurityEndpoints.adminEndpoints()).hasRole(ROLE_ADMIN);
+                    httpRequest.requestMatchers(SecurityEndpoints.publicEndpoints()).permitAll();
                     httpRequest.anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
-    }
-
-    private String[] adminEndpoints() {
-        return new String[] { "/api/v1/admin/**" };
-    }
-
-    private String[] publicEndpoints() {
-        return new String[] { "/api/v1/user/**",
-                "/auth/**",
-                "/swagger-ui.html",
-                "/v3/api-docs/**",
-                "/swagger-ui/**",
-                "/api/v1/patient/**",
-                "/api/v1/medic/**" };
     }
 
     @Bean
