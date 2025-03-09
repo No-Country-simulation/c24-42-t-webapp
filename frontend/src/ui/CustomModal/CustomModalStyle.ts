@@ -10,7 +10,6 @@ export const CustomModalStyle: ObjectStyles = {
         position: 'absolute',
         bgcolor: '#f1f1f1',
         borderRadius: "20px",
-        padding: "25px 20px"
     }
 };
 
@@ -26,7 +25,7 @@ export const ModalContentStyle: ObjectStyles = {
     title: {
         marginTop: "1rem",
         color: "#185D3B",
-        fontSize: "35px",
+        fontSize: "1.7rem",
     },
     closeButton: {
         position: "absolute",

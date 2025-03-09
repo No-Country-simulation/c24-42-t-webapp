@@ -55,7 +55,7 @@ export const theme = createTheme(
       MuiFormControl: {
         styleOverrides: {
           root: {
-            minHeight: "90px",
+            minHeight: "80px",
           },
         },
       },
