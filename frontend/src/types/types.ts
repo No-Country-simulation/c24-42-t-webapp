@@ -1,17 +1,17 @@
 import { ReactNode } from "react";
 
 export type Image = {
-    src: string;
-    name: string;
-    specialty: string;
+  src: string;
+  name: string;
+  specialty: string;
 }
 
 export type Url = `/${string}` | "#";
 
 export interface IconData {
-    to: string,
-    ariaLabel: string,
-    Icon: ReactNode
+  to: string,
+  ariaLabel: string,
+  Icon: ReactNode
 };
 
 export interface UserMenuItems {
@@ -27,3 +27,5 @@ export interface Doctor {
   specialty: string;
   profile_img: string;
 }
+
+export type HexColor = `#${string}`;
