@@ -9,14 +9,16 @@ import CustomModal from "@ui/CustomModal/CustomModal";
 import ModalMenu from "../../Welcome/ModalMenu/ModalMenu";
 import { useModalStore } from "@store/modal.store";
 import { useNavigate } from "react-router";
+import { useUserStore } from "@store/user.store";
 
 export const DoctorDetails = () => {
     const setModalData = useModalStore((state) => state.setModalData);
+    const isLogged = useUserStore(state => state.isLogged);
+    const isUserLogged = isLogged();
     const navigate = useNavigate();
 
     const agendaRedirect = () => {
-        const login = true;
-        if(login) {
+        if(isUserLogged) {
             navigate("/agendar-cita");
         } else{
             setModalData({
