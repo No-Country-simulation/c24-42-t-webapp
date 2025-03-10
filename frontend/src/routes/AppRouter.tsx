@@ -8,7 +8,7 @@ import { AdminGuard } from "@routes/AdminGuard";
 import { MedicoGuard } from "@routes/MedicoGuard";
 import { useEffect } from "react";
 import { useUserStore } from "@store/user.store";
-import { Roles } from "@tipos/store";
+import { UserRole } from "@tipos/store";
 import { NotFound } from "@components/layout/NotFound/NotFound";
 import { DoctorDetails } from "@components/sections/MedicosDisponibles/DoctorDetails/doctorDetails";
 
@@ -18,7 +18,7 @@ export const AppRouter = () => {
         setUserData({
             id: "69",
             name: "User Unknow",
-            role: Roles.PACIENTE
+            role: UserRole.PACIENTE
         });
         localStorage.setItem("token","123123123asdasdasdasdasdasd");
     }, []);

@@ -8,7 +8,7 @@ export interface ModalData {
 }
 
 
-export enum Roles {
+export enum UserRole {
     ADMIN,
     PACIENTE,
     MEDICO
@@ -17,5 +17,5 @@ export enum Roles {
 export interface UserData {
     id: string;
     name: string;
-    role: Roles
+    role: UserRole
 }

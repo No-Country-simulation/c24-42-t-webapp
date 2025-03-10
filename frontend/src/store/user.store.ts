@@ -1,4 +1,4 @@
-import { Roles, UserData } from "@tipos/store";
+import { UserRole, UserData } from "@tipos/store";
 import { create, StateCreator } from "zustand";
 import { persist } from 'zustand/middleware';
 
@@ -8,7 +8,7 @@ interface UserStoreState {
 
 interface Actions {
     isLogged: () => boolean,
-    hasRole: (role: Roles) => boolean,
+    hasRole: (role: UserRole) => boolean,
     setUserData: (data: UserData) => void,
     saveToken: (token: string) => void,
     getUserDashboardURL: () => string,
@@ -19,7 +19,7 @@ type UserStoreType = UserStoreState & Actions;
 const userApi: StateCreator<UserStoreType> =
     (set, get) => ({
         userData: null,
-        hasRole: (role: Roles) => {
+        hasRole: (role: UserRole) => {
             return get().userData?.role === role;
         },
         isLogged: () => {
@@ -37,10 +37,10 @@ const userApi: StateCreator<UserStoreType> =
             const userData = get().userData;
             if (userData) {
                 switch (userData.role) {
-                    case Roles.ADMIN:
+                    case UserRole.ADMIN:
                         return "/admin/dashboard";
 
-                    case Roles.MEDICO:
+                    case UserRole.MEDICO:
                         return "/medico/dashboard"
 
                     default:
