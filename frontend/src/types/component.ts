@@ -16,6 +16,8 @@ export interface LinkData {
     links: LinkMetaData[]
 }
 
+export type NavigationItemData = LinkMetaData & { icon: ReactNode };
+
 export interface Option { value: string, label: string };
 
 export type TypeAlert = "success" | "error";
