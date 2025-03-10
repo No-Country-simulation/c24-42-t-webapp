@@ -29,3 +29,11 @@ export interface Doctor {
 }
 
 export type HexColor = `#${string}`;
+
+interface ErrorData {
+    description: string,
+    type: "fetch" | "input",
+    status?: string
+}
+
+export type CustomError = ErrorData | null;

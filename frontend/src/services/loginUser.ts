@@ -1,38 +1,41 @@
 import { FormData } from "@components/sections/Welcome/ModalMenu/Login/loginSchema";
+import { CustomError } from "@tipos/types";
 import { Dispatch, SetStateAction } from "react";
 
 interface Params {
     data: FormData | undefined,
-    error: Error | null,
-    setError: Dispatch<SetStateAction<Error | null>>
-    setFinishLog: Dispatch<SetStateAction<boolean>>
+    setError: Dispatch<SetStateAction<CustomError>>
+    setLoading: Dispatch<SetStateAction<boolean>>
 }
 
-export const loginUser = ({ data, error, setError, setFinishLog }: Params) => {
+export const loginUser = async ({ data, setError, setLoading }: Params): Promise<string> => {
+    setLoading(true);
     const LOGIN_URL = `${import.meta.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT}/auth/login`;
     const params: RequestInit = {
         method: "POST",
-        // credentials: "include",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ ...data }),
     }
-    fetch(LOGIN_URL, params)
+    const token = await fetch(LOGIN_URL, params)
         .then((response) => {
             if (!response.ok) {
-                console.log(response.status);
-                throw new Error(`Ocurrio un error desconocido ${JSON.stringify(response)}`);
+                throw new Error(`Ocurrio un error desconocido`);
             }
             return response.json();
         })
-        .then((response) => console.log("fetch correcto: ", response))
-        .catch((error) => setError(error))
-        .finally(() => setFinishLog(true))
-
-    if (!error) {
-        // const dashboard = getDashboardUrl();
-        // const to = (redirectTo !== null && redirectTo !== undefined) ? redirectTo : dashboard;
-        // navigate(to);
-    }
+        .then((response) => {
+            return response.token;
+        })
+        .catch((error) => {
+            setError({
+                description: error.message,
+                status: "",
+                type: "fetch"
+            });
+            return "error";
+        })
+        .finally(() => setLoading(false));
+    return token;
 }

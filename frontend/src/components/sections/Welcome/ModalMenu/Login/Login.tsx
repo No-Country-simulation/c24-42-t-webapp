@@ -1,45 +1,28 @@
-import { Box, Typography } from "@mui/material";
-import { CustomButton } from "@ui/CustomButton/CustomButton";
-import { Form } from "@ui/Form/Form";
-import { FormEvent, useState } from "react";
-import { useNavigate } from "react-router";
-import { FormData, loginSchema, loginUiSchema } from "./loginSchema";
-import { FormStyle } from "./LoginStyles";
-import { useUserStore } from "@store/user.store";
-import { useModalStore } from "@store/modal.store";
-import { loginUser } from "@services/loginUser";
+import { useState } from "react";
+import { FormData } from "./loginSchema";
+import { CustomError } from "@tipos/types";
+import { ErrorBox } from "./ErrorBox";
+import { LoginForm } from "./LoginForm";
 
 export default function Login() {
     const [data, setData] = useState<FormData>();
-    const [error, setError] = useState<Error | null>(null);
-    const [finishLog, setFinishLog] = useState(false);
-    // const navigate = useNavigate();
-    // const getDashboardUrl = useUserStore(state => state.getUserDashboardURL);
-    // const redirectTo = useModalStore(state => state.modalData.redirect);
+    const [error, setError] = useState<CustomError>(null);
 
-    const handleChange = ({ data, errors }: { data: any, errors: any }) => {
+    const handleChange = ({ data, errors }: { data: any, errors: any[] }) => {
         setData(data);
+        if (errors.length !== 0) {
+            setError({ type: "input", description: "entrada invalida en formulario de inicio de sesion" })
+        } else {
+            setError(previousState => null);
+        }
     }
-
-    const handleLogin = () => {
-        loginUser({ data, error, setError, setFinishLog });
-    }
-
     return (
-        <Box sx={FormStyle}>
-            <Form schema={loginSchema} uiSchema={loginUiSchema} data={data} onChange={handleChange} />
+        <form onSubmit={(e) => e.preventDefault()}>
             {
-                finishLog && (
-                    <Typography variant="body2" sx={{ color: !error ? "#198751" : "#f00" }}>
-                        {!error ? "El usuario se logeo correctamente" : "Ocurrio un error desconocido"}
-                    </Typography>
-                )
+                error?.type === "fetch"
+                    ? <ErrorBox />
+                    : <LoginForm data={data} error={error} setError={setError} handleChange={handleChange} />
             }
-            <CustomButton type="submit" onClick={handleLogin}>
-                <Typography textTransform="none" fontSize="18px">
-                    Iniciar Sesión
-                </Typography>
-            </CustomButton>
-        </Box>
+        </form >
     );
 }
