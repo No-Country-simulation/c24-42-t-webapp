@@ -38,8 +38,8 @@ export const UserMenu = () => {
             >
                 <Box sx={UserMenuStyles.userMenu}>
                     {
-                        ITEMS.map(({ ariaLabel, text, to }) => (
-                            <Box sx={UserMenuStyles.link}>
+                        ITEMS.map(({ ariaLabel, text, to }, index) => (
+                            <Box key={index} sx={UserMenuStyles.link}>
                                 <Anchor ariaLabel={ariaLabel} to={to}>{text}</Anchor>
                             </Box>
                         ))

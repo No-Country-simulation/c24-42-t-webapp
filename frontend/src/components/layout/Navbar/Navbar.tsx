@@ -9,7 +9,6 @@ import { Logo } from "../Footer/Logo";
 import { useUserStore } from "@store/user.store";
 import { useParams } from 'react-router';
 
-
 export const Navbar = () => {
     const { pathname } = useLocation();
     const isMedicosDisponibles = pathname === "/medicos-disponibles";
@@ -42,7 +41,7 @@ export const Navbar = () => {
                     </Anchor>
                 )}
                 
-                {isUserLogged && (
+                {isUserLogged && !pathname.includes("dashboard") && (
                     <CustomButton onClick={handleDashboard}>
                         <Typography fontWeight="bold" textTransform="none">Dashboard</Typography>
                     </CustomButton>
