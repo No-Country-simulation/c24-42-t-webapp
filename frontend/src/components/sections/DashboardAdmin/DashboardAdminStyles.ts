@@ -7,5 +7,6 @@ export const DashboardAdminStyles: ObjectStyles = {
     },
     mainContent: {
         backgroundColor: "#fff",
+        padding: "2em"
     }
 };
