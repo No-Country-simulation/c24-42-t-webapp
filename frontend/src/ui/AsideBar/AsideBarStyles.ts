@@ -5,7 +5,7 @@ import { CSSProperties } from "react";
 
 export const AsideBarStyles: ObjectStyles = {
     asideBar: {
-        backgroundColor: "#198751",
+        backgroundColor: "#484c4a",
         overflow: "hidden"
     },
     button: {
@@ -13,7 +13,6 @@ export const AsideBarStyles: ObjectStyles = {
         padding: "10px",
         width: "100%",
         borderRadius: "0",
-        justifyContent: "end"
     },
     list: {
         padding: "10px"
@@ -22,12 +21,13 @@ export const AsideBarStyles: ObjectStyles = {
 
 export const NavigationItemStyles: SxProps = {
     marginBottom: "0.5rem",
-    paddingLeft: "4.5px"
+    paddingLeft: "4.5px",
+    overflow: "hidden"
 }
 
 export const NavigationItemSelectedStyles: SxProps = {
-    backgroundColor: "#f1f1f1",
-    color: "#198751",
+    backgroundColor: "#198751",
+    color: "#f1f1f1",
     borderRadius: "10px",
     fontSize: "1rem",
     ...NavigationItemStyles

@@ -4,17 +4,21 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 interface Props {
-    asideBarSize: number
+    asideBarSize: string
     handleChangeSize: () => void
 }
 
 export const CloseAsideBarButton = ({ asideBarSize, handleChangeSize }: Props) => {
+    const isExpanded = asideBarSize === "190px";
     return (
-        <IconButton sx={AsideBarStyles.button} onClick={handleChangeSize}>
+        <IconButton sx={{
+            ...AsideBarStyles.button,
+            justifyContent: isExpanded ? "end" : "center"
+        }} onClick={handleChangeSize}>
             {
-                asideBarSize === 2
-                ? <ArrowBackIosIcon sx={{ color: "#f1f1f1" }}/>
-                : <ArrowForwardIosIcon sx={{ color: "#f1f1f1" }}/>
+                isExpanded
+                    ? <ArrowBackIosIcon sx={{ color: "#f1f1f1" }} />
+                    : <ArrowForwardIosIcon sx={{ color: "#f1f1f1" }} />
             }
         </IconButton>
     );

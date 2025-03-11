@@ -10,15 +10,15 @@ interface Props {
 }
 
 export const AsideBar = ({ links }: Props) => {
-    const [asideBarSize, setAsideBarSize] = useState<number>(2);
+    const [asideBarSize, setAsideBarSize] = useState<string>("190px");
 
     const handleChangeSize = () => {
-        const size = asideBarSize === 2 ? 0.5 : 2;
+        const size = asideBarSize === "190px" ? "53px" : "190px";
         setAsideBarSize(size);
     };
 
     return (
-        <Grid2 size={asideBarSize} sx={AsideBarStyles.asideBar}>
+        <Grid2 width={asideBarSize} sx={AsideBarStyles.asideBar}>
             <CloseAsideBarButton asideBarSize={asideBarSize} handleChangeSize={handleChangeSize} />
             <List sx={AsideBarStyles.list}>
                 {
