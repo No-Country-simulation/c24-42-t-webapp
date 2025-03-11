@@ -6,5 +6,6 @@ export const AdminGuard = () => {
     const hasRole = useUserStore(state => state.hasRole);
     const isLogged = useUserStore(state => state.isLogged);
     const isUserLogged = isLogged();
-    return (isUserLogged && hasRole(UserRole.ADMIN)) ? <Outlet /> : <Navigate to="/" replace />;
+    const isAdmin = hasRole(UserRole.ADMIN);
+    return (isUserLogged && isAdmin) ? <Outlet /> : <Navigate to="/" replace />;
 }

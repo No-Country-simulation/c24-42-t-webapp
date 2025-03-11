@@ -6,5 +6,6 @@ export const MedicoGuard = () => {
     const hasRole = useUserStore(state => state.hasRole);
     const isLogged = useUserStore(state => state.isLogged);
     const isUserLogged = isLogged();
-    return (isUserLogged && hasRole(UserRole.MEDICO)) ? <Outlet /> : <Navigate to="/" replace />;
+    const isMedico =  hasRole(UserRole.MEDICO);
+    return (isUserLogged && isMedico) ? <Outlet /> : <Navigate to="/" replace />;
 }
