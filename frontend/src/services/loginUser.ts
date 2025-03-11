@@ -8,10 +8,9 @@ interface Params {
     setLoading: Dispatch<SetStateAction<boolean>>
 }
 
-export const loginUser = async ({ data, setError, setLoading }: Params): Promise<string> => {
+export const loginUser = async ({ data, setError, setLoading }: Params): Promise<string | null> => {
     setLoading(true);
-    // const LOGIN_URL = `${import.meta.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT}/auth/login`;
-    const LOGIN_URL = `https://healthapplication.koyeb.app/auth/login`;
+    const LOGIN_URL = `${import.meta.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT}/auth/login`;
     const params: RequestInit = {
         method: "POST",
         headers: {
@@ -35,7 +34,7 @@ export const loginUser = async ({ data, setError, setLoading }: Params): Promise
                 status: "",
                 type: "fetch"
             });
-            return "error";
+            return null;
         })
         .finally(() => setLoading(false));
     return token;

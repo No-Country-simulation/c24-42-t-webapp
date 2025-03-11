@@ -36,7 +36,7 @@ export const LoginButton = ({ data, error, setError }: Props) => {
 
     const handleLogin = async () => {
         const token = await loginUser({ data, setError, setLoading });
-        if (!error) {
+        if (token !== null) {
             saveToken(token);
             const decoded: JwtData = jwtDecode(token);
             const userData = {
