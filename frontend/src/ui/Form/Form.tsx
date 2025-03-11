@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { materialCells } from "@jsonforms/material-renderers";
 import { JsonForms } from "@jsonforms/react";
 import Ajv from "ajv";
 import addErrors from "ajv-errors";
 import addFormats from "ajv-formats";
 import renderers from "./JsonFormRegisters";
+
 interface Props {
     schema: object;
     uiSchema: any;

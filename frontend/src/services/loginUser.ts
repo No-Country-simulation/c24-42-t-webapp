@@ -5,11 +5,10 @@ import { Dispatch, SetStateAction } from "react";
 interface Params {
     data: FormData | undefined,
     setError: Dispatch<SetStateAction<CustomError>>
-    setLoading: Dispatch<SetStateAction<boolean>>
 }
 
-export const loginUser = async ({ data, setError, setLoading }: Params): Promise<string | null> => {
-    setLoading(true);
+export const loginUser = async ({ data, setError }: Params): Promise<string | null> => {
+
     const LOGIN_URL = `${import.meta.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT}/auth/login`;
     const params: RequestInit = {
         method: "POST",
@@ -19,23 +18,23 @@ export const loginUser = async ({ data, setError, setLoading }: Params): Promise
         body: JSON.stringify({ ...data }),
     }
     const token = await fetch(LOGIN_URL, params)
-        .then((response) => {
+        .then(async (response) => {
+            const responseBody = await response.json();
             if (!response.ok) {
-                throw new Error(`Ocurrio un error desconocido`);
+                throw new Error(responseBody.error || `Error ${response.status}: Ocurrió un error desconocido`);
             }
-            return response.json();
+            return responseBody.token
         })
         .then((response) => {
-            return response.token;
+            return response;
         })
         .catch((error) => {
             setError({
                 description: error.message,
-                status: "",
+                status: error.status,
                 type: "fetch"
             });
             return null;
         })
-        .finally(() => setLoading(false));
     return token;
 }

@@ -52,11 +52,10 @@ const userApi: StateCreator<UserStoreType> =
     });
 
 export const useUserStore = create(
-    persist
-        (userApi,
-            {
-                name: 'user-storage',
-                partialize: (state) => ({ userData: state.userData })
-            }
-        )
+    persist(userApi,
+        {
+            name: 'user-storage',
+            partialize: (state) => ({ userData: state.userData })
+        }
+    )
 );

@@ -35,18 +35,20 @@ export const LoginButton = ({ data, error, setError }: Props) => {
     const [loading, setLoading] = useState(false);
 
     const handleLogin = async () => {
-        const token = await loginUser({ data, setError, setLoading });
+        setError(null);
+        setLoading(true);
+        const token = await loginUser({ data, setError });
         if (token !== null) {
             saveToken(token);
             const decoded: JwtData = jwtDecode(token);
             const userData = {
-                id: "",
-                name: "",
-                role: decoded.role
+                email: decoded.sub,
+                role: UserRole[decoded.role]
             };
             setUserData(userData);
             const dashboard = getDashboardUrl();
             const to = (redirectTo !== null && redirectTo !== undefined) ? redirectTo : dashboard;
+            setLoading(false);
             navigate(to);
         }
     }

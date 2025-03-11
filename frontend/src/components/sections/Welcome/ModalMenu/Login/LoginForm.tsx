@@ -1,4 +1,5 @@
-import { Box } from "@mui/material";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Box, Typography } from "@mui/material";
 import { CustomError } from "@tipos/types";
 import { Form } from "@ui/Form/Form";
 import { Dispatch, SetStateAction } from "react";
@@ -11,15 +12,20 @@ interface Props {
     error: CustomError
     setError: Dispatch<SetStateAction<CustomError>>
     handleChange: ({ data, errors }: {
-        data: any;
-        errors: any[];
+        data: any,
+        errors: any[],
     }) => void
 }
 
 export const LoginForm = ({ data, error, setError, handleChange }: Props) => {
     return (
         <Box sx={FormStyle.form}>
-            <Form schema={loginSchema} uiSchema={loginUiSchema} data={data} onChange={handleChange} />
+            <Box>
+                <Form schema={loginSchema} uiSchema={loginUiSchema} data={data} onChange={handleChange} />
+                {
+                    error?.type === "fetch" && <Typography color="error" textAlign="center">{error.description}</Typography>
+                }
+            </Box>
             <LoginButton data={data} error={error} setError={setError} />
         </Box>
     );

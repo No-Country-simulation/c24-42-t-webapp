@@ -9,13 +9,12 @@ export interface ModalData {
 
 
 export enum UserRole {
-    ADMIN,
-    PACIENTE,
-    MEDICO
+    ADMIN = "ADMIN",
+    PACIENTE = "PACIENTE",
+    MEDICO = "MEDICO"
 }
 
 export interface UserData {
-    id: string;
-    name: string;
+    email: string;
     role: UserRole
 }
