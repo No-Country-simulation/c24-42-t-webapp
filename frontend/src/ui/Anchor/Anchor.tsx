@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes, AriaRole, HTMLAttributeAnchorTarget, ReactNode } from "react";
+import { AriaRole, HTMLAttributeAnchorTarget, ReactNode } from "react";
 import { Link } from "react-router";
 import { AnchorStyles } from "./AnchorStyles";
 

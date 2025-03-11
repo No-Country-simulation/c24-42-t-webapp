@@ -3,6 +3,7 @@ import { Anchor } from "@ui/Anchor/Anchor";
 import { MouseEvent, useState } from "react";
 import { UserMenuStyles } from "./UserMenuStyles";
 import { ITEMS } from "./ITEMS";
+import { CloseSessionButton } from "./CloseSessionButton";
 
 export const UserMenu = () => {
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
@@ -35,6 +36,7 @@ export const UserMenu = () => {
                     vertical: 'top',
                     horizontal: 'right',
                 }}
+                elevation={1}
             >
                 <Box sx={UserMenuStyles.userMenu}>
                     {
@@ -44,6 +46,7 @@ export const UserMenu = () => {
                             </Box>
                         ))
                     }
+                    <CloseSessionButton />
                 </Box>
             </Popover>
         </>
