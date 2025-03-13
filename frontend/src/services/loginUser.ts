@@ -29,11 +29,17 @@ export const loginUser = async ({ data, setError }: Params): Promise<string | nu
             return response;
         })
         .catch((error) => {
+            let errorMsg = error.message;
+
+            if (error.message === "Failed to fetch") {
+                errorMsg = "Falló la conexión";
+            }
+
             setError({
-                description: error.message,
-                status: error.status,
-                type: "fetch"
-            });
+                description: errorMsg,
+                type: "fetch",
+                status: error.status
+            })
             return null;
         })
     return token;

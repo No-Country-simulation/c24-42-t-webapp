@@ -50,6 +50,8 @@ export const LoginButton = ({ data, error, setError }: Props) => {
             const to = (redirectTo !== null && redirectTo !== undefined) ? redirectTo : dashboard;
             setLoading(false);
             navigate(to);
+        } else {
+            setLoading(false);
         }
     }
     return (
