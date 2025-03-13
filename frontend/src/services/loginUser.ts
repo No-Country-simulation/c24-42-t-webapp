@@ -9,7 +9,7 @@ interface Params {
 
 export const loginUser = async ({ data, setError }: Params): Promise<string | null> => {
 
-    const LOGIN_URL = `${import.meta.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT}/auth/login`;
+    const LOGIN_URL = `${import.meta.env.VITE_BACKEND_URL}/auth/login`;
     const params: RequestInit = {
         method: "POST",
         headers: {

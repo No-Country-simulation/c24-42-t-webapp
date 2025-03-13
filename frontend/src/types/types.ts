@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { PacienteData } from "./backendTypes";
 
 export type Image = {
   src: string;
@@ -37,3 +38,7 @@ interface ErrorData {
 }
 
 export type CustomError = ErrorData | null;
+
+export interface PacientesResponse {
+  patients: PacienteData[]
+}

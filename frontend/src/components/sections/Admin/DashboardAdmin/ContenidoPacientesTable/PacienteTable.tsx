@@ -6,12 +6,8 @@ import { PacientesHeaders } from "./PacientesHeaders";
 import { PacienteData } from "@tipos/backendTypes";
 import { useEffect, useState } from "react";
 import { useUserStore } from "@store/user.store";
-import { CustomError } from "@tipos/types";
+import { CustomError, PacientesResponse } from "@tipos/types";
 import { StatusTable } from "@ui/StatusTable/StatusTable";
-
-interface PacientesResponse {
-    patients: PacienteData[]
-}
 
 export const PacienteTable = () => {
     const [pacientes, setPacientes] = useState<PacienteData[]>([]);
@@ -22,7 +18,7 @@ export const PacienteTable = () => {
     useEffect(() => {
         setLoading(true);
         const token = getToken();
-        fetch(`${import.meta.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT}/api/v1/patient`, { method: "GET", headers: { 'Authorization': `${token}` } })
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/patient`, { method: "GET", headers: { 'Authorization': `${token}` } })
             .then(async (response) => {
                 const responseBody = await response.json();
                 if (!response.ok) {
