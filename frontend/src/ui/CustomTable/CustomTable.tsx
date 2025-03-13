@@ -10,7 +10,7 @@ interface Props {
 
 export default function CustomTable({ children, tableWithTabs = false }: Props) {
   return (
-    <TableContainer component={Paper} sx={{ borderTopLeftRadius: tableWithTabs ? "0" : "10" }}>
+    <TableContainer component={Paper} sx={{ borderTopLeftRadius: tableWithTabs ? "0" : "10px" }}>
       <Table>
         {children}
       </Table>
