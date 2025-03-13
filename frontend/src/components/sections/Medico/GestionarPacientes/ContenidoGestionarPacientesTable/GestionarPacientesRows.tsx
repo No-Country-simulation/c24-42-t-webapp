@@ -1,40 +1,17 @@
 import { Button, TableCell, TableRow } from "@mui/material";
+import { PacienteData } from "@tipos/backendTypes";
 
-const rows: Record<string, string>[] = [
-    {
-        id: "1",
-        nombreCompleto: "Lucas Araya",
-        dni: "12345687"
-    },
-    {
-        id: "2",
-        nombreCompleto: "Cesar Fonseca",
-        dni: "98761233"
-    },
-    {
-        id: "3",
-        nombreCompleto: "Mariana Bustos",
-        dni: "34509776"
-    },
-    {
-        id: "4",
-        nombreCompleto: "Luu Freere",
-        dni: "42397894"
-    }
-];
-
-export const GestionarPacientesRows = () => {
-     // TODO obtener pacientes del back
+export const GestionarPacientesRows = ({ pacientes }: { pacientes: PacienteData[] }) => {
      return(
         <>
             {
-                rows.map(({ id, nombreCompleto, dni }) => (
+                pacientes.map(({ id, documentId, firstName, lastName }) => (
                     <TableRow
                         key={id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                        <TableCell align="center">{nombreCompleto}</TableCell>
-                        <TableCell align="center">{dni}</TableCell>
+                        <TableCell align="center">{`${firstName} ${lastName}`}</TableCell>
+                        <TableCell align="center">{documentId}</TableCell>
                         <TableCell align="center" sx={{display: "flex", gap: "1rem"}}>
                             <Button variant="contained" color="info" disableElevation>
                                 Historial Medico
