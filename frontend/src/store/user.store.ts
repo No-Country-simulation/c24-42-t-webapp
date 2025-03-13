@@ -12,7 +12,8 @@ interface Actions {
     setUserData: (data: UserData) => void,
     saveToken: (token: string) => void,
     getUserDashboardURL: () => string,
-    closeSession: () => void
+    closeSession: () => void,
+    getToken: () => string
 }
 
 type UserStoreType = UserStoreState & Actions;
@@ -52,6 +53,9 @@ const userApi: StateCreator<UserStoreType> =
         },
         closeSession: () => {
             localStorage.clear();
+        },
+        getToken: () => {
+            return localStorage.getItem("token") || "";
         }
     });
 
