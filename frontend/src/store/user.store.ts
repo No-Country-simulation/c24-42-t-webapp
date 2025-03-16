@@ -1,4 +1,6 @@
 import { UserRole, UserData } from "@tipos/store";
+import { JwtData } from "@tipos/types";
+import { jwtDecode } from "jwt-decode";
 import { create, StateCreator } from "zustand";
 import { persist } from 'zustand/middleware';
 
@@ -13,7 +15,8 @@ interface Actions {
     saveToken: (token: string) => void,
     getUserDashboardURL: () => string,
     closeSession: () => void,
-    getToken: () => string
+    getToken: () => string,
+    isTokenExpired: () => boolean
 }
 
 type UserStoreType = UserStoreState & Actions;
@@ -56,6 +59,18 @@ const userApi: StateCreator<UserStoreType> =
         },
         getToken: () => {
             return localStorage.getItem("token") || "";
+        },
+        isTokenExpired: () => {
+            const token = localStorage.getItem("token") || null;
+            if (token) {
+                const decoded: JwtData = jwtDecode(token);
+                const currentTime = Math.floor(Date.now() / 1000); // Obtener el tiempo actual en segundos
+                if (decoded.exp <= currentTime) {
+                    return true
+                } 
+                return false;
+            }
+            return true;
         }
     });
 

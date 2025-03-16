@@ -15,6 +15,7 @@ export default defineConfig({
       "@store/*": "src/store/*",
       "@routes/*": "src/routes/*",
       "@services/*": "src/services/*",
+      "@hooks/*": "src/hooks/*",
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
   }

@@ -10,6 +10,7 @@
       "@store/*": ["src/store/*"],
       "@routes/*": ["src/routes/*"],
       "@services/*": ["src/services/*"],
+      "@hooks/*": ["src/hooks/*"],
     },
     "moduleResolution": "node",
     "jsx": "react-jsx",
