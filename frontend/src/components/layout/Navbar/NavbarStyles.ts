@@ -12,7 +12,8 @@ export const NavbarStyles: ObjectStyles = {
         backgroundColor: "#F1F1F1",
         padding: "1.5rem",
         width: "100%",
-        height: "90px",
+        height: "80px",
+        borderBottom: "1px solid #c1c1c1",
         ...DisplayFlexStyles
     },
     logo: {

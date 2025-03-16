@@ -2,7 +2,8 @@ import { ObjectStyles } from "@tipos/component";
 
 export const AsideBarStyles: ObjectStyles = {
     asideBar: {
-        backgroundColor: "#484c4a",
+        backgroundColor: "#f1f1f1",
+        borderRight: "1px solid #c1c1c1",
         overflow: "hidden"
     },
     button: {
@@ -13,5 +14,9 @@ export const AsideBarStyles: ObjectStyles = {
     },
     list: {
         padding: "10px"
+    },
+    closeButton: {
+        color: "#198751",
+        fontSize: "1rem"
     }
 };

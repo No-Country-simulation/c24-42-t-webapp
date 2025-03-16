@@ -23,6 +23,6 @@ export const NavigationItemStyles: ObjectStyles = {
 export const LinkCSS: CSSProperties = {
     display: "flex",
     alignItems: "center",
-    color: "#f1f1f1",
+    color: "#198751",
     textDecoration: "none",
 };

@@ -17,8 +17,12 @@ export const CloseAsideBarButton = ({ asideBarSize, handleChangeSize }: Props) =
         }} onClick={handleChangeSize}>
             {
                 isExpanded
-                    ? <ArrowBackIosIcon sx={{ color: "#f1f1f1" }} />
-                    : <ArrowForwardIosIcon sx={{ color: "#f1f1f1" }} />
+                    ? <>
+                        <ArrowBackIosIcon sx={AsideBarStyles.closeButton} />
+                        <ArrowBackIosIcon sx={AsideBarStyles.closeButton} />
+                        <ArrowBackIosIcon sx={AsideBarStyles.closeButton} />
+                    </>
+                    : <ArrowForwardIosIcon sx={AsideBarStyles.closeButton} />
             }
         </IconButton>
     );
