@@ -5,11 +5,11 @@ import { TableHeader } from "./TableHeader/TableHeader"
 
 interface Props {
     headers: any[]
-    showCount: boolean
     children: ReactNode
+    showCount?: boolean
 }
 
-export const CustomTableV2 = ({ headers, children, showCount }: Props) => {
+export const CustomTableV2 = ({ headers, children, showCount=false }: Props) => {
     return (
         <TableContainer sx={{ border: "1px solid #c1c1c1", borderRadius: "10px" }}>
             <TableHeader showCount={showCount} />

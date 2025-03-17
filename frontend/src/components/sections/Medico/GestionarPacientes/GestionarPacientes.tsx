@@ -1,5 +1,5 @@
 import { Grid2 } from "@mui/material";
-import { MEDIC_LINKS } from "../DashboardMedico/MEDIC_LINKS";
+import { MEDIC_LINKS } from "../MEDIC_LINKS";
 import { AsideBar } from "@ui/AsideBar/AsideBar";
 import { GestionarPacientesMainContent } from "./GestionarPacientesMainContent/GestionarPacientesMainContent";
 
