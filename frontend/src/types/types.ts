@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Dispatch, ReactNode, SetStateAction } from "react";
 import { PacienteData } from "./backendTypes";
 import { UserRole } from "./store";
 
@@ -34,7 +35,7 @@ export type HexColor = `#${string}`;
 
 interface ErrorData {
   description: string,
-  type: "fetch" | "input",
+  type: "fetch" | "input" | "unknow",
   status?: string
 }
 
@@ -51,4 +52,16 @@ export interface JwtData {
   exp: number,
   role: UserRole
   jti: string
+}
+
+export interface HeaderSchema {
+  id: string
+  title: string
+}
+
+export interface Parameters {
+  token: string
+  setDataRows: Dispatch<SetStateAction<any[]>>
+  setLoading: Dispatch<SetStateAction<boolean>>
+  setError: Dispatch<SetStateAction<CustomError>>
 }

@@ -1,14 +1,15 @@
-import { Grid2 } from "@mui/material";
-import { DashboardMedicoStyles } from "./DashboardMedicoStyles";
-import { AsideBar } from "@ui/AsideBar/AsideBar";
+import { TableContextProvider } from "@context/table.provider";
+import { DashboardMedicoContent } from "./DashboardMedicoContent";
 import { MEDIC_LINKS } from "./MEDIC_LINKS";
-import { MedicoMainContent } from "./MedicoMainContent/MedicoMainContent";
+import { SectionWrapper } from "@components/layout/SectionWrapper";
+import { getPacientes } from "@services/getPacientes";
 
 export const DashboardMedico = () => {
-    return(
-        <Grid2 container sx={DashboardMedicoStyles.container}>
-            <AsideBar links={MEDIC_LINKS} />
-            <MedicoMainContent />
-        </Grid2>
+    return (
+        <SectionWrapper asideBarItems={MEDIC_LINKS}>
+            <TableContextProvider fetchRows={getPacientes}>
+                <DashboardMedicoContent />
+            </TableContextProvider>
+        </SectionWrapper>
     );
 }

@@ -11,6 +11,7 @@
       "@routes/*": ["src/routes/*"],
       "@services/*": ["src/services/*"],
       "@hooks/*": ["src/hooks/*"],
+      "@context/*": ["src/context/*"],
     },
     "moduleResolution": "node",
     "jsx": "react-jsx",
