@@ -6,6 +6,10 @@ export interface DoctorData {
     profile_img: string
 }
 
+export interface PacienteResponse {
+    patients: PacienteData[]
+}
+
 export interface PacienteData {
     id:                   number;
     firstName:            string;
@@ -23,7 +27,7 @@ export interface MedicacionData {
     medicationName: string;
     dosage:         string;
     frequency:      string;
-    startDate:      Date;
-    endDate:        Date;
+    startDate:      string;
+    endDate:        string;
     notes:          string;
 }

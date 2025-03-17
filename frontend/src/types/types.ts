@@ -62,6 +62,7 @@ export interface HeaderSchema {
 
 export interface Parameters {
   token: string
+  idForEndpoint?: string
   setDataRows: Dispatch<SetStateAction<any[]>>
   setLoading: Dispatch<SetStateAction<boolean>>
   setError: Dispatch<SetStateAction<CustomError>>

@@ -33,3 +33,5 @@ export interface AlertMetaData {
     bgColor: HexColor
     icon: ReactNode
 }
+
+export type Section = "gestionar_pacientes" | "tabla_medicamentos";

@@ -7,11 +7,11 @@ interface Props {
 }
 
 export const CustomTableV2Body = ({ children }: Props) => {
-    const { rowsCount } = useTableContext();
+    const { dataRows } = useTableContext();
     return (
         <TableBody>
             {
-                rowsCount === 0
+                dataRows.length === 0
                     ? (
                         <TableRow>
                             <TableCell align="center">---</TableCell>

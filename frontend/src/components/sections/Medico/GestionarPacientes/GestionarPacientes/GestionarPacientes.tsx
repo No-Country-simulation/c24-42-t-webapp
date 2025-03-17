@@ -1,4 +1,4 @@
-import { MEDIC_LINKS } from "../MEDIC_LINKS";
+import { MEDIC_LINKS } from "../../MEDIC_LINKS";
 import { SectionWrapper } from "@components/layout/SectionWrapper";
 import { GestionarPacientesContent } from "./GestionarPacientesContent";
 import { TableContextProvider } from "@context/table.provider";

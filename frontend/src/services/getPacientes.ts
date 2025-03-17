@@ -1,3 +1,4 @@
+import { PacienteResponse } from "@tipos/backendTypes";
 import { Parameters } from "@tipos/types";
 import { handleError } from "@utils/handleError";
 
@@ -11,7 +12,7 @@ export const getPacientes = ({ token, setDataRows, setLoading, setError }: Param
             }
             return responseBody;
         })
-        .then((result) => {
+        .then((result: PacienteResponse) => {
             setDataRows(result.patients);
         })
         .catch((e) => {

@@ -11,11 +11,12 @@ import { DoctorDetails } from "@components/sections/MedicosDisponibles/DoctorDet
 import { DashboardAdmin } from "@components/sections/Admin/DashboardAdmin/DashboardAdmin";
 import { DashboardPatient } from "@components/sections/DashboardPatient/DashboardPatient";
 import { DashboardMedico } from "@components/sections/Medico/DashboardMedico/DashboardMedico";
-import { GestionarPacientes } from "@components/sections/Medico/GestionarPacientes/GestionarPacientes";
+import { GestionarPacientes } from "@components/sections/Medico/GestionarPacientes/GestionarPacientes/GestionarPacientes";
 import { ContenidoDatosDiagnostico } from "@components/sections/DashboardPatient/ContenidoDatosDiagnostico/ContenidoDatosDiagnostico"
 import { ContenidoHistorialCitas } from "@components/sections/DashboardPatient/ContenidoHistorialCitas/ContenidoHistorialCitas";
 import { HistorialMedico } from "@components/sections/Medico/HistorialMedico/HistorialMedico";
 import { GestionarAgenda } from "@components/sections/Medico/GestionarAgenda/GestionarAgenda";
+import { GestionarMedicamentos } from "@components/sections/Medico/GestionarPacientes/GestionarMedicamentos/GestionarMedicamentos";
 
 export const AppRouter = () => {
     return (
@@ -41,6 +42,7 @@ export const AppRouter = () => {
                         <Route path="/medico/dashboard" element={<DashboardMedico />} />
                         <Route path="/medico/historial-citas" element={<HistorialMedico />} />
                         <Route path="/medico/gestionar-pacientes" element={<GestionarPacientes />} />
+                        <Route path="/medico/gestionar-medicamentos/:id" element={<GestionarMedicamentos />} />
                         <Route path="/medico/agenda" element={<GestionarAgenda />} />
                     </Route>
                 </Route>

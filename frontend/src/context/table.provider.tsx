@@ -7,20 +7,20 @@ import { CustomError, Parameters } from "@tipos/types";
 import { useUserStore } from "@store/user.store";
 
 interface TableProviderProps {
-    fetchRows: (params: Parameters) => any
     children: ReactNode
+    idForEndpoint?: string
+    fetchRows: (params: Parameters) => any
 }
 
-export const TableContextProvider = ({ children, fetchRows }: TableProviderProps) => {
+export const TableContextProvider = ({ children, fetchRows, idForEndpoint = "" }: TableProviderProps) => {
     const [dataRows, setDataRows] = useState<any[]>([]);
     const [loadingTableRows, setLoadingTableRows] = useState(false);
     const [errorTableRows, setErrorTableRows] = useState<CustomError>(null);
-    const rowsCount: number = dataRows.length;
     const token = useUserStore(state => state.getToken)();
 
     const handleFetchRows = useCallback(() => {
         setErrorTableRows(previuosState => null);
-        fetchRows({ token, setDataRows, setError: setErrorTableRows, setLoading: setLoadingTableRows });
+        fetchRows({ token, setDataRows, setError: setErrorTableRows, setLoading: setLoadingTableRows, idForEndpoint });
     }, []);
 
     useEffect(() => {
@@ -29,7 +29,6 @@ export const TableContextProvider = ({ children, fetchRows }: TableProviderProps
 
 
     const value: TableContextType = {
-        rowsCount,
         dataRows,
         loadingTableRows,
         errorTableRows,

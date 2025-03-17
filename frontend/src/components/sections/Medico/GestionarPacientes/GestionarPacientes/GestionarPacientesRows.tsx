@@ -4,9 +4,16 @@ import MedicationIcon from '@mui/icons-material/Medication';
 import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 import { PacienteData } from "@tipos/backendTypes";
 import { calculateAge } from "@utils/calculateAge";
+import { useNavigate } from "react-router";
 
 export const GestionarPacientesRows = () => {
     const { dataRows } = useTableContext();
+    const navigate = useNavigate();
+
+    const handleChangeToMedicationTable = (id: number) => {
+        navigate(`/medico/gestionar-medicamentos/${id}`);
+    }
+
     return (
         <>
             {
@@ -25,7 +32,7 @@ export const GestionarPacientesRows = () => {
                                 </IconButton>
                             </Tooltip>
                             <Tooltip title="Administrar Medicamentos">
-                                <IconButton color="warning">
+                                <IconButton color="warning" onClick={() => handleChangeToMedicationTable(id)}>
                                     <MedicationIcon />
                                 </IconButton>
                             </Tooltip>

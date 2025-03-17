@@ -2,9 +2,9 @@
 import { Box, Typography } from "@mui/material";
 import { CustomError } from "@tipos/types";
 import { Dispatch, SetStateAction, useState } from "react";
-import { MedicamentosFormData, medicamentosSchema, medicamentosUiSchema } from "./medicamentosFormSchema";
+import { MedicamentosFormData, medicamentosSchema, medicamentosUiSchema } from "../../AdministrarMedicamentos/MedicamentosForm/medicamentosFormSchema";
 import { Form } from "@ui/Form/Form";
-import { MedicamentosFormFooter } from "./MedicamentosFormFooter";
+import { MedicamentosFormFooter } from "../../AdministrarMedicamentos/MedicamentosForm/MedicamentosFormFooter";
 
 interface Props {
     pacienteId: number | null

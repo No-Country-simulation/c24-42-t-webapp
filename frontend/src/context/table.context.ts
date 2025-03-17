@@ -3,7 +3,6 @@ import { CustomError } from "@tipos/types";
 import { createContext, useContext } from "react";
 
 const initValue: TableContextType = {
-    rowsCount: 0,
     dataRows: [],
     loadingTableRows: false,
     errorTableRows: null,
@@ -11,7 +10,6 @@ const initValue: TableContextType = {
 };
 
 export interface TableContextType {
-    rowsCount: number
     dataRows: any[]
     loadingTableRows: boolean
     errorTableRows: CustomError

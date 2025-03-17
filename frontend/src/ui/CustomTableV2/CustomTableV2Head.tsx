@@ -13,7 +13,7 @@ export const CustomTableV2Head = ({ headers }: Props) => {
                     headers.map(({ id, title, width }) => {
                         const isActionsHeader = title === "actions";
                         return (
-                            <TableCell key={id} align="center" sx={{ maxWidth: isActionsHeader ? width : "inherit" }}>
+                            <TableCell key={id} align="center" sx={{ width: isActionsHeader ? width : "inherit" }}>
                                 <Typography sx={{ color: "#726969" }}>
                                     {isActionsHeader ? "" : title}
                                 </Typography>
