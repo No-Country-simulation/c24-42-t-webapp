@@ -1,6 +1,6 @@
 import { HeaderSchema } from "@tipos/types";
 
-export const headers: HeaderSchema[] = [
+export const citas_headers: HeaderSchema[] = [
     {
         id: "1",
         title: "Fecha",

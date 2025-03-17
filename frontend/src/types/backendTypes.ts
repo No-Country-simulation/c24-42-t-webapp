@@ -11,7 +11,7 @@ export interface PacienteData {
     firstName:            string;
     lastName:             string;
     documentId:           string;
-    birthDate:            Date;
+    birthDate:            string;
     gender:               string;
     phone:                string;
     address:              string;

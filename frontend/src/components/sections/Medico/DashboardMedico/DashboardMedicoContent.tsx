@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { CustomTableV2 } from "@ui/CustomTableV2/CustomTableV2";
 import { CitasRows } from "./CitasRows";
-import { headers } from "./CITAS_TABLE_HEADERS";
+import { citas_headers } from "./CITAS_TABLE_HEADERS";
 
 export const DashboardMedicoContent = () => {
     return (
@@ -9,7 +9,7 @@ export const DashboardMedicoContent = () => {
             <Typography variant="h5" gutterBottom color="primary" sx={{ letterSpacing: "4px"}}>
                 Citas actuales
             </Typography>
-            <CustomTableV2 headers={headers}>
+            <CustomTableV2 headers={citas_headers}>
                 <CitasRows />
             </CustomTableV2>
         </Box>

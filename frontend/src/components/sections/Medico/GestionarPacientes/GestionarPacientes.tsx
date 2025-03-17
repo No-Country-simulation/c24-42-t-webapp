@@ -1,16 +1,15 @@
-import { Grid2 } from "@mui/material";
 import { MEDIC_LINKS } from "../MEDIC_LINKS";
-import { AsideBar } from "@ui/AsideBar/AsideBar";
-import { GestionarPacientesMainContent } from "./GestionarPacientesMainContent/GestionarPacientesMainContent";
+import { SectionWrapper } from "@components/layout/SectionWrapper";
+import { GestionarPacientesContent } from "./GestionarPacientesContent";
+import { TableContextProvider } from "@context/table.provider";
+import { getPacientes } from "@services/getPacientes";
 
 export const GestionarPacientes = () => {
     return (
-        <Grid2 container sx={{
-            width: "100%",
-            height: "calc(100vh - 90px)"
-        }}>
-            <AsideBar links={MEDIC_LINKS} />
-            <GestionarPacientesMainContent />
-        </Grid2>
+        <SectionWrapper asideBarItems={MEDIC_LINKS}>
+            <TableContextProvider fetchRows={getPacientes}>
+                <GestionarPacientesContent />
+            </TableContextProvider>
+        </SectionWrapper>
     );
 }
