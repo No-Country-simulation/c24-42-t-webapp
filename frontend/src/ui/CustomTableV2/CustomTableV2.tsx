@@ -1,35 +1,23 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material"
+import { Table, TableContainer } from "@mui/material"
 import { ReactNode } from "react"
 import { TableHeader } from "./TableHeader/TableHeader"
+import { CustomTableV2Body } from "./CustomTableV2Body"
+import { CustomTableV2Head } from "./CustomTableV2Head"
+import { HeaderSchema } from "@tipos/types"
 
 interface Props {
-    headers: any[]
+    headers: HeaderSchema[]
     children: ReactNode
     showCount?: boolean
 }
 
-export const CustomTableV2 = ({ headers, children, showCount=false }: Props) => {
+export const CustomTableV2 = ({ headers, children, showCount = false }: Props) => {
     return (
         <TableContainer sx={{ border: "1px solid #c1c1c1", borderRadius: "10px" }}>
             <TableHeader showCount={showCount} />
             <Table>
-                <TableHead>
-                    <TableRow>
-                        {
-                            headers.map((item) => (
-                                <TableCell key={item.id} align="center">
-                                    <Typography sx={{ color: "#726969" }}>
-                                        {item.title}
-                                    </Typography>
-                                </TableCell>
-                            ))
-                        }
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {children}
-                </TableBody>
+                <CustomTableV2Head headers={headers} />
+                <CustomTableV2Body children={children} />
             </Table>
         </TableContainer>
     );

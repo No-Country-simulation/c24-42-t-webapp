@@ -57,6 +57,7 @@ export interface JwtData {
 export interface HeaderSchema {
   id: string
   title: string
+  width?: string
 }
 
 export interface Parameters {
