@@ -14,7 +14,7 @@ interface Props {
 
 export const TabPacientes = ({ handleChangeTab }: Props) => {
     return (
-        <SectionWrapper asideBarItems={ADMIN_LINKS}>
+        <SectionWrapper sideBarItems={ADMIN_LINKS}>
             <TableContextProvider fetchRows={getPacientes}>
                 <Box sx={TabStyles.container}>
                     <CustomButton onClick={() => handleChangeTab("pacientes")} sx={{ ...TabStyles.tab, backgroundColor: "#198751", color: "#f1f1f1" }}>

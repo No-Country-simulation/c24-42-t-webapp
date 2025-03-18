@@ -8,7 +8,7 @@ import { useParams } from "react-router";
 export const GestionarMedicamentos = () => {
     const id: string = useParams().id || "";
     return (
-        <SectionWrapper asideBarItems={MEDIC_LINKS}>
+        <SectionWrapper sideBarItems={MEDIC_LINKS}>
             <TableContextProvider fetchRows={getMedicamentos} idForEndpoint={id}>
                 <GestionarMedicamentosContent />
             </TableContextProvider>

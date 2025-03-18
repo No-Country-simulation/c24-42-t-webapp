@@ -1,7 +1,7 @@
 import { ObjectStyles } from "@tipos/component";
 
-export const AsideBarStyles: ObjectStyles = {
-    asideBar: {
+export const SideBarStyles: ObjectStyles = {
+    sideBar: {
         backgroundColor: "#f1f1f1",
         borderRight: "1px solid #c1c1c1",
         overflow: "hidden"

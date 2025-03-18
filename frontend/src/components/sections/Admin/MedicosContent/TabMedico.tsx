@@ -14,7 +14,7 @@ interface Props {
 
 export const TabMedico = ({ handleChangeTab }: Props) => {
     return (
-        <SectionWrapper asideBarItems={ADMIN_LINKS}>
+        <SectionWrapper sideBarItems={ADMIN_LINKS}>
             <TableContextProvider fetchRows={getMedicos}>
                 <Box sx={TabStyles.container}>
                     <CustomButton onClick={() => handleChangeTab("pacientes")} sx={TabStyles.tab}>

@@ -6,7 +6,7 @@ import { getPacientes } from "@services/getPacientes";
 
 export const GestionarPacientes = () => {
     return (
-        <SectionWrapper asideBarItems={MEDIC_LINKS}>
+        <SectionWrapper sideBarItems={MEDIC_LINKS}>
             <TableContextProvider fetchRows={getPacientes}>
                 <GestionarPacientesContent />
             </TableContextProvider>
