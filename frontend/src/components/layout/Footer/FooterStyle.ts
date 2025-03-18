@@ -7,6 +7,7 @@ export const FooterStyle: ObjectStyles = {
     padding: "20px 0",
     display: "flex",
     justifyContent: "space-around",
+    borderTop: "1px solid #c1c1c1",
     flexWrap: "wrap",
     alignItems: "center",
     height: "230px"
