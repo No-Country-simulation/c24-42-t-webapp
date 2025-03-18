@@ -20,7 +20,6 @@ export const GestionarPacientesRows = () => {
                 dataRows.map(({ id, documentId, firstName, lastName, birthDate }: PacienteData) => (
                     <TableRow
                         key={id}
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
                         <TableCell align="center">{`${firstName} ${lastName}`}</TableCell>
                         <TableCell align="center">{documentId}</TableCell>

@@ -8,7 +8,6 @@ import { AdminGuard } from "@routes/AdminGuard";
 import { MedicoGuard } from "@routes/MedicoGuard";
 import { NotFound } from "@components/layout/NotFound/NotFound";
 import { DoctorDetails } from "@components/sections/MedicosDisponibles/DoctorDetails/doctorDetails";
-import { DashboardAdmin } from "@components/sections/Admin/DashboardAdmin/DashboardAdmin";
 import { DashboardPatient } from "@components/sections/DashboardPatient/DashboardPatient";
 import { DashboardMedico } from "@components/sections/Medico/DashboardMedico/DashboardMedico";
 import { GestionarPacientes } from "@components/sections/Medico/GestionarPacientes/GestionarPacientes/GestionarPacientes";
@@ -17,6 +16,7 @@ import { ContenidoHistorialCitas } from "@components/sections/DashboardPatient/C
 import { HistorialMedico } from "@components/sections/Medico/HistorialMedico/HistorialMedico";
 import { GestionarAgenda } from "@components/sections/Medico/GestionarAgenda/GestionarAgenda";
 import { GestionarMedicamentos } from "@components/sections/Medico/GestionarPacientes/GestionarMedicamentos/GestionarMedicamentos";
+import { DashboardAdmin } from "@components/sections/Admin/DashboardAdmin";
 
 export const AppRouter = () => {
     return (

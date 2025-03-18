@@ -15,7 +15,6 @@ export const GestionarMedicamentosRows = () => {
                 dataRows.map(({ id, startDate, endDate, dosage, medicationName }: MedicacionData) => (
                     <TableRow
                         key={id}
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
                         <TableCell align="center">{medicationName}</TableCell>
                         <TableCell align="center">{dosage}</TableCell>
@@ -24,17 +23,17 @@ export const GestionarMedicamentosRows = () => {
                         <TableCell align="center" sx={{ display: "flex", gap: "1rem" }}>
                             <Tooltip title="Eliminar">
                                 <IconButton color="error" >
-                                    <RemoveIcon/>
+                                    <RemoveIcon />
                                 </IconButton>
                             </Tooltip>
                             <Tooltip title="Editar">
                                 <IconButton color="info" >
-                                    <EditIcon/>
+                                    <EditIcon />
                                 </IconButton>
                             </Tooltip>
                             <Tooltip title="Detalles">
                                 <IconButton color="warning" >
-                                    <ListAltIcon/>
+                                    <ListAltIcon />
                                 </IconButton>
                             </Tooltip>
                         </TableCell>

@@ -35,3 +35,5 @@ export interface AlertMetaData {
 }
 
 export type Section = "gestionar_pacientes" | "tabla_medicamentos";
+
+export type TabsAdmin = "pacientes" | "medicos";
