@@ -17,6 +17,7 @@ export default function Login() {
     const navigate = useNavigate();
     const getDashboardUrl = useUserStore(state => state.getUserDashboardURL);
     const saveUserData = useUserStore(state => state.saveUserData);
+    const closeModal = useModalStore(state=> state.closeModal);
 
     const redirectTo = useModalStore(state => state.modalData.redirect);
     const [loading, setLoading] = useState(false);
@@ -30,6 +31,7 @@ export default function Login() {
             const dashboard = getDashboardUrl();
             const to = (redirectTo !== null && redirectTo !== undefined) ? redirectTo : dashboard;
             setLoading(false);
+            closeModal();
             navigate(to);
         } else {
             setLoading(false);
