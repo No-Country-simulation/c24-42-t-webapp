@@ -8,7 +8,7 @@ export const getPacientes = ({ token, setDataRows, setLoading, setError }: Param
         .then(async (response) => {
             const responseBody = await response.json();
             if (!response.ok) {
-                throw new Error(`${response.status}: ${responseBody.error}`);
+                throw new Error(`${response.status}: ${responseBody.error || responseBody.ERROR}`);
             }
             return responseBody;
         })

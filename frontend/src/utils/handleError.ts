@@ -19,6 +19,22 @@ export const handleError = (error: any): CustomError => {
         }
     }
 
+    if (errorMsg.includes("403")) {
+        return {
+            description: "Acceso no autorizado",
+            type: "fetch",
+            status: "403"
+        }
+    }
+
+    if (errorMsg.includes("404")) {
+        return {
+            description: errorMsg.replace("404: ", ""),
+            type: "fetch",
+            status: "403"
+        }
+    }
+
     return {
         description: errorMsg,
         type: "unknow",

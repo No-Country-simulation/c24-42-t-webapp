@@ -1,5 +1,6 @@
 import { FormData } from "@components/sections/Welcome/ModalMenu/Login/loginSchema";
 import { CustomError } from "@tipos/types";
+import { handleError } from "@utils/handleError";
 import { Dispatch, SetStateAction } from "react";
 
 interface Params {
@@ -19,27 +20,22 @@ export const loginUser = async ({ data, setError }: Params): Promise<string | nu
     }
     const token = await fetch(LOGIN_URL, params)
         .then(async (response) => {
-            const responseBody = await response.json();
             if (!response.ok) {
-                throw new Error(`${response.status}: ${responseBody.error}`);
+                if (response.status === 403) {
+                    throw new Error(`${response.status}: cors`);
+                } else {
+                    const responseBody = await response.json();
+                    throw new Error(`${response.status}: ${responseBody.error}`);
+                }
             }
-            return responseBody.token
+            return await response.json()
         })
         .then((response) => {
-            return response;
+            return response.token;
         })
-        .catch((error) => {
-            let errorMsg = error.message;
-
-            if (error.message === "Failed to fetch") {
-                errorMsg = "Falló la conexión";
-            }
-
-            setError({
-                description: errorMsg,
-                type: "fetch",
-                status: error.status
-            })
+        .catch((e) => {
+            const error = handleError(e);
+            setError(error);
             return null;
         })
     return token;

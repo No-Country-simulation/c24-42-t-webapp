@@ -8,7 +8,7 @@ export const getMedicamentos = ({ token, setDataRows, setLoading, setError, idFo
         .then(async (response) => {
             const responseBody = await response.json();
             if (!response.ok) {
-                throw new Error(`${response.status}: ${responseBody.error}`);
+                throw new Error(`${response.status}: ${responseBody.error || responseBody.ERROR}`);
             }
             return responseBody;
         })
