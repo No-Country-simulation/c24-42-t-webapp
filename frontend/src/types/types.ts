@@ -51,7 +51,10 @@ export interface JwtData {
   iat: number,
   exp: number,
   role: UserRole
-  jti: string
+  jti: string,
+  adminId?: string,
+  patientId?: string,
+  medicId?: string
 }
 
 export interface HeaderSchema {
