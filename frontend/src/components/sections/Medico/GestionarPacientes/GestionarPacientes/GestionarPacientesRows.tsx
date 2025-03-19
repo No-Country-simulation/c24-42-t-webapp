@@ -3,7 +3,7 @@ import { IconButton, TableCell, TableRow, Tooltip } from "@mui/material";
 import MedicationIcon from '@mui/icons-material/Medication';
 import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 import { PacienteData } from "@tipos/backendTypes";
-import { calculateAge } from "@utils/calculateAge";
+import { calculateAge } from "@utils/date/calculateAge";
 import { useNavigate } from "react-router";
 
 export const GestionarPacientesRows = () => {

@@ -31,6 +31,24 @@ export interface PacienteData {
     emergencyContactInfo: string;
 }
 
+export interface PacienteInput {
+    firstName:            string;
+    lastName:             string;
+    documentId:           string;
+    birthDate:            Date;
+    gender:               string;
+    phone:                string;
+    address:              string;
+    emergencyContactInfo: string;
+    user:                 UserInput;
+}
+
+export interface UserInput {
+    email:    string;
+    password: string;
+}
+
+
 export interface CitasData {
     id: number;
     date: string;

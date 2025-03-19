@@ -1,4 +1,5 @@
 import { LoginFormData } from "@components/sections/Welcome/ModalMenu/Login/loginSchema";
+import { UserInput } from "@tipos/backendTypes";
 import { CustomError } from "@tipos/types";
 import { handleError } from "@utils/handleError";
 import { Dispatch, SetStateAction } from "react";
@@ -11,12 +12,16 @@ interface Params {
 export const loginUser = async ({ data, setError }: Params): Promise<string | null> => {
 
     const LOGIN_URL = `${import.meta.env.VITE_BACKEND_URL}/auth/login`;
+    const userInput: UserInput = {
+        email: data?.email || "",
+        password: data?.password || ""
+    }
     const params: RequestInit = {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...data }),
+        body: JSON.stringify(userInput),
     }
     const token = await fetch(LOGIN_URL, params)
         .then(async (response) => {

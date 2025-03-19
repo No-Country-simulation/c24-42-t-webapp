@@ -1,11 +1,21 @@
-export interface FormData {
-    first_name: string | undefined;
-    gender: string | undefined;
-    dni: string | undefined;
-    phone: string | undefined;
-    email: string | undefined;
-    password: string | undefined;
-    confirmPassword: string | undefined;
+export interface SignUpFormData {
+    email: string
+    repeatPassword: {
+        password: string
+        repeatPassword: 1234
+    },
+    first_name: string
+    last_name: string
+    customSelect: {
+        gender: string
+    },
+    dni: string
+    customDatePicker: {
+        date: string
+    },
+    phone: string
+    address: string
+    emergency_contact_info: string
 }
 
 export const signUpSchema = {
@@ -152,8 +162,8 @@ export const signUpUiSchema = {
                                         "customControl": "customSelect",
                                         "key": "gender",
                                         "items": [
-                                            { "value": 'male', "label": 'Hombre' },
-                                            { "value": 'female', "label": 'Mujer' },
+                                            { "value": 'MALE', "label": 'Hombre' },
+                                            { "value": 'FEMALE', "label": 'Mujer' },
                                         ]
                                     }
                                 },
@@ -169,6 +179,7 @@ export const signUpUiSchema = {
                             "scope": "#/properties/customDatePicker",
                             "label": "Fecha de nacimiento",
                             "options": {
+                                "validateAge": "true",
                                 "key": "date",
                                 "customControl": "customDatePicker",
                             }

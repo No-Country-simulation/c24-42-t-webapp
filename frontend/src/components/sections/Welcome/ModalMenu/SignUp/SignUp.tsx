@@ -1,50 +1,55 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Form } from "@ui/Form/Form";
-import { FormData, signUpSchema, signUpUiSchema } from "./signUpSchema";
-import { FormEvent, useState } from "react";
+import { SignUpFormData, signUpSchema, signUpUiSchema } from "./signUpSchema";
+import { useState } from "react";
 import { Box, Typography } from "@mui/material";
-import { CustomButton } from "@ui/CustomButton/CustomButton";
 import { FormStyle } from "./SignUpStyles";
-import { useNavigate } from "react-router";
-import { useUserStore } from "@store/user.store";
+import { signUpUser } from "@services/signUpUser";
+import { SignUpButton } from "./SignUpButton";
+import { CustomError } from "@tipos/types";
+import { showSonnerToast } from "@utils/showSonnerToast";
 import { useModalStore } from "@store/modal.store";
 
 export default function SignUp() {
-    const [data, setData] = useState<FormData>();
-    const [error, setError] = useState(false);
-    const navigate = useNavigate();
-    const getDashboardUrl = useUserStore(state => state.getUserDashboardURL);
-    const redirectTo = useModalStore(state => state.modalData.redirect);
+    const [data, setData] = useState<SignUpFormData>();
+    const [error, setError] = useState<CustomError>(null);
+    const [loading, setLoading] = useState(false);
+    const closeModal = useModalStore(state => state.closeModal);
 
-    const handleChange = ({ data, errors }: { data: any, errors: any }) => {
+    const handleChange = ({ data, errors }: { data: any, errors: any[] }) => {
         setData(data);
         if (errors.length !== 0) {
-            setError(true);
+            setError({ type: "input", description: "entrada invalida en formulario de registro" })
         } else {
-            setError(false);
+            setError(null);
         }
     }
 
-    // TODO crear logica de registro de usuario paciente y mover funcion a archivo externo
-    const handleSignUp = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const signup = false;
-        if (signup) {
-            const dashboard = getDashboardUrl();
-            const to = (redirectTo !== null && redirectTo !== undefined) ? redirectTo : dashboard;
-            navigate(to);
+    const handleSignUp = async () => {
+        setError(null);
+        setLoading(true);
+        const response = await signUpUser({ data, setError });
+        if (response !== null) {
+            showSonnerToast({
+                title: "Registro Completo",
+                description: "Ahora puede iniciar sesión como paciente",
+                type: "success"
+            });
+            closeModal();
         }
+        setLoading(false);
     }
+
     return (
-        <form onSubmit={handleSignUp}>
+        <form onSubmit={(e) => e.preventDefault()}>
             <Box sx={FormStyle.container}>
                 <Box sx={FormStyle.form}>
                     <Form schema={signUpSchema} uiSchema={signUpUiSchema} data={data} onChange={handleChange} />
+                    {
+                        error?.type === "fetch" && <Typography color="error" textAlign="center">{error.description}</Typography>
+                    }
                 </Box>
-                <CustomButton type="submit" disabled={error}>
-                    <Typography textTransform="none" >
-                        Registrarse
-                    </Typography>
-                </CustomButton>
+                <SignUpButton error={error} loading={loading} handleSignUp={handleSignUp} />
             </Box>
         </form>
     );
