@@ -1,4 +1,4 @@
-export interface FormData {
+export interface LoginFormData {
     username: string | undefined;
     password: string | undefined;
 }

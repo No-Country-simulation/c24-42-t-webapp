@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { CustomError } from "@tipos/types";
 import { Form } from "@ui/Form/Form";
 import { LoginButton } from "./LoginButton";
-import { FormData, loginSchema, loginUiSchema } from "./loginSchema";
+import { LoginFormData, loginSchema, loginUiSchema } from "./loginSchema";
 import { FormStyle } from "./LoginStyles";
 import { useState } from "react";
 import { loginUser } from "@services/loginUser";
@@ -12,7 +12,7 @@ import { useUserStore } from "@store/user.store";
 import { useModalStore } from "@store/modal.store";
 
 export const LoginForm = () => {
-    const [data, setData] = useState<FormData>();
+    const [data, setData] = useState<LoginFormData>();
     const [error, setError] = useState<CustomError>(null);
     const navigate = useNavigate();
     const getDashboardUrl = useUserStore(state => state.getUserDashboardURL);

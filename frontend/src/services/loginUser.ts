@@ -1,10 +1,10 @@
-import { FormData } from "@components/sections/Welcome/ModalMenu/Login/loginSchema";
+import { LoginFormData } from "@components/sections/Welcome/ModalMenu/Login/loginSchema";
 import { CustomError } from "@tipos/types";
 import { handleError } from "@utils/handleError";
 import { Dispatch, SetStateAction } from "react";
 
 interface Params {
-    data: FormData | undefined,
+    data: LoginFormData | undefined,
     setError: Dispatch<SetStateAction<CustomError>>
 }
 
@@ -25,7 +25,7 @@ export const loginUser = async ({ data, setError }: Params): Promise<string | nu
                     throw new Error(`${response.status}: cors`);
                 } else {
                     const responseBody = await response.json();
-                    throw new Error(`${response.status}: ${responseBody.error}`);
+                    throw new Error(`${response.status}: ${responseBody.error || responseBody.ERROR}`);
                 }
             }
             return await response.json()
