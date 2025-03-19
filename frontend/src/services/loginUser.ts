@@ -21,7 +21,7 @@ export const loginUser = async ({ data, setError }: Params): Promise<string | nu
         .then(async (response) => {
             const responseBody = await response.json();
             if (!response.ok) {
-                throw new Error(responseBody.error || `Error ${response.status}: Ocurrió un error desconocido`);
+                throw new Error(`${response.status}: ${responseBody.error}`);
             }
             return responseBody.token
         })
