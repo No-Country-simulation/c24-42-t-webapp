@@ -4,7 +4,8 @@ export const SideBarStyles: ObjectStyles = {
     sideBar: {
         backgroundColor: "#f1f1f1",
         borderRight: "1px solid #c1c1c1",
-        overflow: "hidden"
+        overflow: "hidden",
+        transition: "width 0.1s linear"
     },
     button: {
         marginTop: "0.5rem",
