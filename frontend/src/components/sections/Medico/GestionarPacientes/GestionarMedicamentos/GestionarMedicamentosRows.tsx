@@ -1,10 +1,10 @@
 import { useTableContext } from "@context/table.context";
 import { TableRow, TableCell, IconButton, Tooltip } from "@mui/material";
 import { MedicacionData } from "@tipos/backendTypes";
-import RemoveIcon from '@mui/icons-material/Remove';
 import EditIcon from '@mui/icons-material/Edit';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import { formatDate } from "@utils/formatDate";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const GestionarMedicamentosRows = () => {
     const { dataRows } = useTableContext();
@@ -23,7 +23,7 @@ export const GestionarMedicamentosRows = () => {
                         <TableCell align="center" sx={{ display: "flex", gap: "1rem" }}>
                             <Tooltip title="Eliminar">
                                 <IconButton color="error" >
-                                    <RemoveIcon />
+                                    <DeleteIcon />
                                 </IconButton>
                             </Tooltip>
                             <Tooltip title="Editar">

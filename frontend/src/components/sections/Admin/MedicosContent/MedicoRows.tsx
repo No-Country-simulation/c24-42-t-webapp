@@ -1,5 +1,5 @@
 import { useTableContext } from "@context/table.context";
-import RemoveIcon from '@mui/icons-material/Remove';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton, TableCell, TableRow, Tooltip, Typography } from "@mui/material";
 import { MedicoData } from "@tipos/backendTypes";
 
@@ -22,7 +22,7 @@ export const MedicoRows = () => {
                         <TableCell align="center">
                             <Tooltip title="Eliminar medico">
                                 <IconButton>
-                                    <RemoveIcon color="error" />
+                                    <DeleteIcon color="error" />
                                 </IconButton>
                             </Tooltip>
                         </TableCell>

@@ -1,6 +1,6 @@
 import { useTableContext } from "@context/table.context";
 import { IconButton, TableCell, TableRow, Tooltip } from "@mui/material";
-import RemoveIcon from '@mui/icons-material/Remove';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { PacienteData } from "@tipos/backendTypes";
 
 export const PacienteRows = () => {
@@ -18,7 +18,7 @@ export const PacienteRows = () => {
                         <TableCell align="center" sx={{ display: "flex", justifyContent: "space-around" }}>
                             <Tooltip title="Eliminar paciente">
                                 <IconButton color="error">
-                                    <RemoveIcon />
+                                    <DeleteIcon />
                                 </IconButton>
                             </Tooltip>
                         </TableCell>
