@@ -5,16 +5,15 @@ export const TabStyles: ObjectStyles = {
         display: "flex",
         gap: "1rem",
         padding: "0 0.5em",
-        marginBottom: "0.5rem",
     },
     tab: {
         textTransform: "none",
-        borderRadius: "20px",
+        borderRadius: "0",
         fontWeight: "bold",
         borderBottom: "none",
-        backgroundColor: "transparent",
+        backgroundColor: "#c1c1c150",
         color: "#198751",
         padding: "0.4em 1em",
-        border: "2px solid #198751"
+        clipPath: "polygon(90% 0, 100% 30%, 100% 100%, 0 100%, 0 0)",
     }
 };
