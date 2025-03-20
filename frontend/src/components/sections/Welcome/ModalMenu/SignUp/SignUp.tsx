@@ -5,10 +5,10 @@ import { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { FormStyle } from "./SignUpStyles";
 import { signUpUser } from "@services/signUpUser";
-import { SignUpButton } from "./SignUpButton";
 import { CustomError } from "@tipos/types";
 import { showSonnerToast } from "@utils/showSonnerToast";
 import { useModalStore } from "@store/modal.store";
+import { SubmitButton } from "@ui/SubmitButton/SubmitButton";
 
 export default function SignUp() {
     const [data, setData] = useState<SignUpFormData>();
@@ -49,7 +49,7 @@ export default function SignUp() {
                         error?.type === "fetch" && <Typography color="error" textAlign="center">{error.description}</Typography>
                     }
                 </Box>
-                <SignUpButton error={error} loading={loading} handleSignUp={handleSignUp} />
+                <SubmitButton label="Registrarse" error={error} loading={loading} handleOnClick={handleSignUp} />
             </Box>
         </form>
     );

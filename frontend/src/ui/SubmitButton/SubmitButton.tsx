@@ -3,22 +3,22 @@ import { CustomError } from "@tipos/types";
 import { CustomButton } from "@ui/CustomButton/CustomButton";
 
 interface Props {
+    label: string
     loading: boolean
     error: CustomError
-    handleSignUp: () => Promise<void>
+    handleOnClick: () => Promise<void>
 }
 
-export const SignUpButton = ({ error, loading, handleSignUp }: Props) => {
+export const SubmitButton = ({ label, error, loading, handleOnClick }: Props) => {
     return (
-        <CustomButton type="submit" onClick={handleSignUp} disabled={error !== null && error?.type === "input"}>
+        <CustomButton type="submit" onClick={handleOnClick} disabled={error !== null && error?.type === "input"}>
             {
                 loading
                     ?
                     <CircularProgress color="inherit" size="25px" />
                     :
                     <Typography textTransform="none" fontSize="18px">
-                        Registrarse
-
+                        {label}
                     </Typography>
             }
         </CustomButton>

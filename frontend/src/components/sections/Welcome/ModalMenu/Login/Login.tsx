@@ -2,7 +2,6 @@
 import { Box, Typography } from "@mui/material";
 import { CustomError } from "@tipos/types";
 import { Form } from "@ui/Form/Form";
-import { LoginButton } from "./LoginButton";
 import { LoginFormData, loginSchema, loginUiSchema } from "./loginSchema";
 import { FormStyle } from "./LoginStyles";
 import { useState } from "react";
@@ -10,6 +9,7 @@ import { loginUser } from "@services/loginUser";
 import { useNavigate } from "react-router";
 import { useUserStore } from "@store/user.store";
 import { useModalStore } from "@store/modal.store";
+import { SubmitButton } from "@ui/SubmitButton/SubmitButton";
 
 export default function Login() {
     const [data, setData] = useState<LoginFormData>();
@@ -17,7 +17,7 @@ export default function Login() {
     const navigate = useNavigate();
     const getDashboardUrl = useUserStore(state => state.getUserDashboardURL);
     const saveUserData = useUserStore(state => state.saveUserData);
-    const closeModal = useModalStore(state=> state.closeModal);
+    const closeModal = useModalStore(state => state.closeModal);
 
     const redirectTo = useModalStore(state => state.modalData.redirect);
     const [loading, setLoading] = useState(false);
@@ -55,7 +55,7 @@ export default function Login() {
                         error?.type === "fetch" && <Typography color="error" textAlign="center">{error.description}</Typography>
                     }
                 </Box>
-                <LoginButton loading={loading} error={error} handleLogin={handleLogin} />
+                <SubmitButton label="Iniciar Sesión" error={error} loading={loading} handleOnClick={handleLogin} />
             </Box>
         </form >
     );
