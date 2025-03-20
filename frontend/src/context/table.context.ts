@@ -6,7 +6,8 @@ const initValue: TableContextType = {
     dataRows: [],
     loadingTableRows: false,
     errorTableRows: null,
-    refetchRows: null
+    refetchRows: null,
+    handleAdd: null
 };
 
 export interface TableContextType {
@@ -14,6 +15,7 @@ export interface TableContextType {
     loadingTableRows: boolean
     errorTableRows: CustomError
     refetchRows: (() => void) | null
+    handleAdd: (() => void) | null
 }
 
 export const TableContext = createContext<TableContextType>(initValue);

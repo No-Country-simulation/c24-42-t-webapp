@@ -10,9 +10,10 @@ interface TableProviderProps {
     children: ReactNode
     idForEndpoint?: string
     fetchRows: (params: Parameters) => any
+    handleAdd?: (() => void) | null
 }
 
-export const TableContextProvider = ({ children, fetchRows, idForEndpoint = "" }: TableProviderProps) => {
+export const TableContextProvider = ({ children, idForEndpoint = "", fetchRows, handleAdd = null }: TableProviderProps) => {
     const [dataRows, setDataRows] = useState<any[]>([]);
     const [loadingTableRows, setLoadingTableRows] = useState(false);
     const [errorTableRows, setErrorTableRows] = useState<CustomError>(null);
@@ -32,7 +33,8 @@ export const TableContextProvider = ({ children, fetchRows, idForEndpoint = "" }
         dataRows,
         loadingTableRows,
         errorTableRows,
-        refetchRows: handleFetchRows
+        refetchRows: handleFetchRows,
+        handleAdd
     }
 
     return (
