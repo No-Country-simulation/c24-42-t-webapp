@@ -32,22 +32,21 @@ export interface PacienteData {
 }
 
 export interface PacienteInput {
-    firstName:            string;
-    lastName:             string;
-    documentId:           string;
-    birthDate:            Date;
-    gender:               string;
-    phone:                string;
-    address:              string;
+    firstName: string;
+    lastName: string;
+    documentId: string;
+    birthDate: Date;
+    gender: string;
+    phone: string;
+    address: string;
     emergencyContactInfo: string;
-    user:                 UserInput;
+    user: UserInput;
 }
 
 export interface UserInput {
-    email:    string;
+    email: string;
     password: string;
 }
-
 
 export interface CitasData {
     id: number;
@@ -112,4 +111,16 @@ export interface MedicoData {
     gender: Gender;
     speciality: Speciality;
     phone: string;
+}
+
+export interface MedicoInput {
+    name: string,
+    lastname: string,
+    description: string,
+    state: string,
+    documentId: string,
+    gender: Gender,
+    speciality: Speciality,
+    phone: string,
+    user: UserInput
 }

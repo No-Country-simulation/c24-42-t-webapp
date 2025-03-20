@@ -7,15 +7,24 @@ import { Box } from "@mui/material";
 import { TabsAdmin } from "@tipos/component";
 import { TabStyles } from "../TabStyles";
 import { CustomButton } from "@ui/CustomButton/CustomButton";
+import { useModalStore } from "@store/modal.store";
 
 interface Props {
     handleChangeTab: (tab: TabsAdmin) => void
 }
 
 export const TabMedico = ({ handleChangeTab }: Props) => {
+    const setModalData = useModalStore(state => state.setModalData);
+    const handleAddMedico = () => {
+        setModalData({
+            showModal: true,
+            title: "Crear Medico",
+            operation: "create_medico"
+        });
+    }
     return (
         <SectionWrapper sideBarItems={ADMIN_LINKS}>
-            <TableContextProvider fetchRows={getMedicos}>
+            <TableContextProvider fetchRows={getMedicos} handleAdd={handleAddMedico}>
                 <Box sx={TabStyles.container}>
                     <CustomButton onClick={() => handleChangeTab("pacientes")} sx={TabStyles.tab}>
                         Tabla de Pacientes

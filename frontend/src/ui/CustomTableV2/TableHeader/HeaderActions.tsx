@@ -4,11 +4,15 @@ import AddIcon from '@mui/icons-material/Add';
 import { useTableContext } from "@context/table.context";
 
 export const HeaderActions = () => {
-    const { refetchRows, loadingTableRows } = useTableContext();
-    const handleAdd = null;
+    const { loadingTableRows, handleAdd, refetchRows } = useTableContext();
     const handleRefetch = () => {
         if (refetchRows) {
             refetchRows();
+        }
+    }
+    const handleAddNewItem = () => {
+        if (handleAdd) {
+            handleAdd();
         }
     }
     return (
@@ -16,14 +20,14 @@ export const HeaderActions = () => {
             {
                 handleAdd !== null && (
                     <Tooltip title="Refrescar tabla">
-                        <IconButton aria-label="add item button" sx={{ color: "#f1f1f1" }}>
+                        <IconButton aria-label="add item button" sx={{ color: "#f1f1f1" }} onClick={handleAddNewItem} disabled={loadingTableRows}>
                             <AddIcon />
                         </IconButton>
                     </Tooltip>
                 )
             }
             <Tooltip title="Añadir un nuevo item">
-                <IconButton onClick={handleRefetch} aria-label="refresh button" sx={{ color: "#f1f1f1" }} disabled={refetchRows === null || loadingTableRows}>
+                <IconButton onClick={handleRefetch} aria-label="refresh button" sx={{ color: "#f1f1f1" }} disabled={loadingTableRows}>
                     <RefreshIcon />
                 </IconButton>
             </Tooltip>

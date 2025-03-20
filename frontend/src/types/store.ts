@@ -1,4 +1,4 @@
-export type ModalOperation = "menu" | "login" | "sign up";
+export type ModalOperation = "menu" | "login" | "sign up" | "create_medico";
 
 export interface ModalData {
     title: string,
