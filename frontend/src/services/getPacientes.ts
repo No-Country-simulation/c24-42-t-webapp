@@ -4,7 +4,8 @@ import { handleError } from "@utils/handleError";
 
 export const getPacientes = ({ token, setDataRows, setLoading, setError }: Parameters) => {
     setLoading(true);
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/patient`, { method: "GET", headers: { 'Authorization': `${token}` } })
+    const PACIENTES_URL = `${import.meta.env.VITE_BACKEND_URL}/api/v1/patient`;
+    fetch(PACIENTES_URL, { method: "GET", headers: { 'Authorization': `${token}` } })
         .then(async (response) => {
             const responseBody = await response.json();
             if (!response.ok) {

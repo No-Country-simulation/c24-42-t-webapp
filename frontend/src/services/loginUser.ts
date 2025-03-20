@@ -10,7 +10,6 @@ interface Params {
 }
 
 export const loginUser = async ({ data, setError }: Params): Promise<string | null> => {
-
     const LOGIN_URL = `${import.meta.env.VITE_BACKEND_URL}/auth/login`;
     const userInput: UserInput = {
         email: data?.email || "",
