@@ -5,9 +5,20 @@ import EditIcon from '@mui/icons-material/Edit';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import { formatDate } from "@utils/date/formatDate";
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useModalStore } from "@store/modal.store";
 
 export const GestionarMedicamentosRows = () => {
     const { dataRows } = useTableContext();
+    const setModalData = useModalStore(state => state.setModalData);
+
+    const handleDeleteMedicamento = (id: number) => {
+        setModalData({
+            showModal: true,
+            title: "Eliminar Medicamento",
+            operation: "delete_medication",
+            data: { id }
+        });
+    }
 
     return (
         <>
@@ -22,7 +33,7 @@ export const GestionarMedicamentosRows = () => {
                         <TableCell align="center">{formatDate(endDate, "yyyy-MM-dd", "dd/MM/yyyy")}</TableCell>
                         <TableCell align="center" sx={{ display: "flex", gap: "1rem" }}>
                             <Tooltip title="Eliminar">
-                                <IconButton color="error" >
+                                <IconButton color="error" onClick={() => handleDeleteMedicamento(id)} >
                                     <DeleteIcon />
                                 </IconButton>
                             </Tooltip>

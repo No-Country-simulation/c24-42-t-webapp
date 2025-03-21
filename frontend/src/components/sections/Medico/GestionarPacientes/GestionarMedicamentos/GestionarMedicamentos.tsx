@@ -6,8 +6,8 @@ import { GestionarMedicamentosContent } from "./GestionarMedicamentosContent";
 import { useParams } from "react-router";
 import { useModalStore } from "@store/modal.store";
 import CustomModal from "@ui/CustomModal/CustomModal";
-import { MedicamentosForm } from "./Form/MedicamentosForm";
 import { Toaster } from "sonner";
+import { GestionarMedicamentosFormContent } from "./Form/GestionarMedicamentosFormContent";
 
 export const GestionarMedicamentos = () => {
     const id: string = useParams().id || "";
@@ -32,7 +32,7 @@ export const GestionarMedicamentos = () => {
             {
                 showModal && (
                     <CustomModal>
-                        <MedicamentosForm />                            
+                        <GestionarMedicamentosFormContent />
                     </CustomModal>
                 )
             }

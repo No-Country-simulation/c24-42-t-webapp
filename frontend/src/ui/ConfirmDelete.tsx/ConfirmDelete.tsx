@@ -16,14 +16,16 @@ export const ConfirmDelete = ({ buttonLabel, description, loading, error, handle
     const closeModal = useModalStore(state => state.closeModal);
     return (
         <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            <Typography variant="body1">
+            <Typography variant="body1" fontSize="1.3em">
                 {description}
             </Typography>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                <SubmitButton loading={loading} error={error} label={buttonLabel} handleOnClick={handleClick} />
-                <CustomButton onClick={() => closeModal()} sx={{ backgroundColor: "#c1c1c1", fontSize: "18px", textTransform: "none" }}>
-                    Cancelar
+            <Box sx={{ alignSelf: "end", display: "flex", gap: "0.5rem" }}>
+                <CustomButton onClick={() => closeModal()} color="secondary">
+                    <Typography textTransform="none" fontSize="18px">
+                        Cancelar
+                    </Typography>
                 </CustomButton>
+                <SubmitButton loading={loading} error={error} label={buttonLabel} handleOnClick={handleClick} />
             </Box>
         </Box>
     );
