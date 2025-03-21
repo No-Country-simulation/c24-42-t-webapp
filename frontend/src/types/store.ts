@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export type ModalOperation = "menu" | "login" | "sign_up" | "create_medico" | "delete_medico";
+export type ModalOperation = "menu" | "login" | "sign_up" | "create_medico" | "delete_medico" | "add_medication";
 
 export interface ModalData {
     title: string,
