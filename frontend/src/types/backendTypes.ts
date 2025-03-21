@@ -146,3 +146,16 @@ export interface MedicoInput {
     phone: string,
     user: UserInput
 }
+
+export interface AppointmentResponse {
+    date:        Date;
+    time:        Time;
+    visitReason: string;
+}
+
+export interface Time {
+    hour:   number;
+    minute: number;
+    second: number;
+    nano:   number;
+}

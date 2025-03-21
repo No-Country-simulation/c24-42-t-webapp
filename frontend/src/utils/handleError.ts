@@ -35,11 +35,18 @@ export const handleError = (error: any): CustomError => {
         }
     }
 
-    if(errorMsg.includes("400")) {
+    if (errorMsg.includes("400")) {
+        if (errorMsg.includes("There are not appointments")) {
+            return {
+                description: "No hay citas",
+                type: "fetch",
+                status: "400"
+            }
+        }
         return {
             description: "Se introdujo un campo invalido",
             type: "fetch",
-            status: "404"
+            status: "400"
         }
     }
 
