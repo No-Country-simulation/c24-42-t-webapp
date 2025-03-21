@@ -5,11 +5,7 @@ import { useTableContext } from "@context/table.context";
 
 export const HeaderActions = () => {
     const { loadingTableRows, handleAdd, refetchRows } = useTableContext();
-    const handleRefetch = () => {
-        if (refetchRows) {
-            refetchRows();
-        }
-    }
+    const handleRefetch = () => refetchRows();
     const handleAddNewItem = () => {
         if (handleAdd) {
             handleAdd();

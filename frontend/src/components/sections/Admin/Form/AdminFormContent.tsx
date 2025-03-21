@@ -7,12 +7,18 @@ import { Box, Typography } from "@mui/material";
 import { SubmitButton } from "@ui/SubmitButton/SubmitButton";
 import { useModalStore } from "@store/modal.store";
 import { createMedico } from "@services/createMedico";
+import { showSonnerToast } from "@utils/showSonnerToast";
+import { useUserStore } from "@store/user.store";
+import { useTableContext } from "@context/table.context";
+import { MedicoData } from "@tipos/backendTypes";
 
 export const AdminFormContent = () => {
+    const { addRow } = useTableContext();
     const [data, setData] = useState<MedicoFormData>();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<CustomError>(null);
     const closeModal = useModalStore(state => state.closeModal);
+    const token = useUserStore(state => state.getToken)();
 
     const handleChange = ({ data, errors }: { data: any, errors: any[] }) => {
         setData(data);
@@ -26,13 +32,29 @@ export const AdminFormContent = () => {
     const handleSubmit = async () => {
         setError(null);
         setLoading(true);
-        const response = await createMedico({ data, setError });
+        const response = await createMedico({ token, data, setError });
         if (response !== null) {
-            setLoading(false);
+            const { medic, message } = response;
+            showSonnerToast({
+                title: message,
+                description: "Se a añadido un nuevo medico al sistema",
+                type: "success"
+            });
+            const newMedicoData: MedicoData = {
+                description: medic.description,
+                documentId: medic.documentId,
+                gender: medic.gender,
+                id: medic.id,
+                lastname: medic.lastname,
+                name: medic.name,
+                phone: medic.phone,
+                speciality: medic.speciality,
+                state: medic.state
+            }
+            addRow(newMedicoData);
             closeModal();
-        } else {
-            setLoading(false);
         }
+        setLoading(false);
     }
 
     return (

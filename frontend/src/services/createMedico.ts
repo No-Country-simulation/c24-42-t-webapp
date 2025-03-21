@@ -1,16 +1,17 @@
 import { MedicoFormData } from "@components/sections/Admin/Form/medicoFormSchema"
-import { Gender, MedicoInput, Speciality } from "@tipos/backendTypes"
+import { Gender, MedicoCreateResponse, MedicoInput, Speciality } from "@tipos/backendTypes"
 import { CustomError } from "@tipos/types"
 import { handleError } from "@utils/handleError"
 import { Dispatch, SetStateAction } from "react"
 
 interface Params {
+    token: string
     data: MedicoFormData | undefined,
     setError: Dispatch<SetStateAction<CustomError>>
 }
 
-export const createMedico = async ({ data, setError }: Params) => {
-    const CREATE_MEDIC_URL = `${import.meta.env.VITE_BACKEND_URL}/auth/login`;
+export const createMedico = async ({ token, data, setError }: Params) => {
+    const CREATE_MEDIC_URL = `${import.meta.env.VITE_BACKEND_URL}/api/v1/medic`;
     const speciality = Speciality[data?.speciality as Speciality];
     const gender = Gender[data?.gender as Gender];
     const medicoInput: MedicoInput = {
@@ -31,6 +32,7 @@ export const createMedico = async ({ data, setError }: Params) => {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            'Authorization': `${token}`
         },
         body: JSON.stringify(medicoInput),
     }
@@ -46,8 +48,8 @@ export const createMedico = async ({ data, setError }: Params) => {
             }
             return await response.json()
         })
-        .then((response) => {
-            return response.token;
+        .then((response: MedicoCreateResponse) => {
+            return response;
         })
         .catch((e) => {
             const error = handleError(e);

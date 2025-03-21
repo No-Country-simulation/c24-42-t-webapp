@@ -1,3 +1,5 @@
+import { UserRole } from "./store";
+
 export interface DoctorData {
     id: number,
     name: string,
@@ -99,6 +101,26 @@ export enum Speciality {
 
 export interface MedicoResponse {
     medics: MedicoData[]
+}
+
+export interface MedicoCreateResponse {
+    message: string,
+    medic: {
+        id: number,
+        name: string,
+        lastname: string,
+        description: string,
+        state: string,
+        documentId: string,
+        gender: Gender,
+        speciality: Speciality,
+        phone: string,
+        user: {
+            id: number,
+            email: string,
+            role: UserRole
+        }
+    }
 }
 
 export interface MedicoData {

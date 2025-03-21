@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CustomError } from "@tipos/types";
 import { createContext, useContext } from "react";
@@ -6,16 +7,18 @@ const initValue: TableContextType = {
     dataRows: [],
     loadingTableRows: false,
     errorTableRows: null,
-    refetchRows: null,
-    handleAdd: null
+    handleAdd: null,
+    refetchRows: () => {},
+    addRow: (newItem: any) => {}
 };
 
 export interface TableContextType {
     dataRows: any[]
     loadingTableRows: boolean
     errorTableRows: CustomError
-    refetchRows: (() => void) | null
+    refetchRows: () => void
     handleAdd: (() => void) | null
+    addRow: (newItem: any) => void
 }
 
 export const TableContext = createContext<TableContextType>(initValue);

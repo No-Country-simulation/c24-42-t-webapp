@@ -5,6 +5,7 @@ import { TabsAdmin } from "@tipos/component";
 import { useModalStore } from "@store/modal.store";
 import CustomModal from "@ui/CustomModal/CustomModal";
 import { AdminFormContent } from "./Form/AdminFormContent";
+import { Toaster } from "sonner";
 
 export const DashboardAdmin = () => {
     const [tab, setTab] = useState<TabsAdmin>("pacientes");
@@ -31,6 +32,7 @@ export const DashboardAdmin = () => {
                     </CustomModal>
                 )
             }
+            <Toaster duration={10000} />
         </>
     );
 }
