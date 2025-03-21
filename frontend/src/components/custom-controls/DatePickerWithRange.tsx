@@ -5,10 +5,51 @@ import { Box } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import { format, parse } from "date-fns";
 
-const DatePickerWithRange = ({ data, path, enabled, handleChange }: ControlProps) => {
+
+type ErrorField = "start" | "end" | "both"
+
+type ErrorData = {
+    isError: boolean
+    errorOn: ErrorField
+    message: string
+}
+
+const DatePickerWithRange = ({ data, path, enabled, required, handleChange }: ControlProps) => {
     const startDate = data?.startDate ? parse(data.startDate, "dd/MM/yyyy", new Date()) : null;
     const endDate = data?.endDate ? parse(data.endDate, "dd/MM/yyyy", new Date()) : null;
-    const dateRangeError = (endDate !== null && startDate !== null) && endDate < startDate;
+
+    const handleErrorMsg = (): ErrorData => {
+        if ((endDate !== null && startDate !== null) && endDate < startDate) {
+            return {
+                isError: true,
+                errorOn: "both",
+                message: "Rango Invalido"
+            }
+        }
+
+        if ((required && (data?.startDate && !data?.endDate))) {
+            return {
+                isError: true,
+                errorOn: 'end',
+                message: "Debe seleccionar una fecha final"
+            }
+        }
+
+        if ((required && (!data?.startDate && data?.endDate))) {
+            return {
+                isError: true,
+                errorOn: 'start',
+                message: "Debe seleccionar una fecha inicial"
+            }
+        }
+
+        return {
+            isError: false,
+            errorOn: 'both',
+            message: ""
+        }
+    }
+    const dateRangeError: ErrorData = handleErrorMsg();
 
     const handleStartDateChange = (value: any) => {
         const date = new Date(value);
@@ -33,8 +74,8 @@ const DatePickerWithRange = ({ data, path, enabled, handleChange }: ControlProps
                 slotProps={{
                     textField: {
                         variant: 'outlined',
-                        error: dateRangeError,
-                        helperText: dateRangeError ? "Rango invalido" : "",
+                        error: dateRangeError.isError && ["both", "start"].includes(dateRangeError.errorOn),
+                        helperText: dateRangeError.isError && ["both", "start"].includes(dateRangeError.errorOn) ? dateRangeError.message : "",
                     },
                 }}
             />
@@ -47,7 +88,8 @@ const DatePickerWithRange = ({ data, path, enabled, handleChange }: ControlProps
                 slotProps={{
                     textField: {
                         variant: 'outlined',
-                        error: dateRangeError
+                        error: dateRangeError.isError && ["both", "end"].includes(dateRangeError.errorOn),
+                        helperText: dateRangeError.isError && ["both", "end"].includes(dateRangeError.errorOn) ? dateRangeError.message : "",
                     },
                 }}
             />
