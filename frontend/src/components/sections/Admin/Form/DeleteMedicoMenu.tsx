@@ -1,3 +1,4 @@
+import { useTableContext } from "@context/table.context";
 import { deleteMedico } from "@services/deleteMedico";
 import { useModalStore } from "@store/modal.store";
 import { useUserStore } from "@store/user.store";
@@ -12,6 +13,7 @@ export const DeleteMedicoMenu = () => {
     const { id: medicoId } = useModalStore(state => state.modalData.data);
     const closeModal = useModalStore(state => state.closeModal);
     const token = useUserStore(state => state.getToken)();
+    const { refetchRows } = useTableContext();
 
     const handleClick = async () => {
         setLoading(true);
@@ -23,6 +25,7 @@ export const DeleteMedicoMenu = () => {
                 description: "Se elimino correctamente el medico seleccionado",
                 type: "success"
             });
+            refetchRows()
             closeModal();
         }
         setLoading(false)

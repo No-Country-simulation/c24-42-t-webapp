@@ -2,14 +2,12 @@ import { ReactNode, useState } from "react";
 import { TabPacientes } from "./PacienteContent/TabPacientes";
 import { TabMedico } from "./MedicosContent/TabMedico";
 import { TabsAdmin } from "@tipos/component";
-import { useModalStore } from "@store/modal.store";
-import CustomModal from "@ui/CustomModal/CustomModal";
-import { AdminFormContent } from "./Form/AdminFormContent";
 import { Toaster } from "sonner";
+import { SectionWrapper } from "@components/layout/SectionWrapper";
+import { ADMIN_LINKS } from "./ADMIN_LINKS";
 
 export const DashboardAdmin = () => {
     const [tab, setTab] = useState<TabsAdmin>("pacientes");
-    const showModal = useModalStore((state) => state.modalData.showModal);
 
     const handleChangeTab = (tab: TabsAdmin) => {
         setTab(tab);
@@ -22,16 +20,11 @@ export const DashboardAdmin = () => {
 
     return (
         <>
-            {
-                CONTENT_MAP[tab]
-            }
-            {
-                showModal && (
-                    <CustomModal>
-                        <AdminFormContent />
-                    </CustomModal>
-                )
-            }
+            <SectionWrapper sideBarItems={ADMIN_LINKS}>
+                {
+                    CONTENT_MAP[tab]
+                }
+            </SectionWrapper>
             <Toaster duration={10000} />
         </>
     );

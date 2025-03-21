@@ -30,7 +30,6 @@ export const FormularioCreacionMedico = () => {
     }
 
     const handleSubmit = async () => {
-        setError(null);
         setLoading(true);
         const response = await createMedico({ token, data, setError });
         if (response !== null) {

@@ -9,6 +9,7 @@ interface Params {
 }
 
 export const deleteMedico = async ({ medicoId, token, setError }: Params) => {
+    setError(null);
     const DELETE_MEDICO_URL = `${import.meta.env.VITE_BACKEND_URL}/api/v1/medic/${medicoId}`;
     const response = fetch(DELETE_MEDICO_URL, { method: "DELETE", headers: { 'Authorization': `${token}` } })
         .then(async (response) => {
