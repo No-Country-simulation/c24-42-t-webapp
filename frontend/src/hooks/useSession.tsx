@@ -1,6 +1,6 @@
 import { useUserStore } from "@store/user.store";
 import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 export const useSession = () => {
     const isLogged = useUserStore(state => state.isLogged)();
@@ -8,6 +8,7 @@ export const useSession = () => {
     const isTokenExpired = useUserStore(state => state.isTokenExpired);
     const closeSession = useUserStore(state => state.closeSession);
     const navigate = useNavigate();
+    const pathname = useLocation().pathname;
 
     useEffect(() => {
         // verifico si el usuario esta logeado
@@ -17,8 +18,10 @@ export const useSession = () => {
                 // le cierro la sesion al usuario
                 closeSession();
                 navigate("/");
-            } else {
-                // redirecciono el usuario a su dashboard 
+            } 
+            
+            // si me encuentro en el inicio del sitio web, redirecciono al usuario a su dashboard
+            if (pathname === "/") {
                 const dashboard = getUserDashboardURL();
                 navigate(dashboard);
             }
