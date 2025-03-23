@@ -13,7 +13,7 @@ export function SonnerToast(props: ToastProps) {
             <Box>{metadata.icon}</Box>
             <Box>
                 <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", height: "20px" }}>
-                    <Box sx={{ justifySelf: "center" }}>
+                    <Box sx={{ justifySelf: "center", width: "max-content" }}>
                         <Typography sx={SonnerToastStyles.title} variant='body1'>
                             {title}
                         </Typography>
