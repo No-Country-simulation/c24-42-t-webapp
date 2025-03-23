@@ -11,7 +11,7 @@ interface Props {
 
 export const SubmitButton = ({ label, error, loading, handleOnClick }: Props) => {
     return (
-        <CustomButton type="submit" onClick={handleOnClick} disabled={error !== null && error?.type === "input"}>
+        <CustomButton type="submit" onClick={loading ? undefined : handleOnClick} disabled={error !== null && error?.type === "input"}>
             {
                 loading
                     ?

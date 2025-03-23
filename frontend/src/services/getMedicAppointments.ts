@@ -17,6 +17,7 @@ export const getMedicAppointments = ({ token, setDataRows, setLoading, setError,
         })
         .catch((e) => {
             const error = handleError(e);
+            setDataRows([]);
             setError(error);
         })
         .finally(() => setLoading(false));

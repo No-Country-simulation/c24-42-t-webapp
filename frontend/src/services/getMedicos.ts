@@ -18,6 +18,7 @@ export const getMedicos = ({ token, setDataRows, setLoading, setError }: Paramet
         })
         .catch((e) => {
             const error = handleError(e);
+            setDataRows([]);
             setError(error);
         })
         .finally(() => setLoading(false));

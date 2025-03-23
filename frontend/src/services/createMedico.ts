@@ -11,7 +11,6 @@ interface Params {
 }
 
 export const createMedico = async ({ token, data, setError }: Params) => {
-    setError(null);
     const CREATE_MEDIC_URL = `${import.meta.env.VITE_BACKEND_URL}/api/v1/medic`;
     const speciality = Speciality[data?.speciality as Speciality];
     const gender = Gender[data?.gender as Gender];
