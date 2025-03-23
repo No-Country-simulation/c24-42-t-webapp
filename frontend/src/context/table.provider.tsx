@@ -25,8 +25,13 @@ export const TableContextProvider = ({ children, idForEndpoint = "", fetchRows, 
     }, []);
 
     const addRow = (newItem: any) => {
+        setErrorTableRows(previuosState => null);
         setDataRows([ ...dataRows, newItem ]);
     } 
+
+    const handleSetError = (error: CustomError) => {
+        setErrorTableRows(error);
+    }
 
     useEffect(() => {
         handleFetchRows();
@@ -37,6 +42,7 @@ export const TableContextProvider = ({ children, idForEndpoint = "", fetchRows, 
         dataRows,
         loadingTableRows,
         errorTableRows,
+        handleSetError,
         refetchRows: handleFetchRows,
         handleAdd,
         addRow

@@ -8,6 +8,7 @@ const initValue: TableContextType = {
     loadingTableRows: false,
     errorTableRows: null,
     handleAdd: null,
+    handleSetError: (error) => {},
     refetchRows: () => {},
     addRow: (newItem: any) => {}
 };
@@ -16,6 +17,7 @@ export interface TableContextType {
     dataRows: any[]
     loadingTableRows: boolean
     errorTableRows: CustomError
+    handleSetError: (error: CustomError) => void
     refetchRows: () => void
     handleAdd: (() => void) | null
     addRow: (newItem: any) => void
