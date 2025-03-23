@@ -10,7 +10,8 @@ const initValue: TableContextType = {
     handleAdd: null,
     handleSetError: (error) => {},
     refetchRows: () => {},
-    addRow: (newItem: any) => {}
+    addRow: (newItem: any) => {},
+    removeRow: (idAEliminar) => {}
 };
 
 export interface TableContextType {
@@ -21,6 +22,7 @@ export interface TableContextType {
     refetchRows: () => void
     handleAdd: (() => void) | null
     addRow: (newItem: any) => void
+    removeRow: (idAEliminar: number) => void
 }
 
 export const TableContext = createContext<TableContextType>(initValue);

@@ -26,12 +26,23 @@ export const TableContextProvider = ({ children, idForEndpoint = "", fetchRows, 
 
     const addRow = (newItem: any) => {
         setErrorTableRows(previuosState => null);
-        setDataRows([ ...dataRows, newItem ]);
-    } 
+        setDataRows([...dataRows, newItem]);
+    }
 
     const handleSetError = (error: CustomError) => {
         setErrorTableRows(error);
     }
+
+    const removeRow = (idAEliminar: number) => {
+        setDataRows(prevData => {
+            const newData = [...prevData];
+            const index = newData.findIndex(item => item.id === idAEliminar);
+            if (index !== -1) {
+                newData.splice(index, 1);
+            }
+            return newData;
+        });
+    };
 
     useEffect(() => {
         handleFetchRows();
@@ -45,7 +56,8 @@ export const TableContextProvider = ({ children, idForEndpoint = "", fetchRows, 
         handleSetError,
         refetchRows: handleFetchRows,
         handleAdd,
-        addRow
+        addRow,
+        removeRow
     }
 
     return (
