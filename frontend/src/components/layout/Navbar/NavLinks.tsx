@@ -16,7 +16,7 @@ export const NavLinks = () => {
     const handleClickSignUp = () => {
         setModalData({
             title: "Registrarse",
-            operation: "sign up",
+            operation: "sign_up",
             showModal: true,
         })
     };

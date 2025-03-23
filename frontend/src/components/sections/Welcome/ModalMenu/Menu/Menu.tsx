@@ -17,7 +17,7 @@ export default function Menu() {
     const handleClickSignUp = () => {
         setModalData({
             title: "Registrarse",
-            operation: "sign up",
+            operation: "sign_up",
             showModal: true,
             redirect: "/paciente/agendar-cita"
         })
