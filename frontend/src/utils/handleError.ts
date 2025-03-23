@@ -50,6 +50,14 @@ export const handleError = (error: any): CustomError => {
         }
     }
 
+    if (errorMsg.includes("409")) {
+        return {
+            description: errorMsg.replace("409: ", ""),
+            type: "fetch",
+            status: "409"
+        }
+    }
+
     return {
         description: errorMsg,
         type: "unknow",
