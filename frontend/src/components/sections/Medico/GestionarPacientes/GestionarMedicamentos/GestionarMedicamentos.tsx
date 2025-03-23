@@ -27,15 +27,15 @@ export const GestionarMedicamentos = () => {
             <SectionWrapper sideBarItems={MEDIC_LINKS}>
                 <TableContextProvider handleAdd={handleAddMedicamento} fetchRows={getMedicamentos} idForEndpoint={id}>
                     <GestionarMedicamentosContent />
+                    {
+                        showModal && (
+                            <CustomModal>
+                                <GestionarMedicamentosFormContent />
+                            </CustomModal>
+                        )
+                    }
                 </TableContextProvider>
             </SectionWrapper>
-            {
-                showModal && (
-                    <CustomModal>
-                        <GestionarMedicamentosFormContent />
-                    </CustomModal>
-                )
-            }
             <Toaster />
         </>
     );

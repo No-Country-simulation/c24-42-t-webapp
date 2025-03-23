@@ -1,4 +1,5 @@
 import { MedicamentosFormData } from "@components/sections/Medico/GestionarPacientes/GestionarMedicamentos/Form/medicamentosFormSchema";
+import { MedicacionData, MedicationInput } from "@tipos/backendTypes";
 import { CustomError } from "@tipos/types";
 import { formatDate } from "@utils/date/formatDate";
 import { handleError } from "@utils/handleError";
@@ -15,7 +16,7 @@ export const addMedication = ({ pacienteId, data, token, setError }: Params) => 
     const startDateFormated = data?.datePickerWithRange.startDate ? new Date(formatDate(data?.datePickerWithRange.startDate.toString(), "dd/MM/yyyy", "yyyy-MM-dd")) : new Date();
     const endDateFormated = data?.datePickerWithRange.endDate ? new Date(formatDate(data?.datePickerWithRange.endDate.toString(), "dd/MM/yyyy", "yyyy-MM-dd")) : new Date();
 
-    const medicamentoData = {
+    const medicamentoData: MedicationInput = {
         dosage: data?.dosage || "",
         frequency: data?.frequency || "",
         notes: data?.notes || "",
@@ -40,7 +41,7 @@ export const addMedication = ({ pacienteId, data, token, setError }: Params) => 
             }
             return responseBody;
         })
-        .then((response) => response)
+        .then((response: MedicacionData) => response)
         .catch((e) => {
             const error = handleError(e);
             setError(error);

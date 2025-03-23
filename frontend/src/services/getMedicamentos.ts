@@ -18,6 +18,7 @@ export const getMedicamentos = ({ token, setDataRows, setLoading, setError, idFo
         })
         .catch((e) => {
             const error = handleError(e);
+            setDataRows([]);
             setError(error);
         })
         .finally(() => setLoading(false));

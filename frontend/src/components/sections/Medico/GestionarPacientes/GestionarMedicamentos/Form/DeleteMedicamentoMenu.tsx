@@ -1,3 +1,4 @@
+import { useTableContext } from "@context/table.context";
 import { deleteMedicamento } from "@services/deleteMedicamento";
 import { useModalStore } from "@store/modal.store";
 import { useUserStore } from "@store/user.store";
@@ -12,17 +13,21 @@ export const DeleteMedicamentoMenu = () => {
     const { id: medicamentoId } = useModalStore(state => state.modalData.data);
     const closeModal = useModalStore(state => state.closeModal);
     const token = useUserStore(state => state.getToken)();
+    const { removeRow, handleSetError } = useTableContext();
 
     const handleClick = async () => {
         setLoading(true);
+        setError(null);
+        handleSetError(null);
         const response = await deleteMedicamento({ medicamentoId, token, setError });
         if (response) {
-            const { message } = response;
+            const { status } = response;
             showSonnerToast({
-                title: message,
+                title: status,
                 description: "Se elimino correctamente el medicamento seleccionado",
                 type: "success"
             });
+            removeRow(medicamentoId);
             closeModal();
         }
         setLoading(false)

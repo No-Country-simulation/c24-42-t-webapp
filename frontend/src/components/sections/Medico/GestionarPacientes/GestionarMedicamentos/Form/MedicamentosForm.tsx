@@ -9,11 +9,14 @@ import { addMedication } from "@services/addMedication";
 import { useUserStore } from "@store/user.store";
 import { useModalStore } from "@store/modal.store";
 import { showSonnerToast } from "@utils/showSonnerToast";
+import { useTableContext } from "@context/table.context";
+import { MedicacionData } from "@tipos/backendTypes";
 
 export const MedicamentosForm = () => {
     const [dataForm, setDataForm] = useState<MedicamentosFormData>();
     const [error, setError] = useState<CustomError>(null);
     const [loading, setLoading] = useState(false);
+    const { addRow, handleSetError } = useTableContext();
     const token = useUserStore((state) => state.getToken)();
     const { id: pacienteId } = useModalStore(state => state.modalData.data);
     const closeModal = useModalStore(state => state.closeModal);
@@ -29,6 +32,8 @@ export const MedicamentosForm = () => {
 
     const handleSubmit = async () => {
         setLoading(true);
+        setError(null);
+        handleSetError(null);
         const response = await addMedication({ pacienteId, token, data: dataForm, setError });
         if (response) {
             showSonnerToast({
@@ -36,6 +41,8 @@ export const MedicamentosForm = () => {
                 description: "Se a asigno un nuevo medicamento al paciente",
                 type: "success"
             });
+            const newMedicamentoData: MedicacionData = { ...response }
+            addRow(newMedicamentoData)
             closeModal();
         }
         setLoading(false);

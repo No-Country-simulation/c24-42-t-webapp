@@ -1,5 +1,6 @@
 import { CustomButton } from "@ui/CustomButton/CustomButton";
 import { useNavigate } from "react-router";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export const BackToGestionarPacientesButton = () => {
     const navigate = useNavigate();
@@ -7,7 +8,7 @@ export const BackToGestionarPacientesButton = () => {
         navigate("/medico/gestionar-pacientes");
     }
     return (
-        <CustomButton onClick={handleChangeToMedicationTable} sx={{textTransform: "none", marginBottom: "2rem"}}>
+        <CustomButton startIcon={<ArrowBackIcon />} onClick={handleChangeToMedicationTable} sx={{textTransform: "none", marginBottom: "2rem"}}>
             Volver
         </CustomButton>
     );
