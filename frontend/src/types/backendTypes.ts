@@ -87,8 +87,14 @@ export interface MedicationInput {
     notes:          string;
 }
 
-export interface MedicacionData extends MedicationInput {
+export interface MedicacionData {
     id: number;
+    medicationName: string;
+    dosage:         string;
+    frequency:      string;
+    startDate:      string;
+    endDate:        string;
+    notes:          string;
 }
 
 export enum Speciality {
