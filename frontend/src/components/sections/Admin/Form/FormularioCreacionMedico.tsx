@@ -13,7 +13,7 @@ import { useTableContext } from "@context/table.context";
 import { MedicoData } from "@tipos/backendTypes";
 
 export const FormularioCreacionMedico = () => {
-    const { addRow } = useTableContext();
+    const { addRow, handleSetError } = useTableContext();
     const [data, setData] = useState<MedicoFormData>();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<CustomError>(null);
@@ -31,6 +31,8 @@ export const FormularioCreacionMedico = () => {
 
     const handleSubmit = async () => {
         setLoading(true);
+        setError(null);
+        handleSetError(null);
         const response = await createMedico({ token, data, setError });
         if (response !== null) {
             const { medic, message } = response;

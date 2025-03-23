@@ -13,10 +13,12 @@ export const DeleteMedicoMenu = () => {
     const { id: medicoId } = useModalStore(state => state.modalData.data);
     const closeModal = useModalStore(state => state.closeModal);
     const token = useUserStore(state => state.getToken)();
-    const { refetchRows } = useTableContext();
+    const { handleSetError, removeRow } = useTableContext();
 
     const handleClick = async () => {
         setLoading(true);
+        setError(null);
+        handleSetError(null);
         const response = await deleteMedico({ medicoId, token, setError });
         if (response) {
             const { message } = response;
@@ -25,7 +27,7 @@ export const DeleteMedicoMenu = () => {
                 description: "Se elimino correctamente el medico seleccionado",
                 type: "success"
             });
-            refetchRows()
+            removeRow(medicoId);
             closeModal();
         }
         setLoading(false)

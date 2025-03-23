@@ -5,7 +5,7 @@ import { useModalStore } from "@store/modal.store";
 import { MedicoData } from "@tipos/backendTypes";
 
 export const MedicoRows = () => {
-    const { dataRows } = useTableContext();
+    const { dataRows, loadingTableRows } = useTableContext();
     const setModalData = useModalStore(state => state.setModalData);
 
     const handleEliminarMedico = (id: number) => {
@@ -32,7 +32,7 @@ export const MedicoRows = () => {
                         </TableCell>
                         <TableCell align="center">
                             <Tooltip title="Eliminar medico">
-                                <IconButton onClick={() => handleEliminarMedico(id)}>
+                                <IconButton onClick={() => handleEliminarMedico(id)} disabled={loadingTableRows}>
                                     <DeleteIcon color="error" />
                                 </IconButton>
                             </Tooltip>
