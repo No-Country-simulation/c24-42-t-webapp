@@ -1,6 +1,5 @@
 import { ThemeProvider } from '@mui/material';
 import { theme } from '@ui/muiOverrideTheme';
-import ErrorBoundary from '@components/layout/ErrorBoundary';
 import { ReactNode } from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
@@ -11,12 +10,10 @@ const spanishLocale = esES.components.MuiLocalizationProvider.defaultProps.local
 
 export const ProviderWrapper = ({ children }: { children: ReactNode }) => {
     return (
-        <ErrorBoundary fallback={<>Ocurrio un error desconocido, fijate en consola que dice</>}>
-            <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={es} localeText={spanishLocale}>
-                <ThemeProvider theme={theme}>
-                    {children}
-                </ThemeProvider>
-            </LocalizationProvider>
-        </ErrorBoundary>
+        <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={es} localeText={spanishLocale}>
+            <ThemeProvider theme={theme}>
+                {children}
+            </ThemeProvider>
+        </LocalizationProvider>
     );
 }
