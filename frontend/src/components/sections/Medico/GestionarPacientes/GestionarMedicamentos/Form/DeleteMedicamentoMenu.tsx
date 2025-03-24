@@ -35,7 +35,7 @@ export const DeleteMedicamentoMenu = () => {
 
     return (
         <form onSubmit={(e) => e.preventDefault()}>
-            <ConfirmDelete loading={loading} error={error} handleClick={handleClick} buttonLabel="Eliminar Medicamento" description="¿Estas seguro de eliminar este medicamento?" />
+            <ConfirmDelete loading={loading} error={error} handleClick={handleClick} description="¿Estas seguro de eliminar este medicamento?" />
         </form>
     );
 }

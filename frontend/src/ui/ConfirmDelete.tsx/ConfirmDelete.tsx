@@ -5,18 +5,17 @@ import { CustomButton } from "@ui/CustomButton/CustomButton";
 import { SubmitButton } from "@ui/SubmitButton/SubmitButton";
 
 interface Props {
-    buttonLabel: string
     description: string
     loading: boolean
     error: CustomError
     handleClick: () => Promise<void>
 }
 
-export const ConfirmDelete = ({ buttonLabel, description, loading, error, handleClick }: Props) => {
+export const ConfirmDelete = ({ description, loading, error, handleClick }: Props) => {
     const closeModal = useModalStore(state => state.closeModal);
     return (
         <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            <Typography variant="body1" fontSize="1.3em">
+            <Typography variant="body1" fontSize="1.2em" sx={{ color: "#726969"}}>
                 {description}
             </Typography>
             <Box sx={{ alignSelf: "end", display: "flex", gap: "0.5rem" }}>
@@ -25,7 +24,7 @@ export const ConfirmDelete = ({ buttonLabel, description, loading, error, handle
                         Cancelar
                     </Typography>
                 </CustomButton>
-                <SubmitButton loading={loading} error={error} label={buttonLabel} handleOnClick={handleClick} />
+                <SubmitButton loading={loading} error={error} label={"Eliminar"} handleOnClick={handleClick} />
             </Box>
         </Box>
     );
