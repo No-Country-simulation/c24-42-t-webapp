@@ -19,7 +19,7 @@ export const addMedication = ({ pacienteId, data, token, setError }: Params) => 
     const medicamentoData: MedicationInput = {
         dosage: data?.dosage || "",
         frequency: data?.frequency || "",
-        notes: data?.notes || "",
+        notes: data?.notes || "sin notas",
         medicationName: data?.medicationName || "",
         startDate: startDateFormated,
         endDate: endDateFormated

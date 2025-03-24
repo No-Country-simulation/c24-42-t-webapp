@@ -16,7 +16,6 @@ export const medicamentosSchema = {
         "dosage",
         "frequency",
         "datePickerWithRange",
-        "notes"
     ],
     "properties": {
         "medicationName": {
