@@ -4,8 +4,8 @@ export interface MedicamentosFormData {
     frequency: string,
     notes: string
     datePickerWithRange: {
-        startDate: Date,
-        endDate: Date,
+        startDate: string,
+        endDate: string,
     }
 }
 

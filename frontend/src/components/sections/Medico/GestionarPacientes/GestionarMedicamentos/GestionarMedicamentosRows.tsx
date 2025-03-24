@@ -10,7 +10,6 @@ import { useModalStore } from "@store/modal.store";
 export const GestionarMedicamentosRows = () => {
     const { dataRows } = useTableContext();
     const setModalData = useModalStore(state => state.setModalData);
-
     const handleDeleteMedicamento = (id: number) => {
         setModalData({
             showModal: true,
@@ -25,6 +24,15 @@ export const GestionarMedicamentosRows = () => {
             showModal: true,
             title: "",
             operation: "medication_details",
+            data: { itemData: data }
+        });
+    }
+
+    const handleEditMedicamento = (data: MedicacionData) => {
+        setModalData({
+            showModal: true,
+            title: "Editar Medicamento",
+            operation: "edit_medication",
             data: { itemData: data }
         });
     }
@@ -49,7 +57,7 @@ export const GestionarMedicamentosRows = () => {
                                     </IconButton>
                                 </Tooltip>
                                 <Tooltip title="Editar">
-                                    <IconButton color="info" >
+                                    <IconButton color="info" onClick={() => handleEditMedicamento(medication)}>
                                         <EditIcon />
                                     </IconButton>
                                 </Tooltip>
