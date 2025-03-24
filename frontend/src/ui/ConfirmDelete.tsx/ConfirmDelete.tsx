@@ -14,18 +14,20 @@ interface Props {
 export const ConfirmDelete = ({ description, loading, error, handleClick }: Props) => {
     const closeModal = useModalStore(state => state.closeModal);
     return (
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            <Typography variant="body1" fontSize="1.2em" sx={{ color: "#726969"}}>
-                {description}
-            </Typography>
-            <Box sx={{ alignSelf: "end", display: "flex", gap: "0.5rem" }}>
-                <CustomButton onClick={() => closeModal()} color="secondary">
-                    <Typography textTransform="none" fontSize="18px">
-                        Cancelar
-                    </Typography>
-                </CustomButton>
-                <SubmitButton loading={loading} error={error} label={"Eliminar"} handleOnClick={handleClick} />
+        <form onSubmit={(e) => e.preventDefault()}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+                <Typography variant="body1" fontSize="1.2em" sx={{ color: "#726969" }}>
+                    {description}
+                </Typography>
+                <Box sx={{ alignSelf: "end", display: "flex", gap: "0.5rem" }}>
+                    <CustomButton onClick={() => closeModal()} color="secondary">
+                        <Typography textTransform="none" fontSize="18px">
+                            Cancelar
+                        </Typography>
+                    </CustomButton>
+                    <SubmitButton loading={loading} error={error} label={"Eliminar"} handleOnClick={handleClick} />
+                </Box>
             </Box>
-        </Box>
+        </form>
     );
 }
