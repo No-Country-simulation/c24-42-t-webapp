@@ -20,36 +20,49 @@ export const GestionarMedicamentosRows = () => {
         });
     }
 
+    const handleShowDetails = (data: MedicacionData) => {
+        setModalData({
+            showModal: true,
+            title: "Detalles Medicamento",
+            operation: "medication_details",
+            data: { itemData: data }
+        });
+    }
+
     return (
         <>
             {
-                dataRows.map(({ id, startDate, endDate, dosage, medicationName }: MedicacionData) => (
-                    <TableRow
-                        key={id}
-                    >
-                        <TableCell align="center">{medicationName}</TableCell>
-                        <TableCell align="center">{dosage}</TableCell>
-                        <TableCell align="center">{formatDate(startDate, "yyyy-MM-dd", "dd/MM/yyyy")}</TableCell>
-                        <TableCell align="center">{formatDate(endDate, "yyyy-MM-dd", "dd/MM/yyyy")}</TableCell>
-                        <TableCell align="center" sx={{ display: "flex", gap: "1rem" }}>
-                            <Tooltip title="Eliminar">
-                                <IconButton color="error" onClick={() => handleDeleteMedicamento(id)} >
-                                    <DeleteIcon />
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title="Editar">
-                                <IconButton color="info" >
-                                    <EditIcon />
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title="Detalles">
-                                <IconButton color="warning" >
-                                    <ListAltIcon />
-                                </IconButton>
-                            </Tooltip>
-                        </TableCell>
-                    </TableRow>
-                ))
+                dataRows.map((medication: MedicacionData) => {
+                    const { id, startDate, endDate, dosage, medicationName } = medication;
+                    return (
+                        <TableRow
+                            key={id}
+                        >
+                            <TableCell align="center">{medicationName}</TableCell>
+                            <TableCell align="center">{dosage}</TableCell>
+                            <TableCell align="center">{formatDate(startDate, "yyyy-MM-dd", "dd/MM/yyyy")}</TableCell>
+                            <TableCell align="center">{formatDate(endDate, "yyyy-MM-dd", "dd/MM/yyyy")}</TableCell>
+                            <TableCell align="center" sx={{ display: "flex", gap: "1rem" }}>
+                                <Tooltip title="Eliminar">
+                                    <IconButton color="error" onClick={() => handleDeleteMedicamento(id)} >
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Editar">
+                                    <IconButton color="info" >
+                                        <EditIcon />
+                                    </IconButton>
+                                </Tooltip>
+                                <Tooltip title="Detalles">
+                                    <IconButton color="warning" onClick={() => handleShowDetails(medication)}>
+                                        <ListAltIcon />
+                                    </IconButton>
+                                </Tooltip>
+                            </TableCell>
+                        </TableRow>
+                    );
+                }
+                )
             }
         </>
     );
