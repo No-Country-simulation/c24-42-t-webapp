@@ -14,7 +14,7 @@ export const GestionarMedicamentosRows = () => {
     const handleDeleteMedicamento = (id: number) => {
         setModalData({
             showModal: true,
-            title: "Eliminar Medicamento",
+            title: "",
             operation: "delete_medication",
             data: { id }
         });
@@ -23,7 +23,7 @@ export const GestionarMedicamentosRows = () => {
     const handleShowDetails = (data: MedicacionData) => {
         setModalData({
             showModal: true,
-            title: "Detalles Medicamento",
+            title: "",
             operation: "medication_details",
             data: { itemData: data }
         });

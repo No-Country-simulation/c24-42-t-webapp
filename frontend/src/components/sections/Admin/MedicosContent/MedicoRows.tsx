@@ -11,7 +11,7 @@ export const MedicoRows = () => {
     const handleEliminarMedico = (id: number) => {
         setModalData({
             showModal: true,
-            title: "Eliminar Medico",
+            title: "",
             operation: "delete_medico",
             data: { id }
         });
